@@ -1,0 +1,66 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+
+html {
+    scroll-behavior: smooth;
+    font-size: 10px;
+}
+
+body {
+    background-color: constants.$color-background-body;
+    font-size: 1.6rem;
+    font-family: 'Inter', Verdana, sans-serif;
+}
+
+.wrapper{
+    max-width: 1440px;
+    margin: auto;
+}
+
+h1 {
+    color: constants.$color-text-light;
+    @include mixins.font(7.2rem, 600, 105%);
+
+    span{
+        color: constants.$color-text-accent;
+        font-style: italic;
+    }
+}
+
+h2 {
+    color: constants.$color-text-dark;
+    @include mixins.font(6rem, 600, 125%);
+
+    span{
+        color: constants.$color-text-accent;
+        font-style: italic;
+    }
+}
+
+h3 {
+    color: constants.$color-text-dark;
+    @include mixins.font(2.4rem, 600, 125%);
+}
+
+.reference_underlined {
+    cursor: pointer;
+    &::after {
+        content: '';
+        display: block;
+        width: 0%;
+        margin: auto;
+        padding-bottom: 2px;
+        border-bottom: 2px solid constants.$color-text-dark;
+        transition: width 0.3s ease-out; 
+    }
+
+    &:hover {
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            padding-bottom: 2px;
+            border-bottom: 2px solid constants.$color-text-dark;
+        }
+    }
+}

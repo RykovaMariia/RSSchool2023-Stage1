@@ -12,41 +12,45 @@
   </head>
   <body>
     <header class="header">
-      <a href="#" class="logo">
-        <svg class="icon-logo">
-          <use xlink:href="./img/sprite.svg#logo"></use>
-        </svg>
-      </a>
-      <nav class="header__navigation">
-        <ul class="navigation">
-          <li><a href="#">Favorite coffee</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Mobile app</a></li>
-          <li><a href="#">Contact us</a></li>
-        </ul>
-      </nav>
-      <div class="header__menu">
-        <div>Menu</div>
-        <svg class="icon">
-          <use xlink:href="./img/sprite.svg#coffee-cup"></use>
-        </svg>
+      <div class="wrapper header__wrapper">
+        <div href="#" class="logo">
+          <svg class="icon-logo">
+            <use xlink:href="./img/sprite.svg#logo"></use>
+          </svg>
+        </div>
+        <nav class="header__navigation">
+          <ul class="navigation">
+            <li class="reference_underlined"><a href="#">Favorite coffee</a></li>
+            <li class="reference_underlined"><a href="#">About</a></li>
+            <li class="reference_underlined"><a href="#">Mobile app</a></li>
+            <li class="reference_underlined"><a href="#">Contact us</a></li>
+          </ul>
+        </nav>
+        <div class="header__menu reference_underlined">
+          <span>Menu</span>
+          <svg class="icon-coffee-cup">
+            <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+          </svg>
+        </div>
       </div>
     </header>
     <main>
       <section class="enjoy">
         <div class="wrapper">
-          <h1>Enjoy premium coffee at our charming cafe</h1>
+          <h1><span>Enjoy</span> premium coffee at our charming cafe</h1>
+
+          <p class="enjoy__content">
+            With its inviting atmosphere and delicious coffee options, the
+            Coffee House Resource is a popular destination for coffee lovers and
+            those seeking a warm and inviting space to enjoy their favorite
+            beverage.
+          </p>
+          <button class="button-menu">Menu</button>
         </div>
-        <p class="enjoy__content">
-          With its inviting atmosphere and delicious coffee options, the Coffee
-          House Resource is a popular destination for coffee lovers and those
-          seeking a warm and inviting space to enjoy their favorite beverage.
-        </p>
-        <button class="button-menu">Menu</button>
       </section>
       <section class="favourites-coffee">
         <div class="wrapper">
-          <h2>Choose your favorite coffee</h2>
+          <h2>Choose your <span>favorite</span> coffee</h2>
           <div class="slider">
             <svg class="slider__arrow-left">
               <use xlink:href="./img/sprite.svg#arrow-left"></use>
@@ -70,7 +74,7 @@
       <section class="about">
         <div class="wrapper">
           <h2>
-            Resource is the perfect and cozy place where you can enjoy a variety
+            Resource is <span>the perfect and cozy place</span> where you can enjoy a variety
             of hot beverages, relax, catch up with friends, or get some work
             done.
           </h2>
@@ -82,7 +86,7 @@
       </section>
       <section class="mobile-app">
         <div class="wrapper">
-          <h2>Download our apps to start ordering</h2>
+          <h2><span>Download</span> our apps to start ordering</h2>
           <p class="mobile-app__content">
             Download the Resource app today and experience the comfort of
             ordering your favorite coffee from wherever you are
@@ -113,7 +117,7 @@
     <footer>
       <div class="wrapper">
         <div class="footer__left">
-          <h2>Sip, Savor, Smile. It’s coffee time!</h2>
+          <h2>Sip, Savor, Smile. <span>It’s coffee time!</span></h2>
           <a href="#">
             <svg class="twitter">
               <use xlink:href="./img/sprite.svg#twitter"></use>
@@ -131,14 +135,14 @@
           </a>
         </div>
         <div class="footer__right">
-            <address>
-             <h3>Contact us</h3>   
-             <ul>
-                <li><a href="#">8558 Green Rd.,  LA</a></li>
-                <li><a href="tel:+16035550123">+1 (603) 555-0123</a></li>
-                <li>Mon-Sat: 9:00 AM – 23:00 PM</li>
-             </ul>
-            </address>
+          <address>
+            <h3>Contact us</h3>
+            <ul>
+              <li><a href="#">8558 Green Rd., LA</a></li>
+              <li><a href="tel:+16035550123">+1 (603) 555-0123</a></li>
+              <li>Mon-Sat: 9:00 AM – 23:00 PM</li>
+            </ul>
+          </address>
         </div>
       </div>
     </footer>

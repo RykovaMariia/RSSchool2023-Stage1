@@ -1,0 +1,49 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.icon-logo {
+    width: 100px;
+    height: 60px;
+}
+
+.header__navigation {
+    padding: 16px 0;
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    li {
+        list-style: none;
+        @include mixins.font(1.6rem, 600, 150%);
+    }
+
+    a {
+        text-decoration: none;
+        color: constants.$color-text-dark;
+    }
+}
+
+.header__menu {
+    padding: 16px 0;
+    text-align: center;
+
+    span {
+        color: constants.$color-text-dark;
+        @include mixins.font(1.6rem, 600, 150%);
+    }
+
+    .icon-coffee-cup {
+        margin-left: 4px;
+        width: 20px;
+        height: 20px;
+    }
+}

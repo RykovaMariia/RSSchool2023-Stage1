@@ -57,25 +57,67 @@
         </div>
       </section>
       <section class="favourites-coffee">
-        <div class="wrapper">
-          <h2>Choose your <span>favorite</span> coffee</h2>
+        <div class="wrapper favourites-coffee__wrapper">
+          <h2 class="favourites-coffee__heading">
+            Choose your <span>favorite</span> coffee
+          </h2>
           <div class="slider">
-            <svg class="slider__arrow-left">
-              <use xlink:href="./img/sprite.svg#arrow-left"></use>
-            </svg>
+            <div class="slider__arrow-left"></div>
             <div class="slider__content">
-              <div class="picture"></div>
-              <h3>S’mores Frappuccino</h3>
-              <p class="slider__content__text">
-                This new drink takes an espresso and mixes it with brown sugar
-                and cinnamon before being topped with oat milk.
-              </p>
-              <div class="price">$5.50</div>
+              <div class="slider__line">
+              <div class="slider__slide frappuccino">
+                <img
+                  class="slide__image"
+                  src="./img/_favourites-coffee/coffee-slider-1.png"
+                  alt="Image Frappuccino"
+                />
+                <div class="slide__description">
+                  <h3>S’mores Frappuccino</h3>
+                  <p class="slide__description__text">
+                    This new drink takes an espresso and mixes it with brown
+                    sugar and cinnamon before being topped with oat milk.
+                  </p>
+                  <div class="slide__price">$5.50</div>
+                </div>
+              </div>
+              <div class="slider__slide macchiato">
+                <img
+                  class="slide__image"
+                  src="./img/_favourites-coffee/coffee-slider-2.png"
+                  alt="Image Macchiato"
+                />
+                <div class="slide__description">
+                  <h3>Caramel Macchiato</h3>
+                  <p class="slide__description__text">
+                    Fragrant and unique classic espresso with rich
+                    caramel-peanut syrup, with cream under whipped thick foam.
+                  </p>
+                  <div class="slide__price">$5.00</div>
+                </div>
+              </div>
+              <div class="slider__slide ice-coffee">
+                <img
+                  class="slide__image"
+                  src="./img/_favourites-coffee/coffee-slider-3.png"
+                  alt="Ice coffee"
+                />
+                <div class="slide__description">
+                  <h3>Ice coffee</h3>
+                  <p class="slide__description__text">
+                    A popular summer drink that tones and invigorates. Prepared
+                    from coffee, milk and ice.
+                  </p>
+                  <div class="slide__price">$4.50</div>
+                </div>
+              </div>
             </div>
-            <div class="slider__control"></div>
-            <svg class="slider__arrow-right">
-              <use xlink:href="./img/sprite.svg#arrow-right"></use>
-            </svg>
+            </div>
+            <div class="slider__arrow-right"></div>
+          </div>
+          <div class="slider__controls">
+            <div class="control control_checked"></div>
+            <div class="control"></div>
+            <div class="control"></div>
           </div>
         </div>
       </section>

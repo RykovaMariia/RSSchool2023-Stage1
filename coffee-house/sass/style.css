@@ -206,7 +206,7 @@ h1 {
   font-style: normal;
 }
 h1 span {
-  color: #B0907A;
+  color: hsl(24, 25%, 58%);
   font-style: italic;
 }
 
@@ -218,7 +218,7 @@ h2 {
   font-style: normal;
 }
 h2 span {
-  color: #B0907A;
+  color: hsl(24, 25%, 58%);
   font-style: italic;
 }
 
@@ -353,6 +353,101 @@ h3 {
 }
 .button-menu:hover .icon-coffee-cup {
   opacity: 1;
+}
+
+.favourites-coffee__wrapper {
+  padding: 0 44px;
+  margin-top: 100px;
+}
+
+.favourites-coffee__heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.slider__arrow-left {
+  background-image: url(../img/_favourites-coffee/arrow-left.svg);
+  width: 60px;
+  height: 60px;
+  transition: all 0.7s ease;
+}
+.slider__arrow-left:hover {
+  background-image: url(../img/_favourites-coffee/arrow-left-hover.svg);
+}
+
+.slider__arrow-right {
+  background-image: url(../img/_favourites-coffee/arrow-right.svg);
+  width: 60px;
+  height: 60px;
+  transition: all 0.7s ease;
+}
+.slider__arrow-right:hover {
+  background-image: url(../img/_favourites-coffee/arrow-right-hover.svg);
+}
+
+.slider__content {
+  overflow: hidden;
+  width: 1150px;
+  height: 640px;
+}
+.slider__content .slider__line {
+  padding-left: 336px;
+  display: flex;
+  gap: 336px;
+}
+
+.slider__slide {
+  max-width: 480px;
+  margin: auto;
+}
+.slider__slide img {
+  max-width: 480px;
+  max-height: 480px;
+  justify-content: center;
+}
+.slider__slide .slide__description {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.slider__slide .slide__description__text {
+  color: #403F3D;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+  font-style: normal;
+  text-align: center;
+}
+.slider__slide .slide__price {
+  color: #403F3D;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 125%;
+  font-style: normal;
+}
+
+.slider__controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.slider__controls .control {
+  width: 40px;
+  height: 4px;
+  border-radius: 100px;
+  background: #C1B6AD;
+}
+.slider__controls .control_checked {
+  background: #665F55;
 }
 
 /*# sourceMappingURL=style.css.map */

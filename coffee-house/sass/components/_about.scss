@@ -21,30 +21,29 @@
     gap: 40px;
 }
 
-.about__img1 {
+.about__img {
     border-radius: 20px;
-    background: url(../img/about/about-1.jpg), lightgray 50% / cover no-repeat;
-    background-size: 100% auto;
     background-position: 50%;
-}
+    background-size: 110%;
+    transition: background-size 0.7s ease;
 
-.about__img2 {
-    border-radius: 20px;
-    background: url(../img/about/about-2.jpg), lightgray 50% / cover no-repeat;
-    background-size: 100% auto;
-    background-position: 50%;
-}
+    &_1 {
+        background-image: url(../img/about/about-1.jpg);
+    }
 
-.about__img3 {
-    border-radius: 20px;
-    background: url(../img/about/about-3.jpg), lightgray 50% / cover no-repeat;
-    background-size: 100% auto;
-    background-position: 50%;
-}
+    &_2 {
+        background-image: url(../img/about/about-2.jpg);
+    }
 
-.about__img4 {
-    border-radius: 20px;
-    background: url(../img/about/about-4.jpg), lightgray 50% / cover no-repeat;
-    background-size: 100% auto;
-    background-position: 50%;
+    &_3 {
+        background-image: url(../img/about/about-3.jpg);
+    }
+
+    &_4 {
+        background-image: url(../img/about/about-4.jpg);
+    }
+
+    &:hover {
+        background-size: 100%;
+    }
 }

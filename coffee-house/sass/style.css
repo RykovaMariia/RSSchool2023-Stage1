@@ -376,6 +376,7 @@ h3 {
   width: 60px;
   height: 60px;
   transition: all 0.7s ease;
+  cursor: pointer;
 }
 .slider__arrow-left:hover {
   background-image: url(../img/favourites-coffee/arrow-left-hover.svg);
@@ -386,6 +387,7 @@ h3 {
   width: 60px;
   height: 60px;
   transition: all 0.7s ease;
+  cursor: pointer;
 }
 .slider__arrow-right:hover {
   background-image: url(../img/favourites-coffee/arrow-right-hover.svg);
@@ -473,32 +475,94 @@ h3 {
   gap: 40px;
 }
 
-.about__img1 {
+.about__img {
   border-radius: 20px;
-  background: url(../img/about/about-1.jpg), lightgray 50%/cover no-repeat;
-  background-size: 100% auto;
   background-position: 50%;
+  background-size: 110%;
+  transition: background-size 0.7s ease;
+}
+.about__img_1 {
+  background-image: url(../img/about/about-1.jpg);
+}
+.about__img_2 {
+  background-image: url(../img/about/about-2.jpg);
+}
+.about__img_3 {
+  background-image: url(../img/about/about-3.jpg);
+}
+.about__img_4 {
+  background-image: url(../img/about/about-4.jpg);
+}
+.about__img:hover {
+  background-size: 100%;
 }
 
-.about__img2 {
-  border-radius: 20px;
-  background: url(../img/about/about-2.jpg), lightgray 50%/cover no-repeat;
-  background-size: 100% auto;
-  background-position: 50%;
+.mobile-button, .mobile-button .button-icon, .mobile-button p {
+  transition: all 1s ease;
 }
 
-.about__img3 {
-  border-radius: 20px;
-  background: url(../img/about/about-3.jpg), lightgray 50%/cover no-repeat;
-  background-size: 100% auto;
-  background-position: 50%;
+.mobile-app__wrapper {
+  margin-top: 100px;
+  display: flex;
+  gap: 100px;
 }
 
-.about__img4 {
-  border-radius: 20px;
-  background: url(../img/about/about-4.jpg), lightgray 50%/cover no-repeat;
-  background-size: 100% auto;
-  background-position: 50%;
+.mobile-app__left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+}
+.mobile-app__left p {
+  color: #403F3D;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 150%;
+  font-style: normal;
+}
+.mobile-app__left .mobile-app__buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.mobile-button {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 12px 20px;
+  display: flex;
+  gap: 8px;
+  border: 1px solid #665F55;
+  border-radius: 100px;
+  background-color: #E1D4C9;
+  cursor: pointer;
+}
+.mobile-button .button-icon {
+  fill: #403F3D;
+  width: 36px;
+  height: 36px;
+}
+.mobile-button p {
+  text-align: left;
+  color: #403F3D;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 140%;
+  font-style: normal;
+}
+.mobile-button p span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 150%;
+  font-style: normal;
+}
+.mobile-button:hover {
+  background-color: #665F55;
+}
+.mobile-button:hover p {
+  color: #E1D4C9;
+}
+.mobile-button:hover .button-icon {
+  fill: #E1D4C9;
 }
 
 /*# sourceMappingURL=style.css.map */

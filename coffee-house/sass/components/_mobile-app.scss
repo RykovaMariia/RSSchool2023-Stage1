@@ -1,0 +1,75 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+@use '../abstracts/placeholders';
+
+.mobile-app__wrapper {
+    margin-top: 100px;
+    display: flex;
+    gap: 100px;
+}
+
+.mobile-app__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+
+    p {
+        color: constants.$color-text-dark;
+        @include mixins.font(1.6rem, 400, 150%);
+    }
+
+    .mobile-app__buttons {
+        display: flex;
+        gap: 20px;
+    }
+}
+
+.mobile-button {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 12px 20px;
+    display: flex;
+    gap: 8px;
+    border: 1px solid constants.$color-border-dark;
+    border-radius: 100px;
+    background-color: constants.$color-background-body;
+    cursor: pointer;
+    @extend %transition;
+
+    .button-icon {
+        fill: constants.$color-text-dark;
+        width: 36px;
+        height: 36px;
+        @extend %transition;
+    }
+
+    p {
+        text-align: left;
+        color: constants.$color-text-dark;
+        @include mixins.font(1rem, 600, 140%);
+        @extend %transition;
+
+        span {
+            @include mixins.font(1.6rem, 600, 150%);
+        }
+    }
+
+    &:hover {
+        background-color: constants.$color-background-container;
+
+        p {
+            color: constants.$color-text-light;
+        }
+        
+        .button-icon {
+            fill: constants.$color-text-light;
+        }
+    }
+
+}
+
+
+
+
+

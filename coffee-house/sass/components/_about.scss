@@ -1,0 +1,50 @@
+.about__wrapper {
+    margin-top: 100px;
+}
+
+.container-grid {
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 660px); 
+    gap: 40px;
+}
+
+.container-grid__left {
+    display: grid;
+    grid-template-rows: 590px 430px;
+    gap: 40px;
+}
+
+.container-grid__right {
+    display: grid;
+    grid-template-rows: 430px 590px;
+    gap: 40px;
+}
+
+.about__img1 {
+    border-radius: 20px;
+    background: url(../img/about/about-1.jpg), lightgray 50% / cover no-repeat;
+    background-size: 100% auto;
+    background-position: 50%;
+}
+
+.about__img2 {
+    border-radius: 20px;
+    background: url(../img/about/about-2.jpg), lightgray 50% / cover no-repeat;
+    background-size: 100% auto;
+    background-position: 50%;
+}
+
+.about__img3 {
+    border-radius: 20px;
+    background: url(../img/about/about-3.jpg), lightgray 50% / cover no-repeat;
+    background-size: 100% auto;
+    background-position: 50%;
+}
+
+.about__img4 {
+    border-radius: 20px;
+    background: url(../img/about/about-4.jpg), lightgray 50% / cover no-repeat;
+    background-size: 100% auto;
+    background-position: 50%;
+}

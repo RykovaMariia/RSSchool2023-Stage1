@@ -1,11 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">
+        <svg class="icon-logo">
+          <use xlink:href="./img/sprite.svg#logo"></use>
+        </svg>
+      </a>
+      <nav class="header__navigation">
+        <ul class="navigation">
+          <li><a href="#">Favorite coffee</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Mobile app</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>
+      <div class="header__menu">
+        <div>Menu</div>
+        <svg class="icon">
+          <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+        </svg>
+      </div>
+    </header>
+    <main>
+      <section class="enjoy">
+        <div class="wrapper">
+          <h1>Enjoy premium coffee at our charming cafe</h1>
+        </div>
+        <p class="enjoy__content">
+          With its inviting atmosphere and delicious coffee options, the Coffee
+          House Resource is a popular destination for coffee lovers and those
+          seeking a warm and inviting space to enjoy their favorite beverage.
+        </p>
+        <button class="button-menu">Menu</button>
+      </section>
+      <section class="favourites-coffee">
+        <div class="wrapper">
+          <h2>Choose your favorite coffee</h2>
+          <div class="slider">
+            <svg class="slider__arrow-left">
+              <use xlink:href="./img/sprite.svg#arrow-left"></use>
+            </svg>
+            <div class="slider__content">
+              <div class="picture"></div>
+              <h3>S’mores Frappuccino</h3>
+              <p class="slider__content__text">
+                This new drink takes an espresso and mixes it with brown sugar
+                and cinnamon before being topped with oat milk.
+              </p>
+              <div class="price">$5.50</div>
+            </div>
+            <div class="slider__control"></div>
+            <svg class="slider__arrow-right">
+              <use xlink:href="./img/sprite.svg#arrow-right"></use>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <section class="about">
+        <div class="wrapper">
+          <h2>
+            Resource is the perfect and cozy place where you can enjoy a variety
+            of hot beverages, relax, catch up with friends, or get some work
+            done.
+          </h2>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </section>
+      <section class="mobile-app">
+        <div class="wrapper">
+          <h2>Download our apps to start ordering</h2>
+          <p class="mobile-app__content">
+            Download the Resource app today and experience the comfort of
+            ordering your favorite coffee from wherever you are
+          </p>
+          <div class="mobile-app__buttons">
+            <button>
+              <svg class="button-app-store">
+                <use xlink:href="./img/sprite.svg#app-store"></use>
+              </svg>
+              <div class="button-app-store__content">
+                <p>Available on the</p>
+                <p>App Store</p>
+              </div>
+            </button>
+            <button>
+              <svg class="button-google-play">
+                <use xlink:href="./img/sprite.svg#google-play"></use>
+              </svg>
+              <div class="button-google-play__content">
+                <p>Available on</p>
+                <p>Google Play</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrapper">
+        <div class="footer__left">
+          <h2>Sip, Savor, Smile. It’s coffee time!</h2>
+          <a href="#">
+            <svg class="twitter">
+              <use xlink:href="./img/sprite.svg#twitter"></use>
+            </svg>
+          </a>
+          <a href="#">
+            <svg class="instagram">
+              <use xlink:href="./img/sprite.svg#instagram"></use>
+            </svg>
+          </a>
+          <a href="#">
+            <svg class="facebook">
+              <use xlink:href="./img/sprite.svg#facebook"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="footer__right">
+            <address>
+             <h3>Contact us</h3>   
+             <ul>
+                <li><a href="#">8558 Green Rd.,  LA</a></li>
+                <li><a href="tel:+16035550123">+1 (603) 555-0123</a></li>
+                <li>Mon-Sat: 9:00 AM – 23:00 PM</li>
+             </ul>
+            </address>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

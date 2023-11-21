@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/style-menu.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper header__wrapper">
+        <a href="./index.html" class="logo">
+          <svg class="icon-logo">
+            <use xlink:href="./img/sprite.svg#logo"></use>
+          </svg>
+        </a>
+        <nav class="header__navigation">
+          <ul class="navigation">
+            <li class="reference_underlined">
+              <a href="#">Favorite coffee</a>
+            </li>
+            <li class="reference_underlined"><a href="#">About</a></li>
+            <li class="reference_underlined">
+              <a href="#">Mobile app</a>
+            </li>
+            <li class="reference_underlined">
+              <a href="#footer">Contact us</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="header__menu" href="./menu.html">
+          <span>Menu</span>
+          <svg class="icon-coffee-cup">
+            <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+          </svg>
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="wrapper">
+        <h2 class="menu__heading">
+          Behind each of our cups hides an <span>amazing surprise</span>
+        </h2>
+        <div class="menu__tabs">
+          <div class="tab tab_checked">
+            <div class="tab__circle">☕</div>
+            <span>Coffee</span>
+          </div>
+          <div class="tab">
+            <div class="tab__circle">🫖</div>
+            <span>Tea</span>
+          </div>
+
+          <div class="tab">
+            <div class="tab__circle">🍰</div>
+            <span>Dessert</span>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="menu-coffee">
+
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Irish coffee</h3>
+                <p>
+                  Fragrant black coffee with Jameson Irish whiskey and whipped
+                  milk
+                </p>
+                <div class="menu-price">$7.00</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Kahlua coffee</h3>
+                <p>
+                  Classic coffee with milk and Kahlua liqueur under a cap of frothed milk
+                </p>
+                <div class="menu-price">$7.00</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Honey raf</h3>
+                <p>
+                  Espresso with frothed milk, cream and aromatic honey
+                </p>
+                <div class="menu-price">$5.50</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Ice cappuccino</h3>
+                <p>
+                  Cappuccino with soft thick foam in summer version with ice
+                </p>
+                <div class="menu-price">$5.00</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Espresso</h3>
+                <p>
+                  Classic black coffee
+                </p>
+                <div class="menu-price">$4.50</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Latte</h3>
+                <p>
+                  Espresso coffee with the addition of steamed milk and dense milk foam
+                </p>
+                <div class="menu-price">$5.50</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Latte macchiato</h3>
+                <p>
+                  Espresso with frothed milk and chocolate
+                </p>
+                <div class="menu-price">$5.50</div>
+              </div>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item__img"></div>
+              <div class="menu-item__description">
+                <h3>Coffee with cognac</h3>
+                <p>
+                  Fragrant black coffee with cognac and whipped cream
+                </p>
+                <div class="menu-price">$6.50</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="wrapper wrapper__footer">
+        <div class="footer__left">
+          <h2>Sip, Savor, Smile. <span>It’s coffee time!</span></h2>
+          <div class="social-networks">
+            <a href="#">
+              <div class="social-network social-network_twitter"></div>
+            </a>
+            <a href="#">
+              <div class="social-network social-network_instagram"></div>
+            </a>
+            <a href="#">
+              <div class="social-network social-network_facebook"></div>
+            </a>
+          </div>
+        </div>
+        <div class="footer__right">
+          <h3>Contact us</h3>
+          <ul>
+            <li class="reference_underlined">
+              <a href="#">8558 Green Rd., LA</a>
+            </li>
+            <li class="reference_underlined">
+              <a href="tel:+16035550123">+1 (603) 555-0123</a>
+            </li>
+            <li>Mon-Sat: 9:00 AM – 23:00 PM</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

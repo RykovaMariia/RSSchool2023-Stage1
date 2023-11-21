@@ -1,0 +1,13 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+
+.header__menu {
+    cursor: auto;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        border-bottom: 2px solid constants.$color-text-dark;
+    }
+}

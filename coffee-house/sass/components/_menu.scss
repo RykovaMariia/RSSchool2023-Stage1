@@ -1,0 +1,132 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+
+.menu__heading {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.menu__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px 0;
+
+    .tab {
+
+        padding: 8px 16px 8px 8px;
+        border-radius: 100px;
+        border: 1px solid constants.$color-border-light;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        span {
+            color: constants.$color-text-dark;
+            @include mixins.font(1.6rem, 600, 150%);
+        }
+
+        .tab__circle {
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            padding: 5px 7px;
+            background-color: constants.$color-border-light;
+        }
+
+        &_checked {
+            background-color: constants.$color-background-container;
+
+            .tab__circle {
+                background-color: constants.$color-background-body;
+            }
+
+            span {
+                color: constants.$color-text-light;
+            }
+        }
+    }
+}
+
+.menu-coffee {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.menu-item {
+    border-radius: 40px;
+    border: 1px solid constants.$color-border-light;
+
+    .menu-item__img {
+        box-sizing: border-box;
+        width: 308px;
+        height: 308px;
+        border-radius: 40px;
+        border: 1px solid constants.$color-border-light;
+        background-size: 110%;
+        transition: background-size 0.7s ease;
+        background-position: 50%;
+    }
+
+    &:nth-child(1) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-1.jpg);
+    }
+
+    &:nth-child(2) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-2.jpg);
+    }
+
+    &:nth-child(3) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-3.jpg);
+    }
+
+    &:nth-child(4) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-4.jpg);
+    }
+
+    &:nth-child(5) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-5.jpg);
+    }
+
+    &:nth-child(6) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-6.jpg);
+    }
+
+    &:nth-child(7) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-7.jpg);
+    }
+
+    &:nth-child(8) .menu-item__img {
+        background-image: url(../img/menu/coffee/coffee-8.jpg);
+    }
+
+    .menu-item__description {
+        position: relative;
+        height: 156px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    p {
+        color: constants.$color-text-dark;
+            @include mixins.font(1.6rem, 400, 150%);
+    }
+
+    .menu-price {
+        position: absolute;
+        bottom: 20px;
+        color: constants.$color-text-dark;
+        @include mixins.font(2.4rem, 600, 125%);
+    }
+
+    &:hover {
+        .menu-item__img {
+            background-size: 100%;
+        }
+    }
+}

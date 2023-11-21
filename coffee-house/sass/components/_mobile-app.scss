@@ -44,7 +44,7 @@
         @extend %transition;
     }
 
-    p {
+    .button-app__content {
         text-align: left;
         color: constants.$color-text-dark;
         @include mixins.font(1rem, 600, 140%);
@@ -58,7 +58,7 @@
     &:hover {
         background-color: constants.$color-background-container;
 
-        p {
+        .button-app-store__content {
             color: constants.$color-text-light;
         }
         

@@ -497,7 +497,7 @@ h3 {
   background-size: 100%;
 }
 
-.mobile-button, .mobile-button .button-icon, .mobile-button p {
+.social-networks .social-network, .mobile-button, .mobile-button .button-icon, .mobile-button p {
   transition: all 1s ease;
 }
 
@@ -563,6 +563,95 @@ h3 {
 }
 .mobile-button:hover .button-icon {
   fill: #E1D4C9;
+}
+
+.wrapper__footer {
+  box-sizing: border-box;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  padding: 100px;
+  border-radius: 40px;
+  background-color: #665F55;
+  display: flex;
+  gap: 100px;
+}
+.wrapper__footer h2 {
+  color: #E1D4C9;
+}
+.wrapper__footer .footer__left, .wrapper__footer .footer__right {
+  width: 530px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.social-networks {
+  display: flex;
+  gap: 12px;
+}
+.social-networks .social-network {
+  width: 60px;
+  height: 60px;
+}
+.social-networks .social-network_twitter {
+  background-image: url(../img/footer/twitter.svg);
+}
+.social-networks .social-network_twitter:hover {
+  background-image: url(../img/footer/twitter-hover.svg);
+}
+.social-networks .social-network_instagram {
+  background-image: url(../img/footer/intagram.svg);
+}
+.social-networks .social-network_instagram:hover {
+  background-image: url(../img/footer/instagram-hover.svg);
+}
+.social-networks .social-network_facebook {
+  background-image: url(../img/footer/facebook.svg);
+}
+.social-networks .social-network_facebook:hover {
+  background-image: url(../img/footer/facebook-hover.svg);
+}
+
+.footer__right h3 {
+  color: #E1D4C9;
+}
+.footer__right ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer__right li {
+  color: #E1D4C9;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 150%;
+  font-style: normal;
+  list-style: none;
+  width: max-content;
+}
+.footer__right li::before {
+  margin-right: 8px;
+}
+.footer__right li:nth-child(1):before {
+  content: url(../img/footer/pin-alt.svg);
+}
+.footer__right li:nth-child(2)::before {
+  content: url(../img/footer/phone.svg);
+}
+.footer__right li:last-child::before {
+  content: url(../img/footer/clock.svg);
+}
+.footer__right li::after {
+  background-color: #E1D4C9;
+}
+.footer__right li a {
+  text-decoration: none;
+  color: #E1D4C9;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 150%;
+  font-style: normal;
 }
 
 /*# sourceMappingURL=style.css.map */

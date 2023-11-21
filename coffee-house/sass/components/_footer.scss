@@ -1,0 +1,109 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+@use '../abstracts/placeholders';
+
+.wrapper__footer {
+    box-sizing: border-box;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    padding: 100px;
+    border-radius: 40px;
+    background-color: constants.$color-background-container;
+    display: flex;
+    gap: 100px;
+
+    h2 {
+        color: constants.$color-text-light;
+    }
+
+    .footer__left, .footer__right {
+        width: 530px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.social-networks {
+    display: flex;
+    gap: 12px;
+
+    .social-network {
+        width: 60px;
+        height: 60px;
+        @extend %transition;
+    
+        &_twitter {
+            background-image: url(../img/footer/twitter.svg);
+
+            &:hover {
+                background-image: url(../img/footer/twitter-hover.svg);
+            }
+        }
+    
+        &_instagram {
+            background-image: url(../img/footer/intagram.svg);
+
+            &:hover {
+                background-image: url(../img/footer/instagram-hover.svg);
+            }
+        }
+    
+        &_facebook {
+            background-image: url(../img/footer/facebook.svg);
+
+            &:hover {
+                background-image: url(../img/footer/facebook-hover.svg);
+            }
+        }
+    
+    }
+}
+
+.footer__right {
+
+    h3 {
+        color: constants.$color-text-light;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    li {
+        color: constants.$color-text-light;
+        @include mixins.font(1.6rem, 600, 150%);
+        list-style: none;
+        width: max-content;
+
+        &::before {
+            margin-right: 8px;
+        }
+         
+        &:nth-child(1):before {
+            content: url(../img/footer/pin-alt.svg);
+        }
+
+        &:nth-child(2)::before {
+            content: url(../img/footer/phone.svg);
+        }
+
+        &:last-child::before {
+            content: url(../img/footer/clock.svg);
+        }
+
+        &::after {
+            background-color: constants.$color-text-light;
+        }
+
+        a {
+            text-decoration: none;
+            color: constants.$color-text-light;
+            @include mixins.font(1.6rem, 600, 150%);
+        }
+    }
+}
+

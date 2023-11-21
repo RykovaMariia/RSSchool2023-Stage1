@@ -24,20 +24,22 @@
 }
 
 .button-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 66px;  
-    border: none;
     border-radius: 100px;
     background-color: constants.$color-background-body;
-    cursor: pointer;
+    text-decoration: none;
     
     
     span {
         position: relative;
-        left: 14px;
+        left: 12px;
         color: constants.$color-text-dark;
         @include mixins.font(1.6rem, 600, 150%);
-        transition: all 0.5s ease;
+        transition: all 0.7s ease;
     }
 
     .icon-coffee-cup {
@@ -45,7 +47,7 @@
         margin-left: 4px;
         width: 20px;
         height: 20px;
-        transition: opacity 0.5s ease;
+        transition: all 0.7s ease;
     }
 
     &:hover {

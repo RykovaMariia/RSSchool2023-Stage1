@@ -27,6 +27,18 @@
             @include mixins.font(1.6rem, 600, 150%);
         }
 
+        &:nth-child(1) .tab__circle {
+            background-image: url(../img/menu/icon-coffee1.svg);
+        }
+
+        &:nth-child(2) .tab__circle {
+            background-image: url(../img/menu/icon-tea1.svg);
+        }
+
+        &:nth-child(3) .tab__circle {
+            background-image: url(../img/menu/icon-dessert1.svg);
+        }
+
         .tab__circle {
             box-sizing: border-box;
             width: 30px;

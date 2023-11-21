@@ -325,29 +325,31 @@ h3 {
 }
 
 .button-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 66px;
-  border: none;
   border-radius: 100px;
   background-color: #E1D4C9;
-  cursor: pointer;
+  text-decoration: none;
 }
 .button-menu span {
   position: relative;
-  left: 14px;
+  left: 12px;
   color: #403F3D;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
-  transition: all 0.5s ease;
+  transition: all 0.7s ease;
 }
 .button-menu .icon-coffee-cup {
   opacity: 0;
   margin-left: 4px;
   width: 20px;
   height: 20px;
-  transition: opacity 0.5s ease;
+  transition: all 0.7s ease;
 }
 .button-menu:hover span {
   left: 0;
@@ -534,6 +536,7 @@ h3 {
   gap: 8px;
   border: 1px solid #665F55;
   border-radius: 100px;
+  text-decoration: none;
   background-color: #E1D4C9;
   cursor: pointer;
 }
@@ -559,7 +562,7 @@ h3 {
 .mobile-button:hover {
   background-color: #665F55;
 }
-.mobile-button:hover .button-app-store__content {
+.mobile-button:hover .button-app__content {
   color: #E1D4C9;
 }
 .mobile-button:hover .button-icon {
@@ -632,7 +635,7 @@ h3 {
   width: max-content;
 }
 .footer__right li::before {
-  margin-right: 8px;
+  margin-right: 7px;
 }
 .footer__right li:nth-child(1):before {
   content: url(../img/footer/pin-alt.svg);

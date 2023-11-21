@@ -33,6 +33,7 @@
     gap: 8px;
     border: 1px solid constants.$color-border-dark;
     border-radius: 100px;
+    text-decoration: none;
     background-color: constants.$color-background-body;
     cursor: pointer;
     @extend %transition;
@@ -58,7 +59,7 @@
     &:hover {
         background-color: constants.$color-background-container;
 
-        .button-app-store__content {
+        .button-app__content {
             color: constants.$color-text-light;
         }
         

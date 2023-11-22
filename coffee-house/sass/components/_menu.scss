@@ -1,5 +1,6 @@
 @use '../abstracts/constants';
 @use '../abstracts/mixins';
+@use '../abstracts/placeholders';
 
 .menu__heading {
     width: 800px;
@@ -13,14 +14,16 @@
     gap: 16px;
     padding: 40px 0;
 
-    .tab {
 
+    .tab {
         padding: 8px 16px 8px 8px;
         border-radius: 100px;
         border: 1px solid constants.$color-border-light;
         display: flex;
         align-items: center;
         gap: 8px;
+        cursor: pointer;
+        @extend %transition;
 
         span {
             color: constants.$color-text-dark;
@@ -48,7 +51,7 @@
             background-color: constants.$color-border-light;
         }
 
-        &_checked {
+        &_checked, &:hover {
             background-color: constants.$color-background-container;
 
             .tab__circle {
@@ -58,6 +61,10 @@
             span {
                 color: constants.$color-text-light;
             }
+        }
+
+        &_checked{
+            cursor: auto;
         }
     }
 }
@@ -73,11 +80,9 @@
     border: 1px solid constants.$color-border-light;
 
     .menu-item__img {
-        box-sizing: border-box;
-        width: 308px;
-        height: 308px;
+        width: 309px;
+        height: 309px;
         border-radius: 40px;
-        border: 1px solid constants.$color-border-light;
         background-size: 110%;
         transition: background-size 0.7s ease;
         background-position: 50%;

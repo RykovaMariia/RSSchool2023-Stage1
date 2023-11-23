@@ -2,10 +2,15 @@
 @use '../abstracts/mixins';
 @use '../abstracts/placeholders';
 
+
 .menu__heading {
     width: 800px;
     margin: auto;
     text-align: center;
+
+    &_none{
+        display: none;
+    }
 }
 
 .menu__tabs {

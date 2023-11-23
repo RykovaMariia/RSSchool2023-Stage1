@@ -319,6 +319,9 @@ h3 {
   margin: auto;
   text-align: center;
 }
+.menu__heading_none {
+  display: none;
+}
 
 .menu__tabs {
   display: flex;

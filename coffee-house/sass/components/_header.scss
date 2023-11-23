@@ -24,6 +24,7 @@
     li {
         list-style: none;
         @include mixins.font(1.6rem, 600, 150%);
+
     }
 
     a {
@@ -36,11 +37,8 @@
     padding: 16px 0;
     text-align: center;
     text-decoration: none;
-
-    span {
-        color: constants.$color-text-dark;
-        @include mixins.font(1.6rem, 600, 150%);
-    }
+    color: constants.$color-text-dark;
+    @include mixins.font(1.6rem, 600, 150%);
 
     .icon-coffee-cup {
         margin-left: 4px;

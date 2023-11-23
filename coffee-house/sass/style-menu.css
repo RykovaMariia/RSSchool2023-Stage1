@@ -241,7 +241,7 @@ h3 {
   width: 0%;
   margin: auto;
   padding-bottom: 2px;
-  border-bottom: 2px solid #403F3D;
+  border-bottom: 2px solid currentColor;
   transition: width 0.5s ease-out;
 }
 .reference_underlined:hover::after {
@@ -249,7 +249,7 @@ h3 {
   display: block;
   width: 100%;
   padding-bottom: 2px;
-  border-bottom: 2px solid #403F3D;
+  border-bottom: 2px solid currentColor;
 }
 
 .header__wrapper {
@@ -287,8 +287,6 @@ h3 {
   padding: 16px 0;
   text-align: center;
   text-decoration: none;
-}
-.header__menu span {
   color: #403F3D;
   font-size: 1.6rem;
   font-weight: 600;
@@ -524,12 +522,6 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
-}
-.footer__right li::after {
-  border-bottom-color: #E1D4C9;
-}
-.footer__right li:hover::after {
-  border-bottom-color: #E1D4C9;
 }
 .footer__right li:last-child {
   box-sizing: border-box;

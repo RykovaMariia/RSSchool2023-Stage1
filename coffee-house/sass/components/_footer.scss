@@ -89,16 +89,6 @@
             @include mixins.font(1.6rem, 600, 150%);
         }
 
-        &::after {
-            border-bottom-color: constants.$color-text-light;
-        }
-
-        &:hover {
-            &::after {
-                border-bottom-color: constants.$color-text-light;
-            }
-        }
-
         &:last-child {
             box-sizing: border-box;
             padding-bottom: 4px;

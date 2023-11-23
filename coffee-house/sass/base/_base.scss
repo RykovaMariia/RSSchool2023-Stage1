@@ -53,7 +53,7 @@ h3 {
         width: 0%;
         margin: auto;
         padding-bottom: 2px;
-        border-bottom: 2px solid constants.$color-text-dark;
+        border-bottom: 2px solid currentColor;
         transition: width 0.5s ease-out;
     }
 
@@ -63,7 +63,7 @@ h3 {
             display: block;
             width: 100%;
             padding-bottom: 2px;
-            border-bottom: 2px solid constants.$color-text-dark;
+            border-bottom: 2px solid currentColor;
         }
     }
 }

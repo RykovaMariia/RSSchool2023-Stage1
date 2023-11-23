@@ -216,6 +216,7 @@ h2 {
   font-weight: 600;
   line-height: 125%;
   font-style: normal;
+  letter-spacing: -0.1px;
 }
 h2 span {
   color: hsl(24, 25%, 58%);
@@ -498,36 +499,31 @@ h3 {
   gap: 16px;
 }
 .footer__right li {
-  color: #E1D4C9;
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 150%;
-  font-style: normal;
   list-style: none;
   width: max-content;
 }
-.footer__right li::before {
-  margin-right: 7px;
+.footer__right li svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 }
-.footer__right li:nth-child(1):before {
-  content: url(../img/footer/pin-alt.svg);
-}
-.footer__right li:nth-child(2)::before {
-  content: url(../img/footer/phone.svg);
-}
-.footer__right li:last-child::before {
-  content: url(../img/footer/clock.svg);
-}
-.footer__right li::after {
-  background-color: #E1D4C9;
-}
-.footer__right li a {
+.footer__right li a, .footer__right li span {
   text-decoration: none;
   color: #E1D4C9;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
+}
+.footer__right li::after {
+  border-bottom-color: #E1D4C9;
+}
+.footer__right li:hover::after {
+  border-bottom-color: #E1D4C9;
+}
+.footer__right li:last-child {
+  box-sizing: border-box;
+  padding-bottom: 4px;
 }
 
 /*# sourceMappingURL=style-menu.css.map */

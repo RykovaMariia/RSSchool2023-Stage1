@@ -30,6 +30,7 @@ h1 {
 h2 {
     color: constants.$color-text-dark;
     @include mixins.font(6rem, 600, 125%);
+    letter-spacing: -0.1px;
 
     span{
         color: constants.$color-text-accent;

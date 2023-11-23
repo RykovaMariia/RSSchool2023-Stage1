@@ -74,36 +74,35 @@
     }
 
     li {
-        color: constants.$color-text-light;
-        @include mixins.font(1.6rem, 600, 150%);
         list-style: none;
         width: max-content;
 
-        &::before {
-            margin-right: 7px;
-        }
-         
-        &:nth-child(1):before {
-            content: url(../img/footer/pin-alt.svg);
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 4px;
         }
 
-        &:nth-child(2)::before {
-            content: url(../img/footer/phone.svg);
-        }
-
-        &:last-child::before {
-            content: url(../img/footer/clock.svg);
-        }
-
-        &::after {
-            background-color: constants.$color-text-light;
-        }
-
-        a {
+        a, span {
             text-decoration: none;
             color: constants.$color-text-light;
             @include mixins.font(1.6rem, 600, 150%);
         }
+        
+            &::after { 
+                border-bottom-color: constants.$color-text-light;
+            }
+        
+            &:hover {
+                &::after {
+                    border-bottom-color: constants.$color-text-light;
+                }
+            }
+
+            &:last-child {
+                box-sizing: border-box;
+                padding-bottom: 4px;
+            }
     }
 }
 

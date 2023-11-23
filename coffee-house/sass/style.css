@@ -458,22 +458,20 @@ h3 {
   padding-top: 100px;
 }
 
-.container-grid {
+.container {
   padding-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(2, 660px);
+  display: flex;
+  flex-wrap: wrap;
   gap: 40px;
+  justify-content: center;
+}
+.container > * {
+  flex-basis: 660px;
 }
 
-.container-grid__left {
-  display: grid;
-  grid-template-rows: 590px 430px;
-  gap: 40px;
-}
-
-.container-grid__right {
-  display: grid;
-  grid-template-rows: 430px 590px;
+.container__left, .container__right {
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -485,15 +483,19 @@ h3 {
 }
 .about__img_1 {
   background-image: url(../img/about/about-1.jpg);
+  height: 590px;
 }
 .about__img_2 {
   background-image: url(../img/about/about-2.jpg);
+  height: 430px;
 }
 .about__img_3 {
   background-image: url(../img/about/about-3.jpg);
+  height: 430px;
 }
 .about__img_4 {
   background-image: url(../img/about/about-4.jpg);
+  height: 590px;
 }
 .about__img:hover {
   background-size: 100%;

@@ -1,23 +1,17 @@
+@use '../abstracts/mixins';
+
 .about__wrapper {
     padding-top: 100px;
 }
 
-.container-grid {
+.container {
     padding-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(2, 660px);
-    gap: 40px;
+    @include mixins.columns(660px)
 }
 
-.container-grid__left {
-    display: grid;
-    grid-template-rows: 590px 430px;
-    gap: 40px;
-}
-
-.container-grid__right {
-    display: grid;
-    grid-template-rows: 430px 590px;
+.container__left, .container__right {
+    display: flex;
+    flex-direction: column;
     gap: 40px;
 }
 
@@ -29,18 +23,23 @@
 
     &_1 {
         background-image: url(../img/about/about-1.jpg);
+        height: 590px;
     }
 
     &_2 {
         background-image: url(../img/about/about-2.jpg);
+        height: 430px;
     }
 
     &_3 {
         background-image: url(../img/about/about-3.jpg);
+        height: 430px;
     }
 
     &_4 {
         background-image: url(../img/about/about-4.jpg);
+
+        height: 590px;
     }
 
     &:hover {

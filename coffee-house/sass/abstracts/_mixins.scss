@@ -4,3 +4,13 @@
     line-height: $height;
     font-style: $style;
 }
+
+@mixin columns($width) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    >* {
+        flex-basis: $width;
+    }
+}

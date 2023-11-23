@@ -2,13 +2,12 @@
 @use '../abstracts/mixins';
 @use '../abstracts/placeholders';
 
-
 .menu__heading {
-    width: 800px;
+    max-width: 800px;
     margin: auto;
     text-align: center;
 
-    &_none{
+    &_none {
         display: none;
     }
 }
@@ -18,7 +17,6 @@
     justify-content: center;
     gap: 16px;
     padding: 40px 0;
-
 
     .tab {
         padding: 8px 16px 8px 8px;
@@ -56,7 +54,8 @@
             background-color: constants.$color-border-light;
         }
 
-        &_checked, &:hover {
+        &_checked,
+        &:hover {
             background-color: constants.$color-background-container;
 
             .tab__circle {
@@ -68,7 +67,7 @@
             }
         }
 
-        &_checked{
+        &_checked {
             cursor: auto;
         }
     }
@@ -136,7 +135,7 @@
 
     p {
         color: constants.$color-text-dark;
-            @include mixins.font(1.6rem, 400, 150%);
+        @include mixins.font(1.6rem, 400, 150%);
     }
 
     .menu-price {

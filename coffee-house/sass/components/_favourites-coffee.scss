@@ -1,8 +1,9 @@
 @use '../abstracts/constants';
 @use '../abstracts/mixins';
+@use '../abstracts/placeholders';
 
 .favourites-coffee__wrapper {
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 .favourites-coffee__heading {
@@ -11,44 +12,43 @@
 }
 
 .slider {
-    padding: 0 4px;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 40px;
 }
 
-.slider__arrow-left {
-    background-image: url(../img/favourites-coffee/arrow-left.svg);
+.slider__arrow {
     width: 60px;
     height: 60px;
-    transition: all 0.7s ease;
-    cursor: pointer;;
-
-    &:hover {
-        background-image: url(../img/favourites-coffee/arrow-left-hover.svg);
-    }
-}
-
-.slider__arrow-right {
-    background-image: url(../img/favourites-coffee/arrow-right.svg);
-    width: 60px;
-    height: 60px;
-    transition: all 0.7s ease;
+    @extend %transition;
     cursor: pointer;
 
-    &:hover {
-        background-image: url(../img/favourites-coffee/arrow-right-hover.svg);
+    &_left {
+        background-image: url(../img/favourites-coffee/arrow-left.svg);
+
+        &:hover {
+            background-image: url(../img/favourites-coffee/arrow-left-hover.svg);
+        }
+    }
+
+    &_right {
+        background-image: url(../img/favourites-coffee/arrow-right.svg);
+
+        &:hover {
+            background-image: url(../img/favourites-coffee/arrow-right-hover.svg);
+        }
     }
 }
 
 .slider__content {
     overflow: hidden;
-    width: 1150px;
+    max-width: 1150px;
     height: 640px;
 
-    .slider__line{
-        padding-left: 336px;
+    .slider__line {
         display: flex;
+        justify-content: center;
         gap: 336px;
     }
 }
@@ -88,6 +88,7 @@
     justify-content: center;
     gap: 12px;
     margin-top: 40px;
+
     .control {
         width: 40px;
         height: 4px;

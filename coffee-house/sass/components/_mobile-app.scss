@@ -3,12 +3,14 @@
 @use '../abstracts/placeholders';
 
 .mobile-app__wrapper {
-    margin-top: 100px;
+    padding-top: 100px;
     display: flex;
+    flex-wrap: wrap;
     gap: 100px;
 }
 
 .mobile-app__left {
+    max-width: 630px;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -34,7 +36,6 @@
     border: 1px solid constants.$color-border-dark;
     border-radius: 100px;
     text-decoration: none;
-    background-color: constants.$color-background-body;
     cursor: pointer;
     @extend %transition;
 
@@ -62,15 +63,9 @@
         .button-app__content {
             color: constants.$color-text-light;
         }
-        
+
         .button-icon {
             fill: constants.$color-text-light;
         }
     }
-
 }
-
-
-
-
-

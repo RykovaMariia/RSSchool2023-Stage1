@@ -196,6 +196,7 @@ body {
 .wrapper {
   max-width: 1360px;
   margin: auto;
+  padding: 0 40px;
 }
 
 h1 {
@@ -241,7 +242,7 @@ h3 {
   margin: auto;
   padding-bottom: 2px;
   border-bottom: 2px solid #403F3D;
-  transition: width 0.3s ease-out;
+  transition: width 0.5s ease-out;
 }
 .reference_underlined:hover::after {
   content: "";
@@ -300,10 +301,13 @@ h3 {
   height: 20px;
 }
 
-.enjoy__wrapper {
-  max-width: 1160px;
-  background: url(../img/img-enjoy.jpeg), lightgray 50%;
-  background-size: 100% auto;
+.social-networks .social-network, .mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .slider__arrow, .button-menu span, .button-menu .icon-coffee-cup {
+  transition: all 0.7s ease;
+}
+
+.enjoy__container {
+  background: url(../img/img-enjoy.jpeg);
+  background-size: cover;
   background-position: 50%;
   border-radius: 40px;
   padding: 100px;
@@ -312,12 +316,12 @@ h3 {
   gap: 40px;
 }
 
-.enjoy__heading {
+.enjoy__heading,
+.enjoy__content {
   max-width: 530px;
 }
 
 .enjoy__content {
-  max-width: 530px;
   color: #E1D4C9;
   font-size: 1.6rem;
   font-weight: 400;
@@ -343,14 +347,12 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
-  transition: all 0.7s ease;
 }
 .button-menu .icon-coffee-cup {
   opacity: 0;
   margin-left: 4px;
   width: 20px;
   height: 20px;
-  transition: all 0.7s ease;
 }
 .button-menu:hover span {
   left: 0;
@@ -360,7 +362,7 @@ h3 {
 }
 
 .favourites-coffee__wrapper {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 .favourites-coffee__heading {
@@ -369,42 +371,38 @@ h3 {
 }
 
 .slider {
-  padding: 0 4px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 40px;
 }
 
-.slider__arrow-left {
-  background-image: url(../img/favourites-coffee/arrow-left.svg);
+.slider__arrow {
   width: 60px;
   height: 60px;
-  transition: all 0.7s ease;
   cursor: pointer;
 }
-.slider__arrow-left:hover {
+.slider__arrow_left {
+  background-image: url(../img/favourites-coffee/arrow-left.svg);
+}
+.slider__arrow_left:hover {
   background-image: url(../img/favourites-coffee/arrow-left-hover.svg);
 }
-
-.slider__arrow-right {
+.slider__arrow_right {
   background-image: url(../img/favourites-coffee/arrow-right.svg);
-  width: 60px;
-  height: 60px;
-  transition: all 0.7s ease;
-  cursor: pointer;
 }
-.slider__arrow-right:hover {
+.slider__arrow_right:hover {
   background-image: url(../img/favourites-coffee/arrow-right-hover.svg);
 }
 
 .slider__content {
   overflow: hidden;
-  width: 1150px;
+  max-width: 1150px;
   height: 640px;
 }
 .slider__content .slider__line {
-  padding-left: 336px;
   display: flex;
+  justify-content: center;
   gap: 336px;
 }
 
@@ -457,7 +455,7 @@ h3 {
 }
 
 .about__wrapper {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 .container-grid {
@@ -501,17 +499,15 @@ h3 {
   background-size: 100%;
 }
 
-.social-networks .social-network, .mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content {
-  transition: all 1s ease;
-}
-
 .mobile-app__wrapper {
-  margin-top: 100px;
+  padding-top: 100px;
   display: flex;
+  flex-wrap: wrap;
   gap: 100px;
 }
 
 .mobile-app__left {
+  max-width: 630px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -538,7 +534,6 @@ h3 {
   border: 1px solid #665F55;
   border-radius: 100px;
   text-decoration: none;
-  background-color: #E1D4C9;
   cursor: pointer;
 }
 .mobile-button .button-icon {
@@ -570,8 +565,7 @@ h3 {
   fill: #E1D4C9;
 }
 
-.wrapper__footer {
-  box-sizing: border-box;
+.container__footer {
   margin-top: 100px;
   margin-bottom: 40px;
   padding: 100px;
@@ -580,10 +574,11 @@ h3 {
   display: flex;
   gap: 100px;
 }
-.wrapper__footer h2 {
+.container__footer h2 {
   color: #E1D4C9;
 }
-.wrapper__footer .footer__left, .wrapper__footer .footer__right {
+.container__footer .footer__left,
+.container__footer .footer__right {
   width: 530px;
   display: flex;
   justify-content: center;
@@ -635,7 +630,8 @@ h3 {
   height: 20px;
   margin-right: 4px;
 }
-.footer__right li a, .footer__right li span {
+.footer__right li a,
+.footer__right li span {
   text-decoration: none;
   color: #E1D4C9;
   font-size: 1.6rem;

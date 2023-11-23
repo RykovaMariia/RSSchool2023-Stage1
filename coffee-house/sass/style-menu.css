@@ -196,6 +196,7 @@ body {
 .wrapper {
   max-width: 1360px;
   margin: auto;
+  padding: 0 40px;
 }
 
 h1 {
@@ -241,7 +242,7 @@ h3 {
   margin: auto;
   padding-bottom: 2px;
   border-bottom: 2px solid #403F3D;
-  transition: width 0.3s ease-out;
+  transition: width 0.5s ease-out;
 }
 .reference_underlined:hover::after {
   content: "";
@@ -311,11 +312,11 @@ h3 {
 }
 
 .social-networks .social-network, .menu__tabs .tab {
-  transition: all 1s ease;
+  transition: all 0.7s ease;
 }
 
 .menu__heading {
-  width: 800px;
+  max-width: 800px;
   margin: auto;
   text-align: center;
 }
@@ -445,8 +446,7 @@ h3 {
   background-size: 100%;
 }
 
-.wrapper__footer {
-  box-sizing: border-box;
+.container__footer {
   margin-top: 100px;
   margin-bottom: 40px;
   padding: 100px;
@@ -455,10 +455,11 @@ h3 {
   display: flex;
   gap: 100px;
 }
-.wrapper__footer h2 {
+.container__footer h2 {
   color: #E1D4C9;
 }
-.wrapper__footer .footer__left, .wrapper__footer .footer__right {
+.container__footer .footer__left,
+.container__footer .footer__right {
   width: 530px;
   display: flex;
   justify-content: center;
@@ -510,7 +511,8 @@ h3 {
   height: 20px;
   margin-right: 4px;
 }
-.footer__right li a, .footer__right li span {
+.footer__right li a,
+.footer__right li span {
   text-decoration: none;
   color: #E1D4C9;
   font-size: 1.6rem;

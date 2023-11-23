@@ -2,8 +2,7 @@
 @use '../abstracts/mixins';
 @use '../abstracts/placeholders';
 
-.wrapper__footer {
-    box-sizing: border-box;
+.container__footer {
     margin-top: 100px;
     margin-bottom: 40px;
     padding: 100px;
@@ -16,7 +15,8 @@
         color: constants.$color-text-light;
     }
 
-    .footer__left, .footer__right {
+    .footer__left,
+    .footer__right {
         width: 530px;
         display: flex;
         justify-content: center;
@@ -33,7 +33,7 @@
         width: 60px;
         height: 60px;
         @extend %transition;
-    
+
         &_twitter {
             background-image: url(../img/footer/twitter.svg);
 
@@ -41,7 +41,7 @@
                 background-image: url(../img/footer/twitter-hover.svg);
             }
         }
-    
+
         &_instagram {
             background-image: url(../img/footer/intagram.svg);
 
@@ -49,7 +49,7 @@
                 background-image: url(../img/footer/instagram-hover.svg);
             }
         }
-    
+
         &_facebook {
             background-image: url(../img/footer/facebook.svg);
 
@@ -57,7 +57,6 @@
                 background-image: url(../img/footer/facebook-hover.svg);
             }
         }
-    
     }
 }
 
@@ -83,26 +82,26 @@
             margin-right: 4px;
         }
 
-        a, span {
+        a,
+        span {
             text-decoration: none;
             color: constants.$color-text-light;
             @include mixins.font(1.6rem, 600, 150%);
         }
-        
-            &::after { 
+
+        &::after {
+            border-bottom-color: constants.$color-text-light;
+        }
+
+        &:hover {
+            &::after {
                 border-bottom-color: constants.$color-text-light;
             }
-        
-            &:hover {
-                &::after {
-                    border-bottom-color: constants.$color-text-light;
-                }
-            }
+        }
 
-            &:last-child {
-                box-sizing: border-box;
-                padding-bottom: 4px;
-            }
+        &:last-child {
+            box-sizing: border-box;
+            padding-bottom: 4px;
+        }
     }
 }
-

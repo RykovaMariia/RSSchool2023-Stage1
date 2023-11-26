@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee House</title>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="./img/favicon_io/apple-touch-icon.png"
-    />
+    >
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./img/favicon_io/favicon-32x32.png"
-    />
+    >
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
       href="./img/favicon_io/favicon-16x16.png"
-    />
-    <link rel="manifest" href="./img/favicon_io/site.webmanifest" />
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
-    <link rel="stylesheet" href="./sass/style.css" />
+    >
+    <link rel="manifest" href="./img/favicon_io/site.webmanifest">
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
+    <link rel="stylesheet" href="./sass/style.css">
   </head>
   <body>
     <header class="header">
@@ -36,9 +36,7 @@
         <nav class="header__navigation">
           <ul class="navigation">
             <li>
-              <a class="reference_underlined" href="#favourites-coffee"
-                >Favorite coffee</a
-              >
+              <a class="reference_underlined" href="#favourites-coffee">Favorite coffee</a>
             </li>
             <li><a class="reference_underlined" href="#about">About</a></li>
             <li>
@@ -85,7 +83,11 @@
             Choose your <span>favorite</span> coffee
           </h2>
           <div class="slider">
-            <div class="slider__arrow slider__arrow_left"></div>
+            <div class="slider__arrow icon icon_background-arrow">
+              <svg class="icon_arrow">
+                <use xlink:href="./img/sprite.svg#arrow-left"></use>
+              </svg>
+            </div>
             <div class="slider__content">
               <div class="slider__line">
                 <div class="slider__slide macchiato">
@@ -93,7 +95,7 @@
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-2.png"
                     alt="Image Macchiato"
-                  />
+                  >
                   <div class="slide__description">
                     <h3>Caramel Macchiato</h3>
                     <p class="slide__description__text">
@@ -108,7 +110,7 @@
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-3.png"
                     alt="Ice coffee"
-                  />
+                  >
                   <div class="slide__description">
                     <h3>Ice coffee</h3>
                     <p class="slide__description__text">
@@ -123,7 +125,7 @@
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-1.png"
                     alt="Image Frappuccino"
-                  />
+                  >
                   <div class="slide__description">
                     <h3>S’mores Frappuccino</h3>
                     <p class="slide__description__text">
@@ -138,7 +140,7 @@
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-2.png"
                     alt="Image Macchiato"
-                  />
+                  >
                   <div class="slide__description">
                     <h3>Caramel Macchiato</h3>
                     <p class="slide__description__text">
@@ -153,7 +155,7 @@
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-3.png"
                     alt="Ice coffee"
-                  />
+                  >
                   <div class="slide__description">
                     <h3>Ice coffee</h3>
                     <p class="slide__description__text">
@@ -165,7 +167,11 @@
                 </div>
               </div>
             </div>
-            <div class="slider__arrow slider__arrow_right"></div>
+            <div class="slider__arrow icon icon_background-arrow">
+              <svg class="icon_arrow">
+                <use xlink:href="./img/sprite.svg#arrow-right"></use>
+              </svg>
+            </div>
           </div>
           <div class="slider__controls">
             <div class="control control_checked"></div>
@@ -207,7 +213,7 @@
                   <use xlink:href="./img/sprite.svg#app-store"></use>
                 </svg>
                 <span class="button-app__content">
-                  Available on the<br />
+                  Available on the<br>
                   <span>App Store</span>
                 </span>
               </a>
@@ -216,13 +222,13 @@
                   <use xlink:href="./img/sprite.svg#google-play"></use>
                 </svg>
                 <span class="button-app__content">
-                  Available on <br />
+                  Available on <br>
                   <span>Google Play</span>
                 </span>
               </a>
             </div>
           </div>
-          <img src="./img/mobile-app/mobile-screens.png" alt="mobiles" />
+          <img src="./img/mobile-app/mobile-screens.png" alt="mobiles">
         </div>
       </section>
     </main>
@@ -233,13 +239,25 @@
             <h2>Sip, Savor, Smile. <span>It’s coffee time!</span></h2>
             <div class="social-networks">
               <a href="#">
-                <div class="social-network social-network_twitter"></div>
+                <div class="icon icon_background-social">
+                  <svg class="icon_social social-network">
+                    <use xlink:href="./img/sprite.svg#twitter"></use>
+                  </svg>
+                </div>
               </a>
               <a href="#">
-                <div class="social-network social-network_instagram"></div>
+                <div class="icon icon_background-social">
+                  <svg class="icon_social social-network">
+                    <use xlink:href="./img/sprite.svg#instagram"></use>
+                  </svg>
+                </div>
               </a>
               <a href="#">
-                <div class="social-network social-network_facebook"></div>
+                <div class="icon icon_background-social">
+                  <svg class="icon_social social-network">
+                    <use xlink:href="./img/sprite.svg#facebook"></use>
+                  </svg>
+                </div>
               </a>
             </div>
           </div>

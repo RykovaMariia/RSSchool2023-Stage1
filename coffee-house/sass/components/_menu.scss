@@ -57,6 +57,7 @@
         &_checked,
         &:hover {
             background-color: constants.$color-background-container;
+            border-color: constants.$color-background-container;
 
             .tab__circle {
                 background-color: constants.$color-background-body;

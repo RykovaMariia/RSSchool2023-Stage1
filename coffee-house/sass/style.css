@@ -252,6 +252,50 @@ h3 {
   border-bottom: 2px solid currentColor;
 }
 
+.mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .button-menu span, .button-menu .icon-coffee-cup, .icon {
+  transition: all 0.7s ease;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 100px;
+}
+.icon_background-arrow {
+  border-color: #665F55;
+}
+.icon_background-arrow:hover {
+  background-color: #665F55;
+  border-color: #665F55;
+}
+.icon_background-arrow:hover .icon_arrow {
+  stroke: #E1D4C9;
+}
+.icon_background-social {
+  border-color: #C1B6AD;
+}
+.icon_background-social:hover {
+  background-color: #E1D4C9;
+  border-color: #E1D4C9;
+}
+.icon_background-social:hover .icon_social {
+  stroke: #403F3D;
+}
+.icon_arrow {
+  stroke: #403F3D;
+  padding: 18px;
+  width: 24px;
+  height: 24px;
+}
+.icon_social {
+  stroke: #E1D4C9;
+  padding: 18px;
+  width: 24px;
+  height: 24px;
+}
+
 .header__wrapper {
   display: flex;
   justify-content: space-between;
@@ -297,10 +341,6 @@ h3 {
   margin-left: 4px;
   width: 20px;
   height: 20px;
-}
-
-.social-networks .social-network, .mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .slider__arrow, .button-menu span, .button-menu .icon-coffee-cup {
-  transition: all 0.7s ease;
 }
 
 .enjoy__container {
@@ -373,24 +413,6 @@ h3 {
   justify-content: center;
   align-items: center;
   gap: 40px;
-}
-
-.slider__arrow {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-}
-.slider__arrow_left {
-  background-image: url(../img/favourites-coffee/arrow-left.svg);
-}
-.slider__arrow_left:hover {
-  background-image: url(../img/favourites-coffee/arrow-left-hover.svg);
-}
-.slider__arrow_right {
-  background-image: url(../img/favourites-coffee/arrow-right.svg);
-}
-.slider__arrow_right:hover {
-  background-image: url(../img/favourites-coffee/arrow-right-hover.svg);
 }
 
 .slider__content {
@@ -589,28 +611,6 @@ h3 {
 .social-networks {
   display: flex;
   gap: 12px;
-}
-.social-networks .social-network {
-  width: 60px;
-  height: 60px;
-}
-.social-networks .social-network_twitter {
-  background-image: url(../img/footer/twitter.svg);
-}
-.social-networks .social-network_twitter:hover {
-  background-image: url(../img/footer/twitter-hover.svg);
-}
-.social-networks .social-network_instagram {
-  background-image: url(../img/footer/intagram.svg);
-}
-.social-networks .social-network_instagram:hover {
-  background-image: url(../img/footer/instagram-hover.svg);
-}
-.social-networks .social-network_facebook {
-  background-image: url(../img/footer/facebook.svg);
-}
-.social-networks .social-network_facebook:hover {
-  background-image: url(../img/footer/facebook-hover.svg);
 }
 
 .footer__right h3 {

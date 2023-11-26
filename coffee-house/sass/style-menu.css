@@ -363,6 +363,7 @@ h3 {
 }
 .menu__tabs .tab_checked, .menu__tabs .tab:hover {
   background-color: #665F55;
+  border-color: #665F55;
 }
 .menu__tabs .tab_checked .tab__circle, .menu__tabs .tab:hover .tab__circle {
   background-color: #E1D4C9;

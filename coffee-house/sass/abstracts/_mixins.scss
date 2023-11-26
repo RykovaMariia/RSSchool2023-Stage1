@@ -10,7 +10,15 @@
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
+
     >* {
         flex-basis: $width;
     }
+}
+
+@mixin icons ($color) {
+    stroke: $color;
+    padding: 18px;
+    width: 24px;
+    height: 24px;
 }

@@ -309,7 +309,7 @@ h3 {
   border-bottom: 2px solid #403F3D;
 }
 
-.social-networks .social-network, .menu__tabs .tab {
+.menu__tabs .tab {
   transition: all 0.7s ease;
 }
 
@@ -474,28 +474,6 @@ h3 {
 .social-networks {
   display: flex;
   gap: 12px;
-}
-.social-networks .social-network {
-  width: 60px;
-  height: 60px;
-}
-.social-networks .social-network_twitter {
-  background-image: url(../img/footer/twitter.svg);
-}
-.social-networks .social-network_twitter:hover {
-  background-image: url(../img/footer/twitter-hover.svg);
-}
-.social-networks .social-network_instagram {
-  background-image: url(../img/footer/intagram.svg);
-}
-.social-networks .social-network_instagram:hover {
-  background-image: url(../img/footer/instagram-hover.svg);
-}
-.social-networks .social-network_facebook {
-  background-image: url(../img/footer/facebook.svg);
-}
-.social-networks .social-network_facebook:hover {
-  background-image: url(../img/footer/facebook-hover.svg);
 }
 
 .footer__right h3 {

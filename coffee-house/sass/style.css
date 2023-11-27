@@ -239,17 +239,15 @@ h3 {
   content: "";
   display: block;
   width: 0%;
-  margin: auto;
-  padding-bottom: 2px;
-  border-bottom: 2px solid currentColor;
+  margin: 2px auto 0;
+  height: 2px;
+  background-color: currentColor;
   transition: width 0.5s ease-out;
 }
 .reference_underlined:hover::after {
   content: "";
   display: block;
   width: 100%;
-  padding-bottom: 2px;
-  border-bottom: 2px solid currentColor;
 }
 
 .mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .button-menu span, .button-menu .icon-coffee-cup, .icon, .icon_arrow, .icon_social {

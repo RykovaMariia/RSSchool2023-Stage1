@@ -8,6 +8,8 @@
         content: '';
         display: block;
         width: 100%;
-        border-bottom: 2px solid constants.$color-text-dark;
+        margin: 2px auto 0;
+        height: 2px;
+        background-color: currentColor;
     }
 }

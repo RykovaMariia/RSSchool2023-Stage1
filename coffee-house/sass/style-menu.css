@@ -252,7 +252,7 @@ h3 {
   border-bottom: 2px solid currentColor;
 }
 
-.menu__tabs .tab, .icon {
+.menu__tabs .tab, .menu__tabs .tab span, .menu__tabs .tab .tab__circle, .icon, .icon_arrow, .icon_social {
   transition: all 0.7s ease;
 }
 

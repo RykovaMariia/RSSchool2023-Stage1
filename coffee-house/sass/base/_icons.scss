@@ -40,9 +40,11 @@
 
     &_arrow {
         @include mixins.icons(constants.$color-text-dark);
+        @extend %transition;
     }
 
     &_social {
         @include mixins.icons(constants.$color-text-light);
+        @extend %transition;
     }
 }

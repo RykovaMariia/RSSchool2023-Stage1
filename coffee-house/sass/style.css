@@ -252,7 +252,7 @@ h3 {
   border-bottom: 2px solid currentColor;
 }
 
-.mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .button-menu span, .button-menu .icon-coffee-cup, .icon {
+.mobile-button, .mobile-button .button-icon, .mobile-button .button-app__content, .button-menu span, .button-menu .icon-coffee-cup, .icon, .icon_arrow, .icon_social {
   transition: all 0.7s ease;
 }
 

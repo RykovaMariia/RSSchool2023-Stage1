@@ -263,6 +263,9 @@ h3 {
   cursor: pointer;
   border: 1px solid;
   border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .icon_background-arrow {
   border-color: #665F55;
@@ -286,13 +289,11 @@ h3 {
 }
 .icon_arrow {
   stroke: #403F3D;
-  padding: 18px;
   width: 24px;
   height: 24px;
 }
 .icon_social {
   stroke: #E1D4C9;
-  padding: 18px;
   width: 24px;
   height: 24px;
 }
@@ -434,7 +435,7 @@ h3 {
 .menu-item .menu-item__img {
   width: 308px;
   height: 308px;
-  border-radius: 40px;
+  border-radius: 39.6px;
   background-size: 110%;
   transition: background-size 0.7s ease;
   background-position: 50%;

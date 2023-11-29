@@ -198,6 +198,11 @@ body {
   margin: auto;
   padding: 0 40px;
 }
+@media (max-width: 380px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+}
 
 h1 {
   color: #E1D4C9;
@@ -209,6 +214,14 @@ h1 {
 h1 span {
   color: hsl(24, 25%, 58%);
   font-style: italic;
+}
+@media (max-width: 380px) {
+  h1 {
+    font-size: 4.2rem;
+    font-weight: 600;
+    line-height: 115%;
+    font-style: normal;
+  }
 }
 
 h2 {
@@ -388,6 +401,16 @@ h3 {
   flex-direction: column;
   gap: 40px;
 }
+@media (max-width: 768px) {
+  .enjoy__container {
+    padding: 100px 60px;
+  }
+}
+@media (max-width: 380px) {
+  .enjoy__container {
+    padding: 60px 16px;
+  }
+}
 
 .enjoy__heading,
 .enjoy__content {
@@ -427,11 +450,21 @@ h3 {
   width: 20px;
   height: 20px;
 }
-.button-menu:hover span {
-  left: 0;
+@media (hover: hover) {
+  .button-menu:hover span {
+    left: 0;
+  }
+  .button-menu:hover .icon-coffee-cup {
+    opacity: 1;
+  }
 }
-.button-menu:hover .icon-coffee-cup {
-  opacity: 1;
+@media (hover: none) {
+  .button-menu span {
+    left: 0;
+  }
+  .button-menu .icon-coffee-cup {
+    opacity: 1;
+  }
 }
 
 .favourites-coffee__wrapper {

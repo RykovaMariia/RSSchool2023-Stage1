@@ -31,3 +31,11 @@
 @mixin media-mobile {
     @media (max-width: constants.$mobile-width) { @content; }
 }
+
+@mixin media-hover {
+    @media (hover: hover) { @content; }
+}
+
+@mixin media-hover-none {
+    @media (hover: none) { @content; }
+}

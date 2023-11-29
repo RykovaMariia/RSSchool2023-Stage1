@@ -33,26 +33,42 @@
             <use xlink:href="./img/sprite.svg#logo"></use>
           </svg>
         </a>
-        <nav class="header__navigation">
-          <ul class="navigation">
-            <li>
-              <a class="reference_underlined" href="./index.html#favourites-coffee">Favorite coffee</a>
-            </li>
-            <li><a class="reference_underlined" href="./index.html#about">About</a></li>
-            <li>
-              <a class="reference_underlined" href="./index.html#mobile-app">Mobile app</a>
-            </li>
-            <li>
-              <a class="reference_underlined" href="#footer">Contact us</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="header__menu">
-          <span>Menu</span>
+        <div class="burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+        </div>
+        <div class="burger__menu">
+          <nav class="header__navigation">
+            <ul class="navigation">
+              <li>
+                <a class="reference_underlined" href="./index.html#favourites-coffee"
+                  >Favorite coffee</a
+                >
+              </li>
+              <li><a class="reference_underlined" href="./index.html#about">About</a></li>
+              <li>
+                <a class="reference_underlined" href="./index.html#mobile-app"
+                  >Mobile app</a
+                >
+              </li>
+              <li>
+                <a class="reference_underlined" href="#footer">Contact us</a>
+              </li>
+            </ul>
+          </nav>
+          <a class="header__menu reference_underlined header__menu_burger" href="./menu.html">
+            Menu
+            <svg class="icon-coffee-cup">
+              <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+            </svg>
+          </a>
+        </div>
+        <a class="header__menu reference_underlined header__menu_header" href="./menu.html">
+          Menu
           <svg class="icon-coffee-cup">
             <use xlink:href="./img/sprite.svg#coffee-cup"></use>
           </svg>
-        </div>
+        </a>
       </div>
     </header>
     <main>

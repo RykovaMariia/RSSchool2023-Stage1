@@ -296,10 +296,41 @@ h3 {
   height: 24px;
 }
 
+.burger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .burger {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+    border: 1px solid #665F55;
+  }
+}
+.burger .burger__line {
+  box-sizing: border-box;
+  width: 17.5px;
+  border-radius: 100px;
+  border: 1px solid #665F55;
+}
+
+@media (max-width: 768px) {
+  .burger__menu {
+    display: none;
+  }
+}
+
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px 16px;
+  align-items: center;
+  padding: 20px 40px 20px;
 }
 
 .icon-logo {
@@ -307,9 +338,6 @@ h3 {
   height: 60px;
 }
 
-.header__navigation {
-  padding: 16px 0;
-}
 .header__navigation .navigation {
   display: flex;
   align-items: center;
@@ -328,7 +356,6 @@ h3 {
 }
 
 .header__menu {
-  padding: 16px 0;
   text-align: center;
   text-decoration: none;
   color: #403F3D;
@@ -337,10 +364,18 @@ h3 {
   line-height: 150%;
   font-style: normal;
 }
+.header__menu_burger {
+  display: none;
+}
 .header__menu .icon-coffee-cup {
   margin-left: 4px;
   width: 20px;
   height: 20px;
+}
+@media (max-width: 768px) {
+  .header__menu_header {
+    display: none;
+  }
 }
 
 .header__menu {

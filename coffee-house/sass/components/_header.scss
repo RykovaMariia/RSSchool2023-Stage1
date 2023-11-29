@@ -4,7 +4,8 @@
 .header__wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px 16px;
+    align-items: center;
+    padding: 20px 40px 20px;
 }
 
 .icon-logo {
@@ -13,8 +14,6 @@
 }
 
 .header__navigation {
-    padding: 16px 0;
-
     .navigation {
         display: flex;
         align-items: center;
@@ -34,15 +33,24 @@
 }
 
 .header__menu {
-    padding: 16px 0;
     text-align: center;
     text-decoration: none;
     color: constants.$color-text-dark;
     @include mixins.font(1.6rem, 600, 150%);
 
+    &_burger {
+        display: none;
+    }
+
     .icon-coffee-cup {
         margin-left: 4px;
         width: 20px;
         height: 20px;
+    }
+
+    &_header {
+        @include mixins.media-tablet {
+            display: none;
+        }
     }
 }

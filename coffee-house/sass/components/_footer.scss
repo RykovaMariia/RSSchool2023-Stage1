@@ -9,6 +9,7 @@
     border-radius: 40px;
     background-color: constants.$color-background-container;
     display: flex;
+    flex-wrap: wrap;
     gap: 100px;
 
     h2 {

@@ -198,7 +198,7 @@ body {
   margin: auto;
   padding: 0 40px;
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   .wrapper {
     padding: 0 16px;
   }
@@ -215,7 +215,7 @@ h1 span {
   color: hsl(24, 25%, 58%);
   font-style: italic;
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   h1 {
     font-size: 4.2rem;
     font-weight: 600;
@@ -236,7 +236,7 @@ h2 span {
   color: hsl(24, 25%, 58%);
   font-style: italic;
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   h2 {
     font-size: 3.2rem;
     font-weight: 600;
@@ -354,6 +354,11 @@ h3 {
   align-items: center;
   padding: 20px 40px 20px;
 }
+@media (max-width: 530px) {
+  .header__wrapper {
+    padding: 20px 16px;
+  }
+}
 
 .icon-logo {
   width: 100px;
@@ -408,16 +413,17 @@ h3 {
   padding: 100px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 41px;
 }
 @media (max-width: 768px) {
   .enjoy__container {
     padding: 100px 60px;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   .enjoy__container {
     padding: 60px 16px;
+    gap: 40px;
   }
 }
 
@@ -439,7 +445,7 @@ h3 {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 66px;
+  padding: 20px 0;
   border-radius: 100px;
   background-color: #E1D4C9;
   text-decoration: none;
@@ -523,7 +529,7 @@ h3 {
     max-height: 348px;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   .slider__slide img {
     max-width: 348px;
     max-height: 348px;
@@ -575,12 +581,22 @@ h3 {
 .container {
   padding-top: 40px;
   display: flex;
-  flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
 }
 .container > * {
   flex-basis: 660px;
+}
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .container > * {
+    flex-basis: 688px;
+  }
 }
 
 .container__left, .container__right {
@@ -593,7 +609,6 @@ h3 {
 .about__img {
   width: 100%;
   overflow: hidden;
-  max-width: 660px;
   border-radius: 20px;
 }
 .about__img img {
@@ -614,23 +629,13 @@ h3 {
     transform: scale(1.05);
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 530px) {
   .about__img img {
-    transform: scale(1.25);
+    transform: scale(1.23);
   }
 }
 .about__img_high {
   height: 590px;
-}
-@media (max-width: 768px) {
-  .about__img_high {
-    max-width: 688px;
-  }
-}
-@media (max-width: 380px) {
-  .about__img_high {
-    max-width: 348px;
-  }
 }
 .about__img_short {
   height: 430px;
@@ -644,27 +649,51 @@ h3 {
 .mobile-app__wrapper {
   padding-top: 100px;
   display: flex;
-  flex-wrap: wrap;
   gap: 100px;
 }
+@media (max-width: 768px) {
+  .mobile-app__wrapper {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 530px) {
+  .mobile-app__wrapper {
+    gap: 40px;
+  }
+}
 
-.mobile-app__left {
+.mobile-app__left, .mobile-app__right {
+  width: 100%;
   max-width: 630px;
   display: flex;
   flex-direction: column;
   gap: 40px;
   justify-content: center;
 }
-.mobile-app__left p {
+@media (max-width: 768px) {
+  .mobile-app__left, .mobile-app__right {
+    max-width: 688px;
+  }
+}
+.mobile-app__left p, .mobile-app__right p {
   color: #403F3D;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 150%;
   font-style: normal;
 }
-.mobile-app__left .mobile-app__buttons {
+.mobile-app__left .mobile-app__buttons, .mobile-app__right .mobile-app__buttons {
   display: flex;
   gap: 20px;
+}
+@media (max-width: 768px) {
+  .mobile-app__left .mobile-app__buttons, .mobile-app__right .mobile-app__buttons {
+    flex-wrap: wrap;
+  }
+}
+
+.mobile-app__right {
+  align-items: center;
 }
 
 .mobile-button {
@@ -708,7 +737,18 @@ h3 {
 }
 
 .mobiles-img {
-  max-width: 100%;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .mobiles-img {
+    max-width: 630px;
+  }
+}
+@media (max-width: 530px) {
+  .mobiles-img {
+    max-width: 348px;
+    padding: 0;
+  }
 }
 
 .container__footer {
@@ -724,6 +764,11 @@ h3 {
 .container__footer h2 {
   color: #E1D4C9;
 }
+@media (max-width: 530px) {
+  .container__footer {
+    gap: 40px;
+  }
+}
 .container__footer .footer__left,
 .container__footer .footer__right {
   width: 530px;
@@ -731,6 +776,16 @@ h3 {
   justify-content: center;
   flex-direction: column;
   gap: 40px;
+}
+@media (max-width: 768px) {
+  .container__footer {
+    padding: 100px 60px;
+  }
+}
+@media (max-width: 530px) {
+  .container__footer {
+    padding: 60px 16px;
+  }
 }
 
 .social-networks {
@@ -766,7 +821,6 @@ h3 {
 }
 .footer__right li:last-child {
   box-sizing: border-box;
-  padding-bottom: 4px;
 }
 
 /*# sourceMappingURL=style.css.map */

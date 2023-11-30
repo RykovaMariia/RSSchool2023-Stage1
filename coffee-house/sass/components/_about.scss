@@ -6,7 +6,13 @@
 
 .container {
     padding-top: 40px;
-    @include mixins.columns(660px)
+    @include mixins.columns(660px);
+
+    @include mixins.media-tablet {
+        @include mixins.columns(688px);
+        flex-wrap: wrap;
+
+    }
 }
 
 .container__left, .container__right {
@@ -19,7 +25,6 @@
 .about__img {
     width: 100%;
     overflow: hidden;
-    max-width: 660px;
     border-radius: 20px;
 
     img {
@@ -41,21 +46,12 @@
         }
 
         @include mixins.media-mobile {
-            transform: scale(1.25);
+            transform: scale(1.23);
         }
     }
 
     &_high {
-        height: 590px;
-
-        @include mixins.media-tablet {
-            max-width: 688px;
-        }
-
-        @include mixins.media-mobile {
-            
-            max-width: 348px;
-        }
+        height: 590px; 
     }
 
     &_short {

@@ -5,17 +5,29 @@
 .mobile-app__wrapper {
     padding-top: 100px;
     display: flex;
-    flex-wrap: wrap;
     gap: 100px;
+
+    @include mixins.media-tablet {
+        flex-wrap: wrap;
+    }
+
+    @include mixins.media-mobile {
+        gap: 40px;
+    }
 }
 
-.mobile-app__left {
+.mobile-app__left, .mobile-app__right {
+    width: 100%;
     max-width: 630px;
     display: flex;
     flex-direction: column;
     gap: 40px;
     justify-content: center;
 
+    @include mixins.media-tablet {
+        max-width: 688px;
+    }
+  
     p {
         color: constants.$color-text-dark;
         @include mixins.font(1.6rem, 400, 150%);
@@ -24,7 +36,15 @@
     .mobile-app__buttons {
         display: flex;
         gap: 20px;
+
+        @include mixins.media-tablet {
+            flex-wrap: wrap;
+        }
     }
+}
+
+.mobile-app__right {
+    align-items: center;
 }
 
 .mobile-button {
@@ -71,5 +91,14 @@
 }
 
 .mobiles-img {
-    max-width: 100%;
+    width: 100%;
+
+    @include mixins.media-tablet {
+        max-width: 630px;
+    }
+
+    @include mixins.media-mobile {
+        max-width: 348px;
+        padding: 0;
+    }
 }

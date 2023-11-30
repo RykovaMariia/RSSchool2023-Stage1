@@ -6,6 +6,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px 20px;
+
+    @include mixins.media-mobile {
+        padding: 20px 16px;
+    }
 }
 
 .icon-logo {

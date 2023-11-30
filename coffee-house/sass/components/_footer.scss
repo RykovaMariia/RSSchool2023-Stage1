@@ -16,6 +16,11 @@
         color: constants.$color-text-light;
     }
 
+    @include mixins.media-mobile {
+        gap: 40px;
+    }
+
+
     .footer__left,
     .footer__right {
         width: 530px;
@@ -23,6 +28,14 @@
         justify-content: center;
         flex-direction: column;
         gap: 40px;
+    }
+
+    @include mixins.media-tablet {
+        padding: 100px 60px;
+    }
+
+    @include mixins.media-mobile {
+        padding: 60px 16px;
     }
 }
 
@@ -62,7 +75,6 @@
 
         &:last-child {
             box-sizing: border-box;
-            padding-bottom: 4px;
         }
     }
 }

@@ -78,6 +78,7 @@
 
 .menu-coffee {
     @include mixins.columns(308px);
+    flex-wrap: wrap;
 }
 
 .menu-item {

@@ -59,7 +59,7 @@ h3 {
 .reference_underlined {
     cursor: pointer;
 
-    &::after {
+    &_menu::after, &::after {
         content: '';
         display: block;
         width: 0%;
@@ -67,6 +67,10 @@ h3 {
         height: 2px;
         background-color: currentColor;
         transition: width 0.5s ease-out;
+    }
+
+    &_menu::after {
+        width: 100%;
     }
 
     &_none {

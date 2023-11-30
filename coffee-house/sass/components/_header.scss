@@ -37,10 +37,15 @@
 }
 
 .header__menu {
+    cursor: default;
     text-align: center;
     text-decoration: none;
     color: constants.$color-text-dark;
     @include mixins.font(1.6rem, 600, 150%);
+
+    span {
+        vertical-align: top;
+    }
 
     &_burger {
         display: none;

@@ -198,6 +198,11 @@ body {
   margin: auto;
   padding: 0 40px;
 }
+@media (max-width: 530px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+}
 
 h1 {
   color: #E1D4C9;
@@ -209,6 +214,14 @@ h1 {
 h1 span {
   color: hsl(24, 25%, 58%);
   font-style: italic;
+}
+@media (max-width: 530px) {
+  h1 {
+    font-size: 4.2rem;
+    font-weight: 600;
+    line-height: 115%;
+    font-style: normal;
+  }
 }
 
 h2 {
@@ -223,6 +236,14 @@ h2 span {
   color: hsl(24, 25%, 58%);
   font-style: italic;
 }
+@media (max-width: 530px) {
+  h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 125%;
+    font-style: normal;
+  }
+}
 
 h3 {
   color: #403F3D;
@@ -235,7 +256,7 @@ h3 {
 .reference_underlined {
   cursor: pointer;
 }
-.reference_underlined::after {
+.reference_underlined_menu::after, .reference_underlined::after {
   content: "";
   display: block;
   width: 0%;
@@ -244,10 +265,21 @@ h3 {
   background-color: currentColor;
   transition: width 0.5s ease-out;
 }
-.reference_underlined:hover::after {
-  content: "";
-  display: block;
+.reference_underlined_menu::after {
   width: 100%;
+}
+.reference_underlined_none {
+  cursor: auto;
+}
+@media (hover: hover) {
+  .reference_underlined:hover::after {
+    content: "";
+    display: block;
+    width: 100%;
+  }
+  .reference_underlined_none:hover::after {
+    width: 0%;
+  }
 }
 
 .menu__tabs .tab, .menu__tabs .tab span, .menu__tabs .tab .tab__circle, .icon, .icon_arrow, .icon_social {
@@ -264,26 +296,31 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 .icon_background-arrow {
   border-color: #665F55;
 }
-.icon_background-arrow:hover {
-  background-color: #665F55;
-  border-color: #665F55;
-}
-.icon_background-arrow:hover .icon_arrow {
-  stroke: #E1D4C9;
+@media (hover: hover) {
+  .icon_background-arrow:hover {
+    background-color: #665F55;
+    border-color: #665F55;
+  }
+  .icon_background-arrow:hover .icon_arrow {
+    stroke: #E1D4C9;
+  }
 }
 .icon_background-social {
   border-color: #C1B6AD;
 }
-.icon_background-social:hover {
-  background-color: #E1D4C9;
-  border-color: #E1D4C9;
-}
-.icon_background-social:hover .icon_social {
-  stroke: #403F3D;
+@media (hover: hover) {
+  .icon_background-social:hover {
+    background-color: #E1D4C9;
+    border-color: #E1D4C9;
+  }
+  .icon_background-social:hover .icon_social {
+    stroke: #403F3D;
+  }
 }
 .icon_arrow {
   stroke: #403F3D;
@@ -332,6 +369,11 @@ h3 {
   align-items: center;
   padding: 20px 40px 20px;
 }
+@media (max-width: 530px) {
+  .header__wrapper {
+    padding: 20px 16px;
+  }
+}
 
 .icon-logo {
   width: 100px;
@@ -356,6 +398,7 @@ h3 {
 }
 
 .header__menu {
+  cursor: default;
   text-align: center;
   text-decoration: none;
   color: #403F3D;
@@ -363,6 +406,9 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
+}
+.header__menu span {
+  vertical-align: top;
 }
 .header__menu_burger {
   display: none;
@@ -376,18 +422,6 @@ h3 {
   .header__menu_header {
     display: none;
   }
-}
-
-.header__menu {
-  cursor: auto;
-}
-.header__menu::after {
-  content: "";
-  display: block;
-  width: 100%;
-  margin: 2px auto 0;
-  height: 2px;
-  background-color: currentColor;
 }
 
 .menu__heading {
@@ -454,9 +488,9 @@ h3 {
 
 .menu-coffee {
   display: flex;
-  flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .menu-coffee > * {
   flex-basis: 308px;
@@ -539,9 +573,21 @@ h3 {
 .container__footer h2 {
   color: #E1D4C9;
 }
+@media (max-width: 768px) {
+  .container__footer {
+    flex-wrap: wrap;
+    padding: 100px 60px;
+  }
+}
+@media (max-width: 530px) {
+  .container__footer {
+    gap: 40px;
+    padding: 60px 16px;
+  }
+}
 .container__footer .footer__left,
 .container__footer .footer__right {
-  width: 530px;
+  max-width: 530px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -559,7 +605,7 @@ h3 {
 .footer__right ul {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12.5px;
 }
 .footer__right li {
   list-style: none;
@@ -581,7 +627,6 @@ h3 {
 }
 .footer__right li:last-child {
   box-sizing: border-box;
-  padding-bottom: 4px;
 }
 
 /*# sourceMappingURL=style-menu.css.map */

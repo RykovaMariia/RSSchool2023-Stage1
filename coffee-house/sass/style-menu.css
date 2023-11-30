@@ -424,15 +424,6 @@ h3 {
   }
 }
 
-.menu__heading {
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
-}
-.menu__heading_none {
-  display: none;
-}
-
 .menu__tabs {
   display: flex;
   justify-content: center;
@@ -440,7 +431,7 @@ h3 {
   padding: 40px 0;
 }
 .menu__tabs .tab {
-  padding: 8px 16px 8px 8px;
+  padding: 7px 15px 7px 7px;
   border-radius: 100px;
   border: 1px solid #C1B6AD;
   display: flex;
@@ -472,18 +463,39 @@ h3 {
   padding: 5px 7px;
   background-color: #C1B6AD;
 }
-.menu__tabs .tab_checked, .menu__tabs .tab:hover {
+.menu__tabs .tab_checked {
   background-color: #665F55;
   border-color: #665F55;
 }
-.menu__tabs .tab_checked .tab__circle, .menu__tabs .tab:hover .tab__circle {
+.menu__tabs .tab_checked .tab__circle {
   background-color: #E1D4C9;
 }
-.menu__tabs .tab_checked span, .menu__tabs .tab:hover span {
+.menu__tabs .tab_checked span {
   color: #E1D4C9;
+}
+@media (hover: hover) {
+  .menu__tabs .tab:hover {
+    background-color: #665F55;
+    border-color: #665F55;
+  }
+  .menu__tabs .tab:hover .tab__circle {
+    background-color: #E1D4C9;
+  }
+  .menu__tabs .tab:hover span {
+    color: #E1D4C9;
+  }
 }
 .menu__tabs .tab_checked {
   cursor: auto;
+}
+
+.menu__heading {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+.menu__heading_none {
+  display: none;
 }
 
 .menu-coffee {
@@ -557,8 +569,10 @@ h3 {
   line-height: 125%;
   font-style: normal;
 }
-.menu-item:hover .menu-item__img {
-  background-size: 100%;
+@media (hover: hover) {
+  .menu-item:hover .menu-item__img {
+    background-size: 100%;
+  }
 }
 
 .container__footer {

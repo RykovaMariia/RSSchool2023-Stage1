@@ -8,6 +8,10 @@
     gap: 16px;
     padding: 40px 0;
 
+    @include mixins.media-mobile {
+        gap: 8px;
+    }
+
     .tab {
         padding: 7px 15px 7px 7px;
         border-radius: 100px;

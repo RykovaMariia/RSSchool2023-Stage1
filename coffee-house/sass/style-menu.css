@@ -430,6 +430,11 @@ h3 {
   gap: 16px;
   padding: 40px 0;
 }
+@media (max-width: 530px) {
+  .menu__tabs {
+    gap: 8px;
+  }
+}
 .menu__tabs .tab {
   padding: 7px 15px 7px 7px;
   border-radius: 100px;
@@ -507,6 +512,11 @@ h3 {
 .menu-coffee > * {
   flex-basis: 308px;
 }
+@media (max-width: 768px) {
+  .menu-coffee .menu-item:nth-of-type(n+5) {
+    display: none;
+  }
+}
 
 .menu-item {
   border-radius: 40px;
@@ -517,33 +527,25 @@ h3 {
   width: 308px;
   height: 308px;
   border-radius: 39.6px;
-  background-size: 110%;
-  transition: background-size 0.7s ease;
-  background-position: 50%;
+  overflow: hidden;
 }
-.menu-item:nth-child(1) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-1.jpg);
+.menu-item .menu-item__img img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  transform: scale(1.1);
+  transition: all 0.6s ease 0s;
 }
-.menu-item:nth-child(2) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-2.jpg);
+@media (hover: hover) {
+  .menu-item .menu-item__img img:hover {
+    transform: scale(1);
+  }
 }
-.menu-item:nth-child(3) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-3.jpg);
-}
-.menu-item:nth-child(4) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-4.jpg);
-}
-.menu-item:nth-child(5) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-5.jpg);
-}
-.menu-item:nth-child(6) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-6.jpg);
-}
-.menu-item:nth-child(7) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-7.jpg);
-}
-.menu-item:nth-child(8) .menu-item__img {
-  background-image: url(../img/menu/coffee/coffee-8.jpg);
+@media (hover: none) {
+  .menu-item .menu-item__img img {
+    transform: scale(1.1);
+  }
 }
 .menu-item .menu-item__description {
   position: relative;
@@ -573,6 +575,15 @@ h3 {
   .menu-item:hover .menu-item__img {
     background-size: 100%;
   }
+}
+
+.menu__refresh {
+  margin: 40px auto 0 auto;
+  border-color: #665F55;
+}
+.menu__refresh .refresh {
+  width: 24px;
+  height: 24px;
 }
 
 .container__footer {

@@ -15,6 +15,12 @@
 .menu-coffee {
     @include mixins.columns(308px);
     flex-wrap: wrap;
+
+    @include mixins.media-tablet {
+        .menu-item:nth-of-type(n+5) {
+            display: none;
+        }
+    }
 }
 
 .menu-item {
@@ -26,41 +32,26 @@
         width: 308px;
         height: 308px;
         border-radius: 39.6px;
-        background-size: 110%;
-        transition: background-size 0.7s ease;
-        background-position: 50%;
-    }
+        overflow: hidden;
 
-    &:nth-child(1) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-1.jpg);
-    }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            transform: scale(1.1);
+            transition: all 0.6s ease 0s;
 
-    &:nth-child(2) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-2.jpg);
-    }
+            @include mixins.media-hover {
+                &:hover {
+                    transform: scale(1);
+                }
+            }
 
-    &:nth-child(3) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-3.jpg);
-    }
-
-    &:nth-child(4) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-4.jpg);
-    }
-
-    &:nth-child(5) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-5.jpg);
-    }
-
-    &:nth-child(6) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-6.jpg);
-    }
-
-    &:nth-child(7) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-7.jpg);
-    }
-
-    &:nth-child(8) .menu-item__img {
-        background-image: url(../img/menu/coffee/coffee-8.jpg);
+            @include mixins.media-hover-none {
+                transform: scale(1.1);
+            }
+        }
     }
 
     .menu-item__description {
@@ -90,5 +81,15 @@
                 background-size: 100%;
             }
         }
+    }
+}
+
+.menu__refresh {
+    margin: 40px auto 0 auto;
+    border-color: constants.$color-border-dark;
+
+    .refresh {
+        width: 24px;
+        height: 24px;
     }
 }

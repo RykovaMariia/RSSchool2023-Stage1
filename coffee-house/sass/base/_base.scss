@@ -69,12 +69,21 @@ h3 {
         transition: width 0.5s ease-out;
     }
 
+    &_none {
+        cursor: auto;
+    }
+
     @include mixins.media-hover {
         &:hover {
             &::after {
                 content: '';
                 display: block;
                 width: 100%;
+            }
+        }
+        &_none:hover {
+            &::after {
+                width: 0%;
             }
         }
     }

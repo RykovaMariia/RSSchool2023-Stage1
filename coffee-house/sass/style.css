@@ -265,11 +265,17 @@ h3 {
   background-color: currentColor;
   transition: width 0.5s ease-out;
 }
+.reference_underlined_none {
+  cursor: auto;
+}
 @media (hover: hover) {
   .reference_underlined:hover::after {
     content: "";
     display: block;
     width: 100%;
+  }
+  .reference_underlined_none:hover::after {
+    width: 0%;
   }
 }
 
@@ -796,7 +802,7 @@ h3 {
 .footer__right ul {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12.5px;
 }
 .footer__right li {
   list-style: none;

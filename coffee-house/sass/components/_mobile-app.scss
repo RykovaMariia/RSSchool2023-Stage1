@@ -5,9 +5,10 @@
 .mobile-app__wrapper {
     padding-top: 100px;
     display: flex;
+    justify-content: center;
     gap: 100px;
 
-    @include mixins.media-tablet {
+    @include mixins.media-middle {
         flex-wrap: wrap;
     }
 
@@ -77,15 +78,17 @@
         }
     }
 
-    &:hover {
-        background-color: constants.$color-background-container;
-
-        .button-app__content {
-            color: constants.$color-text-light;
-        }
-
-        .button-icon {
-            fill: constants.$color-text-light;
+    @include mixins.media-hover {
+        &:hover {
+            background-color: constants.$color-background-container;
+    
+            .button-app__content {
+                color: constants.$color-text-light;
+            }
+    
+            .button-icon {
+                fill: constants.$color-text-light;
+            }
         }
     }
 }

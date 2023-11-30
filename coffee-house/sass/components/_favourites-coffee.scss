@@ -31,7 +31,7 @@
     .slider__line {
         display: flex;
         justify-content: center;
-        gap: 336px;
+        gap: 35rem;
     }
 }
 
@@ -41,17 +41,10 @@
 
     img {
         max-width: 480px;
-        max-height: 480px;
         justify-content: center;
 
         @media (max-width: 730px) {
             max-width: 348px;
-            max-height: 348px;
-        }
-
-        @include mixins.media-mobile {
-            max-width: 348px;
-            max-height: 348px;
         }
     }
 

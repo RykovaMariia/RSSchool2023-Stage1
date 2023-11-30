@@ -9,33 +9,29 @@
     border-radius: 40px;
     background-color: constants.$color-background-container;
     display: flex;
-    flex-wrap: wrap;
     gap: 100px;
 
     h2 {
         color: constants.$color-text-light;
     }
 
-    @include mixins.media-mobile {
-        gap: 40px;
-    }
-
-
-    .footer__left,
-    .footer__right {
-        width: 530px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 40px;
-    }
-
     @include mixins.media-tablet {
+        flex-wrap: wrap;
         padding: 100px 60px;
     }
 
     @include mixins.media-mobile {
+        gap: 40px;
         padding: 60px 16px;
+    }
+
+    .footer__left,
+    .footer__right {
+        max-width: 530px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 40px;
     }
 }
 

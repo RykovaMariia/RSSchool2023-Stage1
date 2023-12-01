@@ -15,7 +15,7 @@
         color: constants.$color-text-light;
     }
 
-    @include mixins.media-tablet {
+    @include mixins.media-middle {
         flex-wrap: wrap;
         padding: 100px 60px;
     }

@@ -59,6 +59,10 @@ h3 {
 .reference_underlined {
     cursor: pointer;
 
+    &_menu{
+        cursor: auto;
+    }
+
     &_menu::after, &::after {
         content: '';
         display: block;
@@ -91,5 +95,4 @@ h3 {
             }
         }
     }
-
 }

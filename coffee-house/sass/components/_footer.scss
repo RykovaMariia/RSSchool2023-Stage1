@@ -15,9 +15,19 @@
         color: constants.$color-text-light;
     }
 
+    @include mixins.media-tablet {
+        flex-wrap: wrap;
+        padding: 100px 60px;
+    }
+
+    @include mixins.media-mobile {
+        gap: 40px;
+        padding: 60px 16px;
+    }
+
     .footer__left,
     .footer__right {
-        width: 530px;
+        max-width: 530px;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -39,7 +49,7 @@
     ul {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 12.5px;
     }
 
     li {
@@ -61,7 +71,6 @@
 
         &:last-child {
             box-sizing: border-box;
-            padding-bottom: 4px;
         }
     }
 }

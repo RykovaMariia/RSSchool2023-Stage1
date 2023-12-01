@@ -10,7 +10,16 @@
     padding: 100px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 41px;
+
+    @include mixins.media-tablet {
+        padding: 100px 60px;
+    }
+
+    @include mixins.media-mobile {
+        padding: 60px 16px;
+        gap: 40px;
+    }
 }
 
 .enjoy__heading,
@@ -28,7 +37,7 @@
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 66px;
+    padding: 20px 0;
     border-radius: 100px;
     background-color: constants.$color-background-body;
     text-decoration: none;
@@ -43,13 +52,25 @@
 
     .icon-coffee-cup {
         opacity: 0;
-        margin-left: 4px;
+        margin-left: 8px;
         width: 20px;
         height: 20px;
         @extend %transition;
     }
 
-    &:hover {
+    @include mixins.media-hover {
+        &:hover {
+            span {
+                left: 0;
+            }
+
+            .icon-coffee-cup {
+                opacity: 1;
+            }
+        }
+    }
+
+    @include mixins.media-hover-none {
         span {
             left: 0;
         }
@@ -57,6 +78,5 @@
         .icon-coffee-cup {
             opacity: 1;
         }
-
     }
 }

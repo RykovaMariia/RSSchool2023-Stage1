@@ -28,31 +28,47 @@
   <body>
     <header class="header">
       <div class="wrapper header__wrapper">
-        <a href="./index.html" class="logo">
+        <a class="icon-logo" href="./index.html" class="logo">
           <svg class="icon-logo">
             <use xlink:href="./img/sprite.svg#logo"></use>
           </svg>
         </a>
-        <nav class="header__navigation">
-          <ul class="navigation">
-            <li>
-              <a class="reference_underlined" href="./index.html#favourites-coffee">Favorite coffee</a>
-            </li>
-            <li><a class="reference_underlined" href="./index.html#about">About</a></li>
-            <li>
-              <a class="reference_underlined" href="./index.html#mobile-app">Mobile app</a>
-            </li>
-            <li>
-              <a class="reference_underlined" href="#footer">Contact us</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="header__menu">
+        <div class="burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
+        </div>
+        <div class="burger__menu">
+          <nav class="header__navigation">
+            <ul class="navigation">
+              <li>
+                <a class="reference_underlined" href="./index.html#favourites-coffee"
+                  >Favorite coffee</a
+                >
+              </li>
+              <li><a class="reference_underlined" href="./index.html#about">About</a></li>
+              <li>
+                <a class="reference_underlined" href="./index.html#mobile-app"
+                  >Mobile app</a
+                >
+              </li>
+              <li>
+                <a class="reference_underlined" href="#footer">Contact us</a>
+              </li>
+            </ul>
+          </nav>
+          <a class="header__menu reference_underlined header__menu_burger" href="./menu.html">
+            Menu
+            <svg class="icon-coffee-cup">
+              <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+            </svg>
+          </a>
+        </div>
+        <a class="header__menu header__menu_header reference_underlined_menu" href="./menu.html">
           <span>Menu</span>
           <svg class="icon-coffee-cup">
             <use xlink:href="./img/sprite.svg#coffee-cup"></use>
           </svg>
-        </div>
+        </a>
       </div>
     </header>
     <main>
@@ -79,7 +95,9 @@
         <div class="menu">
           <div class="menu-coffee">
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-1.jpg" alt="Irish coffee">
+              </div>
               <div class="menu-item__description">
                 <h3>Irish coffee</h3>
                 <p>
@@ -90,7 +108,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-2.jpg" alt="Kahlua coffee">
+              </div>
               <div class="menu-item__description">
                 <h3>Kahlua coffee</h3>
                 <p>
@@ -101,7 +121,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-3.jpg" alt="Honey raf">
+              </div>
               <div class="menu-item__description">
                 <h3>Honey raf</h3>
                 <p>Espresso with frothed milk, cream and aromatic honey</p>
@@ -109,7 +131,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-4.jpg" alt="Ice cappuccino">
+              </div>
               <div class="menu-item__description">
                 <h3>Ice cappuccino</h3>
                 <p>
@@ -119,7 +143,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-5.jpg" alt="Espresso">
+              </div>
               <div class="menu-item__description">
                 <h3>Espresso</h3>
                 <p>Classic black coffee</p>
@@ -127,7 +153,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-6.jpg" alt="Latte">
+              </div>
               <div class="menu-item__description">
                 <h3>Latte</h3>
                 <p>
@@ -138,7 +166,9 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-7.jpg" alt="Latte">
+              </div>
               <div class="menu-item__description">
                 <h3>Latte macchiato</h3>
                 <p>Espresso with frothed milk and chocolate</p>
@@ -146,13 +176,20 @@
               </div>
             </div>
             <div class="menu-item">
-              <div class="menu-item__img"></div>
+              <div class="menu-item__img">
+                <img src="./img/menu/coffee/coffee-8.jpg" alt="Coffee with cognac">
+              </div>
               <div class="menu-item__description">
                 <h3>Coffee with cognac</h3>
                 <p>Fragrant black coffee with cognac and whipped cream</p>
                 <div class="menu-price">$6.50</div>
               </div>
             </div>
+          </div>
+          <div class="menu__refresh icon">
+            <svg class="refresh">
+              <use xlink:href="./img/sprite.svg#refresh"></use>
+            </svg>
           </div>
         </div>
       </div>

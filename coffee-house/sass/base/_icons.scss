@@ -13,16 +13,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 
     &_background-arrow {
         border-color: constants.$color-border-dark;
 
-        &:hover {
-            background-color: constants.$color-background-container;
-            border-color: constants.$color-background-container;
+        @include mixins.media-hover {
+            &:hover {
+                background-color: constants.$color-background-container;
+                border-color: constants.$color-background-container;
 
-            .icon_arrow {
-                stroke: constants.$color-text-light;
+                .icon_arrow {
+                    stroke: constants.$color-text-light;
+                }
             }
         }
     }
@@ -30,14 +33,15 @@
     &_background-social {
         border-color: constants.$color-border-light;
 
-        &:hover {
-            background-color: constants.$color-background-body;
-            border-color: constants.$color-background-body;
-
-            .icon_social {
-                stroke: constants.$color-text-dark;
+        @include mixins.media-hover {
+            &:hover {
+                background-color: constants.$color-background-body;
+                border-color: constants.$color-background-body;
+    
+                .icon_social {
+                    stroke: constants.$color-text-dark;
+                }
             }
-
         }
     }
 

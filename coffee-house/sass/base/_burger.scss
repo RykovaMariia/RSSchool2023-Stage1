@@ -1,0 +1,32 @@
+@use '../abstracts/constants';
+@use '../abstracts/mixins';
+
+.burger {
+    display: none;
+
+    @include mixins.media-tablet {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        border-radius: 100px;
+        border: 1px solid constants.$color-border-dark;
+    }
+
+    .burger__line {
+        box-sizing: border-box;
+        width: 17.5px;
+        border-radius: 100px;
+        border: 1px solid constants.$color-border-dark;
+    }
+}
+
+.burger__menu {
+    @include mixins.media-tablet {
+        display: none;
+    }
+}

@@ -18,15 +18,20 @@
     gap: 40px;
 }
 
+.slider__arrow {
+    @media (max-width: 730px) {
+        display: none;
+    }
+}
+
 .slider__content {
     overflow: hidden;
     max-width: 1150px;
-    height: 640px;
 
     .slider__line {
         display: flex;
         justify-content: center;
-        gap: 336px;
+        gap: 35rem;
     }
 }
 
@@ -36,11 +41,15 @@
 
     img {
         max-width: 480px;
-        max-height: 480px;
         justify-content: center;
+
+        @media (max-width: 730px) {
+            max-width: 348px;
+        }
     }
 
     .slide__description {
+        
         margin-top: 16px;
         display: flex;
         flex-direction: column;

@@ -28,26 +28,40 @@
   <body>
     <header class="header">
       <div class="wrapper header__wrapper">
-        <div class="logo">
-          <svg class="icon-logo">
-            <use xlink:href="./img/sprite.svg#logo"></use>
-          </svg>
+        <svg class="icon-logo">
+          <use xlink:href="./img/sprite.svg#logo"></use>
+        </svg>
+        <div class="burger">
+          <div class="burger__line"></div>
+          <div class="burger__line"></div>
         </div>
-        <nav class="header__navigation">
-          <ul class="navigation">
-            <li>
-              <a class="reference_underlined" href="#favourites-coffee">Favorite coffee</a>
-            </li>
-            <li><a class="reference_underlined" href="#about">About</a></li>
-            <li>
-              <a class="reference_underlined" href="#mobile-app">Mobile app</a>
-            </li>
-            <li>
-              <a class="reference_underlined" href="#footer">Contact us</a>
-            </li>
-          </ul>
-        </nav>
-        <a class="header__menu reference_underlined" href="./menu.html">
+        <div class="burger__menu">
+          <nav class="header__navigation">
+            <ul class="navigation">
+              <li>
+                <a class="reference_underlined" href="#favourites-coffee"
+                  >Favorite coffee</a
+                >
+              </li>
+              <li><a class="reference_underlined" href="#about">About</a></li>
+              <li>
+                <a class="reference_underlined" href="#mobile-app"
+                  >Mobile app</a
+                >
+              </li>
+              <li>
+                <a class="reference_underlined" href="#footer">Contact us</a>
+              </li>
+            </ul>
+          </nav>
+          <a class="header__menu reference_underlined header__menu_burger" href="./menu.html">
+            Menu
+            <svg class="icon-coffee-cup">
+              <use xlink:href="./img/sprite.svg#coffee-cup"></use>
+            </svg>
+          </a>
+        </div>
+        <a class="header__menu reference_underlined header__menu_header" href="./menu.html">
           Menu
           <svg class="icon-coffee-cup">
             <use xlink:href="./img/sprite.svg#coffee-cup"></use>
@@ -189,12 +203,20 @@
           </h2>
           <div class="container">
             <div class="container__left">
-              <div class="about__img about__img_1"></div>
-              <div class="about__img about__img_2"></div>
+              <div class="about__img about__img_high">
+                <img  src="./img/about/about-1.jpg" alt="the girl with coffee">
+              </div>
+              <div class="about__img about__img_short">
+                <img  src="./img/about/about-2.jpg" alt="the girl with coffee">
+              </div>
             </div>
             <div class="container__right">
-              <div class="about__img about__img_3"></div>
-              <div class="about__img about__img_4"></div>
+              <div class="about__img about__img_short">
+                <img  src="./img/about/about-3.jpg" alt="the girl with coffee">
+              </div>
+              <div class="about__img about__img_high">
+                <img  src="./img/about/about-4.jpg" alt="the girl with coffee">
+              </div>
             </div>
           </div>
         </div>
@@ -228,7 +250,9 @@
               </a>
             </div>
           </div>
-          <img src="./img/mobile-app/mobile-screens.png" alt="mobiles">
+          <div class="mobile-app__right">
+          <img class="mobiles-img" src="./img/mobile-app/mobile-screens.png" alt="mobiles">
+        </div>
         </div>
       </section>
     </main>
@@ -265,7 +289,7 @@
             <h3>Contact us</h3>
             <ul>
               <li>
-                <a
+                <a target="_blank"
                   class="reference_underlined"
                   href="https://maps.app.goo.gl/xftpbfBeqmgVsG1W7"
                 >
@@ -283,7 +307,7 @@
                   +1 (603) 555-0123</a
                 >
               </li>
-              <li>
+              <li class="reference_underlined reference_underlined_none">
                 <svg class="icon-logo">
                   <use xlink:href="./img/sprite.svg#clock"></use>
                 </svg>

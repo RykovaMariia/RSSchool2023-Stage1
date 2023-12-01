@@ -578,12 +578,18 @@ h3 {
 }
 
 .menu__refresh {
+  display: none;
   margin: 40px auto 0 auto;
   border-color: #665F55;
 }
 .menu__refresh .refresh {
   width: 24px;
   height: 24px;
+}
+@media (max-width: 768px) {
+  .menu__refresh {
+    display: flex;
+  }
 }
 
 .container__footer {

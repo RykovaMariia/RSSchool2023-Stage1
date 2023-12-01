@@ -85,11 +85,16 @@
 }
 
 .menu__refresh {
+    display: none;
     margin: 40px auto 0 auto;
     border-color: constants.$color-border-dark;
 
     .refresh {
         width: 24px;
         height: 24px;
+    }
+
+    @include mixins.media-tablet {
+            display: flex;
     }
 }

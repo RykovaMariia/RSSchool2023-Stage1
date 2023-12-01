@@ -256,7 +256,7 @@ h3 {
 .reference_underlined {
   cursor: pointer;
 }
-.reference_underlined::after {
+.reference_underlined_menu::after, .reference_underlined::after {
   content: "";
   display: block;
   width: 0%;
@@ -264,6 +264,9 @@ h3 {
   height: 2px;
   background-color: currentColor;
   transition: width 0.5s ease-out;
+}
+.reference_underlined_menu::after {
+  width: 100%;
 }
 .reference_underlined_none {
   cursor: auto;
@@ -395,6 +398,7 @@ h3 {
 }
 
 .header__menu {
+  cursor: default;
   text-align: center;
   text-decoration: none;
   color: #403F3D;
@@ -402,6 +406,9 @@ h3 {
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
+}
+.header__menu span {
+  vertical-align: top;
 }
 .header__menu_burger {
   display: none;

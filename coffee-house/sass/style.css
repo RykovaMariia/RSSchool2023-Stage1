@@ -639,6 +639,11 @@ h3 {
 }
 @media (hover: none) {
   .about__img img {
+    transform: scale(1.1);
+  }
+}
+@media (max-width: 768px) {
+  .about__img img {
     transform: scale(1.05);
   }
 }

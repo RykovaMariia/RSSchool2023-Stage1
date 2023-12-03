@@ -41,11 +41,16 @@
         }
 
         @include mixins.media-hover-none {
+            transform: scale(1.1);
+            
+        }
+
+        @include mixins.media-tablet {
             transform: scale(1.05);
         }
 
         @include mixins.media-mobile {
-            transform: scale(1.23);
+            transform: scale(1.23);        
         }
     }
 

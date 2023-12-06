@@ -3,9 +3,8 @@
 @use '../abstracts/placeholders';
 
 .enjoy__container {
-    background: url(../img/img-enjoy.jpeg);
-    background-size: cover;
-    background-position: 50%;
+    position: relative;
+    overflow: hidden;
     border-radius: 40px;
     padding: 100px;
     display: flex;
@@ -20,6 +19,18 @@
         padding: 60px 16px;
         gap: 40px;
     }
+}
+
+.video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    z-index: -10;
+    border-radius: 40px;
 }
 
 .enjoy__heading,

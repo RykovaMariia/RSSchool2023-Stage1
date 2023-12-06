@@ -12,6 +12,10 @@ body {
     font-family: 'Inter', Verdana, sans-serif;
 }
 
+body.lock {
+    overflow: hidden;
+}
+
 .wrapper {
     max-width: 1360px;
     margin: auto;

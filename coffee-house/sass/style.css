@@ -693,6 +693,7 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
   background: #665F55;
+  transition: width 0.1s;
 }
 
 .about__wrapper {

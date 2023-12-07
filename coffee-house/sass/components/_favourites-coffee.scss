@@ -121,5 +121,6 @@ progress{
   
   progress::-webkit-progress-value {
     background: constants.$color-border-dark;
+    transition: width 0.1s;
   }
 

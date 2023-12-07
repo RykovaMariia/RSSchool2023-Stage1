@@ -1,127 +1,130 @@
 const positions = [, "position_1", "position_2"];
 const controls = document.querySelectorAll(".control");
+const arrows = document.querySelectorAll(".slider__arrow");
 
 let startId;
 let contId;
-let checkedId;
-let position = 0;
+let autofillId;
+
 let timeline = 49;
-let value;
 
-//Slider
-start();
-
-// Arrow
+start(0);
 arrowRightClickHandler();
 arrowLeftClickHandler();
 mouseMoveHandler();
 
 //Auto scroll
-function start() {
-  checked(position, 49);
+function start(position) {
+  autofill(position, 49, 0);
 
   startId = setInterval(() => {
-    position = scrollRight();
-    value = controls[position].querySelector("progress").value;
-    checked(position, 49);
-  }, 5000);
+    clearAutofill();
 
+    position = scrollRight();
+    let value = controls[position].querySelector("progress").value;
+    autofill(position, 49, value);
+  }, 5000);
 }
 
-function cont(timeline) {
-  checked(position, 49);
+function continueFill(position, timeline, value) {
+  autofill(position, 49, value);
 
   contId = setTimeout(() => {
-    clearChecked();
+
+    clearAutofill();
     position = scrollRight();
-    start();
+
+    start(position);
+
   }, timeline);
 }
 
 //Autofill
-function checked(position, time) {
-  checkedId = setInterval(() => {
+function autofill(position, time, value) {
+  autofillId = setInterval(() => {
     if (value <= 100) {
       value++;
-    } else {
-      value = 0;
     }
     controls[position].querySelector("progress").value = value;
   }, time);
 }
 
 //Clear
-function clearChecked() {
-  clearInterval(checkedId);
+function clearAutofill() {
+  clearInterval(autofillId);
   controls.forEach((el) => (el.querySelector("progress").value = 0));
 }
 
-function clearCheck() {
-  clearInterval(checkedId);
-  value = controls[position].querySelector("progress").value;
+function clearAutofillPause() {
+  clearInterval(autofillId);
+  let position = determinePosition();
+  let value = controls[position].querySelector("progress").value;
   console.log(value);
+  return value;
 }
-
-function clearStart() {
-  clearInterval(startId);
-}
-
-function clearCont() {
-    clearInterval(contId);
-  }
 
 //Arrow
 function arrowRightClickHandler() {
-  document
-    .querySelector(".slider__arrow:last-child ")
-    .addEventListener("click", () => {
-      clearStart();
-      scrollRight();
-      position = determinePosition();
-      value = 0;
-      start();
-    });
-}
+  arrows[1].addEventListener("click", () => {
+    clearInterval(startId);
+    clearInterval(contId);
+    clearAutofill();
+    
 
-function arrowLeftClickHandler() {
-  document
-    .querySelector(".slider__arrow:first-child ")
-    .addEventListener("click", () => {
-      clearStart();
-      clearChecked();
-      position = determinePosition();
-      if (position > 0) {
-        removeClassPosition();
-        position -= 1;
-      } else {
-        removeClassPosition();
-        position = 2;
-      }
-      addClassPosition(position);
-      value = 0;
-      start();
-    });
-}
+    let position = scrollRight();
 
-function mouseMoveHandler() {
-    document.querySelectorAll(".slide__image").forEach((img) => {
-    img.addEventListener("mouseenter", () => {
-      clearStart();
-      clearCont(); 
-      clearCheck();
-    });
-    img.addEventListener("mouseleave", () => {
-      position = determinePosition();
-      timeline = (100 - value) * 50;
-      cont(timeline);
-    });
+    start(position);
   });
 }
 
+function arrowLeftClickHandler() {
+  arrows[0].addEventListener("click", () => {
+    let position = determinePosition();
+
+    clearInterval(startId);
+    clearInterval(contId);
+    clearAutofill();
+
+    if (position > 0) {
+      removeClassPosition();
+      position -= 1;
+    } else {
+      removeClassPosition();
+      position = 2;
+    }
+
+    addClassPosition(position);
+
+    start(position);
+  });
+}
+
+function mouseMoveHandler() {
+  document.querySelectorAll(".slide__image").forEach((img) => {
+    let value;
+
+    img.addEventListener("mouseenter", () => {
+      clearInterval(startId);
+      clearInterval(contId);
+      value = clearAutofillPause();
+    });
+
+    img.addEventListener("mouseleave", () => {
+      let position = determinePosition();
+      console.log(position);
+      timeline = (100 - value) * 50;
+
+      continueFill(position, timeline, value);
+    });
+
+  });
+}
+
+
 //
-const scrollRight = () => {
-  position = determinePosition();
-  clearChecked();
+function scrollRight() {
+  let position = determinePosition();
+
   if (position < 2) {
     removeClassPosition();
     addClassPosition(++position);
@@ -129,8 +132,9 @@ const scrollRight = () => {
     removeClassPosition();
     position = 0;
   }
+
   return position;
-};
+}
 
 const determinePosition = () => {
   let position;

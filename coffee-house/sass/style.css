@@ -193,8 +193,12 @@ body {
   font-family: "Inter", Verdana, sans-serif;
 }
 
-body.lock {
-  overflow: hidden;
+@media (max-width: 768px) {
+  body.lock {
+    overflow: hidden;
+    scroll-padding-top: 0;
+    scroll-behavior: smooth;
+  }
 }
 
 .wrapper {
@@ -661,19 +665,34 @@ h3 {
   margin-top: 40px;
 }
 .slider__controls .control {
+  position: relative;
   width: 40px;
   height: 4px;
   border-radius: 100px;
   background: #C1B6AD;
+  overflow: hidden;
 }
 .slider__controls .control .control__background {
   width: 0%;
   height: 100%;
   background: #665F55;
 }
-.slider__controls .control_checked .control__background {
+
+progress {
+  position: absolute;
   width: 100%;
-  transition: all 5s linear;
+  height: 100%;
+  top: 0;
+  border: 0;
+}
+
+progress::-webkit-progress-bar {
+  border: none;
+  background: #C1B6AD;
+}
+
+progress::-webkit-progress-value {
+  background: #665F55;
 }
 
 .about__wrapper {

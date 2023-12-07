@@ -193,8 +193,12 @@ body {
   font-family: "Inter", Verdana, sans-serif;
 }
 
-body.lock {
-  overflow: hidden;
+@media (max-width: 768px) {
+  body.lock {
+    overflow: hidden;
+    scroll-padding-top: 0;
+    scroll-behavior: smooth;
+  }
 }
 
 .wrapper {

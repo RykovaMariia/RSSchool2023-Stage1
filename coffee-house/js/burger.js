@@ -1,13 +1,10 @@
 const burgerMenu = document.querySelector(".burger__menu");
 
-window.onload = function () {
-  //Burger
-  buttonBurgerClickHandler();
-  linksClickHandler();
-  
-};
+//Burger
+buttonBurgerClickHandler();
+linksClickHandler();
 
-const buttonBurgerClickHandler = () => {
+function buttonBurgerClickHandler() {
   document.querySelector(".burger").addEventListener("click", () => {
     if (burgerMenu.classList.contains("burger__menu_opened")) {
       closeBurgerMenu();
@@ -21,13 +18,13 @@ const buttonBurgerClickHandler = () => {
   });
 };
 
-const linksClickHandler = () => {
+function linksClickHandler () {
   const links = document.querySelectorAll(".navigation a");
   links.forEach((link) => {
     link.addEventListener("click", () => {
-        closeBurgerMenu();
-        closeButtonBurger();
-        addScroll();
+      closeBurgerMenu();
+      closeButtonBurger();
+      addScroll();
     });
   });
 };

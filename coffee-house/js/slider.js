@@ -1,6 +1,7 @@
 const positions = [, "position_1", "position_2"];
 const controls = document.querySelectorAll(".control");
 const arrows = document.querySelectorAll(".slider__arrow");
+const sliderWrapper = document.querySelectorAll(".slider__wrapper");
 const timeAutofill = 48;
 let startId;
 let contId;
@@ -8,12 +9,12 @@ let autofillId;
 
 start(0);
 
+//mouseSwipeHandler();
+touchSwipeHandler();
 mouseoverHandler();
-mouseSwipeHandler();
-touchSwipeHandler() 
 
-arrows[1].addEventListener("click", moveRight);
 arrows[0].addEventListener("click", moveLeft);
+arrows[1].addEventListener("click", moveRight);
 
 //Auto scroll
 function start(position) {
@@ -66,21 +67,16 @@ function clearAutofillPause() {
 //Mouse
 
 function mouseoverHandler() {
-  document.querySelectorAll(".slider__wrapper").forEach((img) => {
+  sliderWrapper.forEach((el) => {
     let value;
 
-    img.addEventListener("mouseenter", () => {
-      clearInterval(startId);
-      clearInterval(contId);
-      value = clearAutofillPause();
+    el.addEventListener("mouseenter", () => {
+      
+      value = pause();
     });
 
-    img.addEventListener("mouseleave", () => {
-      let position = determinePosition();
-
-      let timeline = (100 - value) * 50;
-
-      continueFill(position, timeline, value);
+    el.addEventListener("mouseleave", (e) => {
+      leavePause(value);
     });
   });
 }
@@ -105,20 +101,18 @@ function mouseSwipeHandler() {
     time = new Date().getTime();
 
     eventStart.preventDefault();
-
   });
 
   slider.addEventListener("mouseup", function (eventEnd) {
     distanceX = eventEnd.pageX - x;
-		distanceY = Math.abs(eventEnd.pageY - y);
+    distanceY = Math.abs(eventEnd.pageY - y);
 
-		runtime = new Date().getTime() - time;
+    runtime = new Date().getTime() - time;
 
-    if(runtime <= maxTime) {
-      
+    if (runtime <= maxTime) {
       if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
-        console.log('object');
-        if(distanceX > 0) {
+        console.log("object");
+        if (distanceX > 0) {
           moveLeft();
         } else {
           moveRight();
@@ -128,8 +122,6 @@ function mouseSwipeHandler() {
 
     eventEnd.preventDefault();
   });
-
-
 }
 
 function touchSwipeHandler() {
@@ -146,6 +138,8 @@ function touchSwipeHandler() {
   let maxDistanceY = 100;
   let maxTime = 1000;
 
+  let value;
+
   slider.addEventListener("touchmove", function (eventMove) {
     eventMove.preventDefault();
   });
@@ -153,8 +147,14 @@ function touchSwipeHandler() {
   slider.addEventListener("touchstart", function (eventStart) {
     let target = eventStart.target;
     console.log(target);
-    if (target.classList.contains('slider__arrow') || target.classList.contains('icon_arrow')) {
-      if (eventStart.target === arrows[0] || eventStart.target === arrows[0].firstElementChild) {
+    if (
+      target.classList.contains("slider__arrow") ||
+      target.classList.contains("icon_arrow")
+    ) {
+      if (
+        eventStart.target === arrows[0] ||
+        eventStart.target === arrows[0].firstElementChild
+      ) {
         moveLeft();
       } else {
         moveRight();
@@ -162,7 +162,6 @@ function touchSwipeHandler() {
     }
 
     eventStart.preventDefault();
-
   });
 
   slider.addEventListener("touchstart", function (eventStart) {
@@ -172,33 +171,35 @@ function touchSwipeHandler() {
     y = touch.pageY;
     time = new Date().getTime();
 
-    eventStart.preventDefault();
+    value = pause();
 
+    eventStart.preventDefault();
   });
 
   slider.addEventListener("touchend", function (eventEnd) {
     let touch = eventEnd.changedTouches[0];
     distanceX = touch.pageX - x;
-		distanceY = Math.abs(touch.pageY - y);
+    distanceY = Math.abs(touch.pageY - y);
 
-		runtime = new Date().getTime() - time;
+    runtime = new Date().getTime() - time;
 
-    if(runtime <= maxTime) {
-      
+    if (runtime <= maxTime) {
       if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
-        console.log('object');
-        if(distanceX > 0) {
+        console.log("object");
+        if (distanceX > 0) {
           moveLeft();
-        } else {
+        } else if (distanceX < 0) {
           moveRight();
         }
+      } else {
+        leavePause(value);
       }
+    } else {
+      leavePause(value);
     }
-
     eventEnd.preventDefault();
+
   });
-
-
 }
 
 //---
@@ -229,21 +230,35 @@ function moveRight() {
 function moveLeft() {
   let position = determinePosition();
 
-    clearInterval(startId);
-    clearInterval(contId);
-    clearAutofill();
+  clearInterval(startId);
+  clearInterval(contId);
+  clearAutofill();
 
-    if (position > 0) {
-      removeClassPosition();
-      position -= 1;
-    } else {
-      removeClassPosition();
-      position = 2;
-    }
+  if (position > 0) {
+    removeClassPosition();
+    position -= 1;
+  } else {
+    removeClassPosition();
+    position = 2;
+  }
 
-    addClassPosition(position);
+  addClassPosition(position);
 
-    start(position);
+  start(position);
+}
+
+function pause() {
+  clearInterval(startId);
+  clearInterval(contId);
+  return clearAutofillPause();
+}
+
+function leavePause(value) {
+  let position = determinePosition();
+
+  let timeline = (100 - value) * 50;
+
+  continueFill(position, timeline, value);
 }
 
 const determinePosition = () => {

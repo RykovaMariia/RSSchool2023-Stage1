@@ -6,12 +6,14 @@ let startId;
 let contId;
 let autofillId;
 
-
-
 start(0);
-arrowRightClickHandler();
-arrowLeftClickHandler();
-mouseMoveHandler();
+
+mouseoverHandler();
+mouseSwipeHandler();
+touchSwipeHandler() 
+
+arrows[1].addEventListener("click", moveRight);
+arrows[0].addEventListener("click", moveLeft);
 
 //Auto scroll
 function start(position) {
@@ -30,12 +32,10 @@ function continueFill(position, timeline, value) {
   autofill(position, timeAutofill, value);
 
   contId = setTimeout(() => {
-
     clearAutofill();
     position = scrollRight();
 
     start(position);
-
   }, timeline);
 }
 
@@ -59,27 +59,175 @@ function clearAutofillPause() {
   clearInterval(autofillId);
   let position = determinePosition();
   let value = controls[position].querySelector("progress").value;
-  console.log(value);
+
   return value;
 }
 
-//Arrow
-function arrowRightClickHandler() {
-  arrows[1].addEventListener("click", () => {
-    clearInterval(startId);
-    clearInterval(contId);
-    clearAutofill();
-    
+//Mouse
 
-    let position = scrollRight();
+function mouseoverHandler() {
+  document.querySelectorAll(".slider__wrapper").forEach((img) => {
+    let value;
 
-    start(position);
+    img.addEventListener("mouseenter", () => {
+      clearInterval(startId);
+      clearInterval(contId);
+      value = clearAutofillPause();
+    });
+
+    img.addEventListener("mouseleave", () => {
+      let position = determinePosition();
+
+      let timeline = (100 - value) * 50;
+
+      continueFill(position, timeline, value);
+    });
   });
 }
 
-function arrowLeftClickHandler() {
-  arrows[0].addEventListener("click", () => {
-    let position = determinePosition();
+function mouseSwipeHandler() {
+  const slider = document.querySelector(".slider");
+  let x = 0;
+  let y = 0;
+  let distanceX = 0;
+  let distanceY = 0;
+
+  let time = 0;
+  let runtime = 0;
+
+  let maxDistanceX = 150;
+  let maxDistanceY = 100;
+  let maxTime = 1000;
+
+  slider.addEventListener("mousedown", function (eventStart) {
+    x = eventStart.pageX;
+    y = eventStart.pageY;
+    time = new Date().getTime();
+
+    eventStart.preventDefault();
+
+  });
+
+  slider.addEventListener("mouseup", function (eventEnd) {
+    distanceX = eventEnd.pageX - x;
+		distanceY = Math.abs(eventEnd.pageY - y);
+
+		runtime = new Date().getTime() - time;
+
+    if(runtime <= maxTime) {
+      
+      if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
+        console.log('object');
+        if(distanceX > 0) {
+          moveLeft();
+        } else {
+          moveRight();
+        }
+      }
+    }
+
+    eventEnd.preventDefault();
+  });
+
+
+}
+
+function touchSwipeHandler() {
+  const slider = document.querySelector(".slider");
+  let x = 0;
+  let y = 0;
+  let distanceX = 0;
+  let distanceY = 0;
+
+  let time = 0;
+  let runtime = 0;
+
+  let maxDistanceX = 150;
+  let maxDistanceY = 100;
+  let maxTime = 1000;
+
+  slider.addEventListener("touchmove", function (eventMove) {
+    eventMove.preventDefault();
+  });
+
+  slider.addEventListener("touchstart", function (eventStart) {
+    let target = eventStart.target;
+    console.log(target);
+    if (target.classList.contains('slider__arrow') || target.classList.contains('icon_arrow')) {
+      if (eventStart.target === arrows[0] || eventStart.target === arrows[0].firstElementChild) {
+        moveLeft();
+      } else {
+        moveRight();
+      }
+    }
+
+    eventStart.preventDefault();
+
+  });
+
+  slider.addEventListener("touchstart", function (eventStart) {
+    let touch = eventStart.changedTouches[0];
+    console.log(eventStart);
+    x = touch.pageX;
+    y = touch.pageY;
+    time = new Date().getTime();
+
+    eventStart.preventDefault();
+
+  });
+
+  slider.addEventListener("touchend", function (eventEnd) {
+    let touch = eventEnd.changedTouches[0];
+    distanceX = touch.pageX - x;
+		distanceY = Math.abs(touch.pageY - y);
+
+		runtime = new Date().getTime() - time;
+
+    if(runtime <= maxTime) {
+      
+      if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
+        console.log('object');
+        if(distanceX > 0) {
+          moveLeft();
+        } else {
+          moveRight();
+        }
+      }
+    }
+
+    eventEnd.preventDefault();
+  });
+
+
+}
+
+//---
+function scrollRight() {
+  let position = determinePosition();
+
+  if (position < 2) {
+    removeClassPosition();
+    addClassPosition(++position);
+  } else {
+    removeClassPosition();
+    position = 0;
+  }
+
+  return position;
+}
+
+function moveRight() {
+  clearInterval(startId);
+  clearInterval(contId);
+  clearAutofill();
+
+  let position = scrollRight();
+
+  start(position);
+}
+
+function moveLeft() {
+  let position = determinePosition();
 
     clearInterval(startId);
     clearInterval(contId);
@@ -96,44 +244,6 @@ function arrowLeftClickHandler() {
     addClassPosition(position);
 
     start(position);
-  });
-}
-
-function mouseMoveHandler() {
-  document.querySelectorAll(".slide__image").forEach((img) => {
-    let value;
-
-    img.addEventListener("mouseenter", () => {
-      clearInterval(startId);
-      clearInterval(contId);
-      value = clearAutofillPause();
-    });
-
-    img.addEventListener("mouseleave", () => {
-      let position = determinePosition();
-      console.log(position);
-      let timeline = (100 - value) * 50;
-
-      continueFill(position, timeline, value);
-    });
-
-  });
-}
-
-
-//---
-function scrollRight() {
-  let position = determinePosition();
-
-  if (position < 2) {
-    removeClassPosition();
-    addClassPosition(++position);
-  } else {
-    removeClassPosition();
-    position = 0;
-  }
-
-  return position;
 }
 
 const determinePosition = () => {

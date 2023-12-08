@@ -1,12 +1,12 @@
 const positions = [, "position_1", "position_2"];
 const controls = document.querySelectorAll(".control");
 const arrows = document.querySelectorAll(".slider__arrow");
-
+const timeAutofill = 48;
 let startId;
 let contId;
 let autofillId;
 
-let timeline = 49;
+
 
 start(0);
 arrowRightClickHandler();
@@ -15,19 +15,19 @@ mouseMoveHandler();
 
 //Auto scroll
 function start(position) {
-  autofill(position, 49, 0);
+  autofill(position, timeAutofill, 0);
 
   startId = setInterval(() => {
     clearAutofill();
 
     position = scrollRight();
     let value = controls[position].querySelector("progress").value;
-    autofill(position, 49, value);
+    autofill(position, timeAutofill, value);
   }, 5000);
 }
 
 function continueFill(position, timeline, value) {
-  autofill(position, 49, value);
+  autofill(position, timeAutofill, value);
 
   contId = setTimeout(() => {
 
@@ -112,7 +112,7 @@ function mouseMoveHandler() {
     img.addEventListener("mouseleave", () => {
       let position = determinePosition();
       console.log(position);
-      timeline = (100 - value) * 50;
+      let timeline = (100 - value) * 50;
 
       continueFill(position, timeline, value);
     });
@@ -121,7 +121,7 @@ function mouseMoveHandler() {
 }
 
 
-//
+//---
 function scrollRight() {
   let position = determinePosition();
 

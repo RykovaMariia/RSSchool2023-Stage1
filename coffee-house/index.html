@@ -28,9 +28,11 @@
   <body>
     <header class="header">
       <div class="wrapper header__wrapper">
-        <svg class="icon-logo">
-          <use xlink:href="./img/sprite.svg#logo"></use>
-        </svg>
+        <a class="icon-logo logo" href="./index.html">
+          <svg class="icon-logo">
+            <use xlink:href="./img/sprite.svg#logo"></use>
+          </svg>
+        </a>
         <div class="burger">
           <div class="burger__line"></div>
           <div class="burger__line"></div>
@@ -73,6 +75,9 @@
       <section>
         <div class="wrapper enjoy__wrapper">
           <div class="enjoy__container">
+            <video class="video" autoplay muted loop>
+              <source src="./img/video-_1080p_.webm">
+            </video>
             <h1 class="enjoy__heading">
               <span>Enjoy</span> premium coffee at our charming cafe
             </h1>
@@ -104,37 +109,7 @@
             </div>
             <div class="slider__content">
               <div class="slider__line">
-                <div class="slider__slide macchiato">
-                  <img
-                    class="slide__image"
-                    src="./img/favourites-coffee/coffee-slider-2.png"
-                    alt="Image Macchiato"
-                  >
-                  <div class="slide__description">
-                    <h3>Caramel Macchiato</h3>
-                    <p class="slide__description__text">
-                      Fragrant and unique classic espresso with rich
-                      caramel-peanut syrup, with cream under whipped thick foam.
-                    </p>
-                    <div class="slide__price">$5.00</div>
-                  </div>
-                </div>
-                <div class="slider__slide ice-coffee">
-                  <img
-                    class="slide__image"
-                    src="./img/favourites-coffee/coffee-slider-3.png"
-                    alt="Ice coffee"
-                  >
-                  <div class="slide__description">
-                    <h3>Ice coffee</h3>
-                    <p class="slide__description__text">
-                      A popular summer drink that tones and invigorates.
-                      Prepared from coffee, milk and ice.
-                    </p>
-                    <div class="slide__price">$4.50</div>
-                  </div>
-                </div>
-                <div class="slider__slide frappuccino">
+                <div class="slider__slide">
                   <img
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-1.png"
@@ -149,7 +124,7 @@
                     <div class="slide__price">$5.50</div>
                   </div>
                 </div>
-                <div class="slider__slide macchiato">
+                <div class="slider__slide">
                   <img
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-2.png"
@@ -164,7 +139,7 @@
                     <div class="slide__price">$5.00</div>
                   </div>
                 </div>
-                <div class="slider__slide ice-coffee">
+                <div class="slider__slide">
                   <img
                     class="slide__image"
                     src="./img/favourites-coffee/coffee-slider-3.png"
@@ -188,9 +163,15 @@
             </div>
           </div>
           <div class="slider__controls">
-            <div class="control control_checked"></div>
-            <div class="control"></div>
-            <div class="control"></div>
+            <div class="control control_checked">
+              <progress value="0" max="100" ></progress>
+            </div>
+            <div class="control">
+              <progress value="0" max="100" ></progress>
+            </div>
+            <div class="control">
+              <progress value="0" max="100" ></progress>
+            </div>
           </div>
         </div>
       </section>
@@ -318,5 +299,7 @@
         </div>
       </div>
     </footer>
+    <script type="module" src="./js/burger.js"></script>
+    <script type="module" src="./js/slider.js"></script>
   </body>
 </html>

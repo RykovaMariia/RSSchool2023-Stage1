@@ -193,6 +193,14 @@ body {
   font-family: "Inter", Verdana, sans-serif;
 }
 
+@media (max-width: 768px) {
+  body.lock {
+    overflow: hidden;
+    scroll-padding-top: 0;
+    scroll-behavior: smooth;
+  }
+}
+
 .wrapper {
   max-width: 1360px;
   margin: auto;
@@ -352,17 +360,61 @@ h3 {
     border-radius: 100px;
     border: 1px solid #665F55;
   }
+  .burger_opened .burger__line:first-child {
+    transform-origin: left;
+    transform: translate(2px, -2px) rotate(45deg);
+  }
+  .burger_opened .burger__line:last-child {
+    transform-origin: left;
+    transform: translate(2px, 2px) rotate(-45deg);
+  }
 }
 .burger .burger__line {
   box-sizing: border-box;
   width: 17.5px;
   border-radius: 100px;
+  background-color: #665F55;
   border: 1px solid #665F55;
+  transition: all 0.6s ease 0s;
 }
 
 @media (max-width: 768px) {
   .burger__menu {
-    display: none;
+    z-index: 10;
+    box-sizing: border-box;
+    position: fixed;
+    overflow-y: auto;
+    top: 100px;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #E1D4C9;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 97px;
+    opacity: 0;
+    transition: all 0.6s ease 0s;
+  }
+  .burger__menu a {
+    font-size: 3.2rem;
+    font-weight: 600;
+    line-height: 125%;
+    font-style: normal;
+    display: block;
+    width: max-content;
+  }
+  .burger__menu a .icon-coffee-cup {
+    vertical-align: top;
+  }
+  .burger__menu .header__menu_burger .icon-coffee-cup {
+    width: 40px;
+    height: 40px;
+  }
+  .burger__menu_opened {
+    transform: translateX(-100%);
+    opacity: 100%;
   }
 }
 
@@ -388,6 +440,14 @@ h3 {
   align-items: center;
   gap: 40px;
 }
+@media (max-width: 768px) {
+  .header__navigation .navigation {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 56px;
+  }
+}
 .header__navigation li {
   list-style: none;
   font-size: 1.6rem;
@@ -412,13 +472,18 @@ h3 {
 .header__menu span {
   vertical-align: top;
 }
-.header__menu_burger {
-  display: none;
-}
 .header__menu .icon-coffee-cup {
   margin-left: 4px;
   width: 20px;
   height: 20px;
+}
+.header__menu_burger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header__menu_burger {
+    display: block;
+  }
 }
 @media (max-width: 768px) {
   .header__menu_header {
@@ -427,9 +492,8 @@ h3 {
 }
 
 .enjoy__container {
-  background: url(../img/img-enjoy.jpeg);
-  background-size: cover;
-  background-position: 50%;
+  position: relative;
+  overflow: hidden;
   border-radius: 40px;
   padding: 100px;
   display: flex;
@@ -446,6 +510,18 @@ h3 {
     padding: 60px 16px;
     gap: 40px;
   }
+}
+
+.video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  z-index: -10;
+  border-radius: 40px;
 }
 
 .enjoy__heading,
@@ -531,17 +607,19 @@ h3 {
 }
 .slider__content .slider__line {
   display: flex;
-  justify-content: center;
-  gap: 35rem;
 }
 
 .slider__slide {
-  max-width: 480px;
-  margin: auto;
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1s ease;
 }
 .slider__slide img {
   max-width: 480px;
-  justify-content: center;
 }
 @media (max-width: 730px) {
   .slider__slide img {
@@ -549,6 +627,7 @@ h3 {
   }
 }
 .slider__slide .slide__description {
+  max-width: 480px;
   margin-top: 16px;
   display: flex;
   flex-direction: column;
@@ -571,6 +650,14 @@ h3 {
   font-style: normal;
 }
 
+.position_1 .slider__slide {
+  transform: translateX(-100%);
+}
+
+.position_2 .slider__slide {
+  transform: translateX(-200%);
+}
+
 .slider__controls {
   display: flex;
   justify-content: center;
@@ -578,13 +665,35 @@ h3 {
   margin-top: 40px;
 }
 .slider__controls .control {
+  position: relative;
   width: 40px;
   height: 4px;
   border-radius: 100px;
   background: #C1B6AD;
+  overflow: hidden;
 }
-.slider__controls .control_checked {
+.slider__controls .control .control__background {
+  width: 0%;
+  height: 100%;
   background: #665F55;
+}
+
+progress {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  border: 0;
+}
+
+progress::-webkit-progress-bar {
+  border: none;
+  background: #C1B6AD;
+}
+
+progress::-webkit-progress-value {
+  background: #665F55;
+  transition: width 0.1s;
 }
 
 .about__wrapper {

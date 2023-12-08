@@ -12,6 +12,14 @@ body {
     font-family: 'Inter', Verdana, sans-serif;
 }
 
+body.lock {
+    @include mixins.media-tablet {
+        overflow: hidden;
+        scroll-padding-top: 0;
+        scroll-behavior: smooth;
+    }
+}
+
 .wrapper {
     max-width: 1360px;
     margin: auto;

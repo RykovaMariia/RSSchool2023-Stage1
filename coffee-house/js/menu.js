@@ -7,6 +7,7 @@ console.log(productList);
 window.onload = function () {
   //Tabs
   addTabsClickHandler();
+  addCardsLoadMoreClickHandler();
 };
 
 const addTabsClickHandler = () => {
@@ -21,6 +22,16 @@ const addTabsClickHandler = () => {
     });
   });
 };
+
+const addCardsLoadMoreClickHandler = () => {
+    document.querySelector('.menu__refresh').addEventListener('click', () => {
+        document.querySelectorAll('.menu-item:nth-of-type(n+5)').forEach(card => {
+            card.style.display = 'block';
+        })
+        deleteLoadMore();
+    })
+
+}
 
 const removeCheckedTabs = () => {
   tabs.forEach((tab) => tab.classList.remove("tab_checked"));
@@ -44,11 +55,29 @@ const cleanContainer = () => {
 
 const generateProducts = (productList, categoryCard) => {
   let productCards = [];
+  let count = 0;
 
   productList.forEach((productCard) => {
     if (productCard.category.toLowerCase() === categoryCard.toLowerCase()) {
+
       productCards.push(new Product(productCard).generateProduct());
+      count++;
     }
   });
+
+  if (count <= 4){
+    deleteLoadMore();
+  } else {
+    addLoadMore();
+  }
+
   return productCards;
 };
+
+const deleteLoadMore = () => {
+    document.querySelector('.menu__refresh').classList.add('menu__refresh_none');
+}
+
+const addLoadMore = () => {
+    document.querySelector('.menu__refresh').classList.remove('menu__refresh_none');
+}

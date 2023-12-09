@@ -100,5 +100,9 @@
 
     @include mixins.media-tablet {
         display: flex;
+
+        &_none {
+            display: none;
+        }
     }
 }

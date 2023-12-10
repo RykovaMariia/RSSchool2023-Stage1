@@ -15,7 +15,9 @@ export class Modal {
     this.category = category;
     this.sizes = sizes;
     this.additives = additives;
-    this.totalPrice = +this.price;
+    this.sizePrice = 0;
+    this.additivesPrice = 0;
+    this.totalPrice = 0;
   }
 
   generateModal() {
@@ -60,9 +62,9 @@ export class Modal {
         template += '<div class="modal__tabs">';
 
         if (this.sizes.s) {
-          template += '<div class="tab tab_size tab_checked size">';
-          template += `<div class="tab__circle modal__circle size">S</div>`;
-          template += `<span class="size">${this.sizes.s.size}</span>`;
+          template += '<div class="tab tab_size tab_checked">';
+          template += `<div class="tab__circle modal__circle">S</div>`;
+          template += `<span>${this.sizes.s.size}</span>`;
           template += "</div>";
         }
         if (this.sizes.m) {
@@ -88,7 +90,7 @@ export class Modal {
         template += '<div class="modal__tabs">';
 
         this.additives.forEach((_, i) => {
-          template += '<div class="tab">';
+          template += '<div class="tab tab_additive">';
           template += `<div class="tab__circle modal__circle">${i + 1}</div>`;
           template += `<span>${this.additives[i].name}</span>`;
           template += "</div>";
@@ -126,53 +128,98 @@ export class Modal {
     document.body.prepend(this.generateModal());
     this.removeScroll();
     this.buttonsCloseClickHandler();
-    // this.buttonsSizeClickHandler();
+    this.buttonsSizeClickHandler();
+    this.buttonsAdditivesClickHandler();
   }
 
   buttonsCloseClickHandler() {
-    document.querySelector('.modal').addEventListener("click", (e) => {
-        this.closeModal(e);
+    document.querySelector(".modal").addEventListener("click", (e) => {
+      this.closeModal(e);
     });
   }
 
-//   buttonsSizeClickHandler() {
-//     document.querySelectorAll('.tab_size').forEach(tab => {
-//         tab.addEventListener("click", () => {
-//             this.deleteClassChecked();
-//             this.addClassChecked(tab);
-//             this.addFinalPrice(tab.querySelector('.modal__circle').innerText);
-
-//         });
-//     })
-//   }
-
-//   addFinalPrice(letter) {
-//     this.sizes.forEach(size => {
-//         if (letter.toLowerCase() === size)
-//     })
-    
-//     this.totalPrice = (this.totalPrice + +this.sizes.m['add-price']).toFixed(2);
-//     this.addFinalPriceDom();
-//   }
-
-  addFinalPriceDom() {
-    document.querySelector('.modal__total .price').innerText = `$${this.totalPrice}`;
+  buttonsSizeClickHandler() {
+    document.querySelectorAll(".tab_size").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        this.deleteClassCheckedSize();
+        this.addClassChecked(tab);
+        this.addFinalPriceDom(this.calcSizePrice(), this.additivesPrice);
+      });
+    });
   }
 
-  deleteClassChecked() {
-    document.querySelectorAll('.tab_size').forEach(tab => {
-        tab.classList.remove('tab_checked');
-    })
+  buttonsAdditivesClickHandler() {
+    document.querySelectorAll(".tab_additive").forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        if (tab.classList.contains("tab_checked")) {
+            this.deleteClassChecked(tab);
+            this.calcAdditivesPrice(index, true);
+            this.addFinalPriceDom(this.calcSizePrice(), this.additivesPrice);
+        } else {
+          this.addClassChecked(tab);
+          this.calcAdditivesPrice(index, false);
+          this.addFinalPriceDom(this.calcSizePrice(), this.additivesPrice);
+        }
+      });
+    });
+  }
+
+  calcSizePrice() {
+    this.sizePrice = (
+      +this.price +
+      +this.sizes[
+        document
+          .querySelector(".tab_size.tab_checked .tab__circle")
+          .innerText.toLowerCase()
+      ]["add-price"]
+    ).toFixed(2);
+
+    return this.sizePrice;
+  }
+
+  calcAdditivesPrice(index, checked) {
+    if (checked) {
+        this.additivesPrice = (
+            +this.additivesPrice - +this.additives[index]["add-price"]
+          ).toFixed(2);
+      
+    } else {
+        this.additivesPrice = (
+            +this.additivesPrice + +this.additives[index]["add-price"]
+          ).toFixed(2);
+    }
+
+    return this.additivesPrice;
+  }
+
+  addFinalPriceDom(a, b) {
+    this.totalPrice = (+a + +b).toFixed(2);
+    document.querySelector(
+      ".modal__total .price"
+    ).innerText = `$${this.totalPrice}`;
+  }
+
+  deleteClassCheckedSize() {
+    document.querySelectorAll(".tab_size").forEach((tab) => {
+      tab.classList.remove("tab_checked");
+    });
+  }
+
+  deleteClassChecked(tab) {
+    tab.classList.remove("tab_checked");
   }
 
   addClassChecked(tab) {
-    tab.classList.add('tab_checked');
+    tab.classList.add("tab_checked");
   }
 
   closeModal(e) {
-    if (e.target.classList.contains("modal__close") || e.target.classList.contains("modal")) {
-        document.querySelector(".modal").remove();
-        this.addScroll();
+    if (
+      e.target.classList.contains("modal__close") ||
+      e.target.classList.contains("modal")
+    ) {
+      document.querySelector(".modal").remove();
+      this.addScroll();
     }
   }
 
@@ -183,6 +230,4 @@ export class Modal {
   addScroll() {
     document.body.classList.remove("lock");
   }
-
-  
 }

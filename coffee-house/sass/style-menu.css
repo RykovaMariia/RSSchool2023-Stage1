@@ -564,10 +564,10 @@ h3 {
 .menu__tabs .tab:nth-child(1) .tab__circle {
   background-image: url(../img/menu/icon-coffee1.svg);
 }
-.menu__tabs:nth-child(2) .tab__circle {
+.menu__tabs .tab:nth-child(2) .tab__circle {
   background-image: url(../img/menu/icon-tea1.svg);
 }
-.menu__tabs:nth-child(3) .tab__circle {
+.menu__tabs .tab:nth-child(3) .tab__circle {
   background-image: url(../img/menu/icon-dessert1.svg);
 }
 

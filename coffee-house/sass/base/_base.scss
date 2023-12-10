@@ -14,11 +14,11 @@ body {
 }
 
 body.lock {
-    
-        overflow: hidden;
-        scroll-padding-top: 0;
-        scroll-behavior: smooth;
-    
+
+    overflow: hidden;
+    scroll-padding-top: 0;
+    scroll-behavior: smooth;
+
 }
 
 .wrapper {
@@ -68,11 +68,12 @@ h3 {
 .reference_underlined {
     cursor: pointer;
 
-    &_menu{
+    &_menu {
         cursor: auto;
     }
 
-    &_menu::after, &::after {
+    &_menu::after,
+    &::after {
         content: '';
         display: block;
         width: 0%;
@@ -98,6 +99,7 @@ h3 {
                 width: 100%;
             }
         }
+
         &_none:hover {
             &::after {
                 width: 0%;

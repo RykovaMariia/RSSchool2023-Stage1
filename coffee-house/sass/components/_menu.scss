@@ -91,6 +91,15 @@
 }
 
 .menu-item__img {
+
+    @include mixins.media-hover {
+        &:hover {
+            img {
+                transform: scale(1);
+            }
+        }
+    }
+    
     width: 308px;
     height: 308px;
     border-radius: 39.6px;

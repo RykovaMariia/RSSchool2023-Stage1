@@ -92,7 +92,6 @@ const addModalCardClickHandler = () => {
   document.querySelectorAll('.menu-item').forEach(productCard => {
     productCard.addEventListener('click', () => {
       renderProductModalToDom(productList, productCard.getAttribute("data-name"));
-      
     })
   })
 
@@ -105,10 +104,7 @@ const renderProductModalToDom = (productList, nameCard) => {
       let modal = new Modal(productCard);
 
       modal.openModal();
-
-      
-    }
-    
+    } 
   });
 };
 

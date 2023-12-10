@@ -1,5 +1,6 @@
 @use '../abstracts/constants';
 @use '../abstracts/mixins';
+@use '../abstracts/placeholders';
 
 .modal {
     position: fixed;
@@ -21,20 +22,33 @@
 }
 
 .modal__window {
+    margin: auto 40px;
     box-sizing: border-box;
     display: flex;
     gap: 20px;
-    width: 800px;
+    max-width: 800px;
     padding: 16px;
     border-radius: 40px;
     background-color: constants.$color-background-body;
     @include mixins.font(1.6rem, 400, 150%);
     color: constants.$color-text-dark;
 
+    @include mixins.media-tablet {
+        max-width: 688px;
+    }
+
+    @include mixins.media-tablet-middle {
+        margin: auto 19px;
+    } 
+
     .modal__img {
         width: 309px;
         height: 309px;
         flex-shrink: 0;
+
+        @include mixins.media-tablet-middle {
+            display: none;
+        } 
     }
 }
 
@@ -53,12 +67,19 @@
         display: flex;
         gap: 8px;
         flex-direction: column;
-
     }
 
     .modal__tabs {
         display: flex;
         gap: 8px;
+        
+        .tab {
+            padding: 7px 16px 7px 7px;
+        }
+
+        @include mixins.media-tablet {
+            flex-wrap: wrap;
+        }
 
         .modal__circle {
             padding: 0;
@@ -100,8 +121,16 @@
         border-radius: 100px;
         border: 1px solid constants.$color-border-dark;
         padding: 10px 78px;
+        cursor: pointer;
         @include mixins.font(1.6rem, 600, 150%);
+        @extend %transition;
 
-
+        @include mixins.media-hover {
+            &:hover {
+                background-color: constants.$color-background-container;
+                border-color: constants.$color-background-container;
+                color: constants.$color-text-light;
+            }
+        }
     }
 }

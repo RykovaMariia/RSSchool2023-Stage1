@@ -2,9 +2,12 @@
 @use '../abstracts/mixins';
 @use '../abstracts/placeholders';
 
+.wrapper_footer {
+    padding-bottom: 40px;
+}
+
 .container__footer {
     margin-top: 100px;
-    margin-bottom: 40px;
     padding: 100px;
     border-radius: 40px;
     background-color: constants.$color-background-container;

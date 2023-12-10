@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu</title>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="./img/favicon_io/apple-touch-icon.png"
-    >
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./img/favicon_io/favicon-32x32.png"
-    >
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
       href="./img/favicon_io/favicon-16x16.png"
-    >
-    <link rel="manifest" href="./img/favicon_io/site.webmanifest">
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
-    <link rel="stylesheet" href="./sass/style-menu.css">
+    />
+    <link rel="manifest" href="./img/favicon_io/site.webmanifest" />
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+    <link rel="stylesheet" href="./sass/style-menu.css" />
   </head>
   <body>
     <header class="header">
@@ -41,11 +41,17 @@
           <nav class="header__navigation">
             <ul class="navigation">
               <li>
-                <a class="reference_underlined" href="./index.html#favourites-coffee"
+                <a
+                  class="reference_underlined"
+                  href="./index.html#favourites-coffee"
                   >Favorite coffee</a
                 >
               </li>
-              <li><a class="reference_underlined" href="./index.html#about">About</a></li>
+              <li>
+                <a class="reference_underlined" href="./index.html#about"
+                  >About</a
+                >
+              </li>
               <li>
                 <a class="reference_underlined" href="./index.html#mobile-app"
                   >Mobile app</a
@@ -56,14 +62,20 @@
               </li>
             </ul>
           </nav>
-          <a class="header__menu reference_underlined header__menu_burger" href="./menu.html">
+          <a
+            class="header__menu reference_underlined header__menu_burger"
+            href="./menu.html"
+          >
             Menu
             <svg class="icon-coffee-cup">
               <use xlink:href="./img/sprite.svg#coffee-cup"></use>
             </svg>
           </a>
         </div>
-        <a class="header__menu header__menu_header reference_underlined_menu" href="./menu.html">
+        <a
+          class="header__menu header__menu_header reference_underlined_menu"
+          href="./menu.html"
+        >
           <span>Menu</span>
           <svg class="icon-coffee-cup">
             <use xlink:href="./img/sprite.svg#coffee-cup"></use>
@@ -94,9 +106,9 @@
         </div>
         <div class="menu">
           <div class="menu-coffee">
-            <div class="menu-item">
+            <div class="menu-item" data-name="Irish coffee">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-1.jpg" alt="Irish coffee">
+                <img src="./img/menu/coffee/coffee-1.jpg" alt="Irish coffee" />
               </div>
               <div class="menu-item__description">
                 <h3>Irish coffee</h3>
@@ -107,9 +119,9 @@
                 <div class="menu-price">$7.00</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Kahlua coffee">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-2.jpg" alt="Kahlua coffee">
+                <img src="./img/menu/coffee/coffee-2.jpg" alt="Kahlua coffee" />
               </div>
               <div class="menu-item__description">
                 <h3>Kahlua coffee</h3>
@@ -120,9 +132,9 @@
                 <div class="menu-price">$7.00</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Honey raf">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-3.jpg" alt="Honey raf">
+                <img src="./img/menu/coffee/coffee-3.jpg" alt="Honey raf" />
               </div>
               <div class="menu-item__description">
                 <h3>Honey raf</h3>
@@ -130,9 +142,12 @@
                 <div class="menu-price">$5.50</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Ice cappuccino">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-4.jpg" alt="Ice cappuccino">
+                <img
+                  src="./img/menu/coffee/coffee-4.jpg"
+                  alt="Ice cappuccino"
+                />
               </div>
               <div class="menu-item__description">
                 <h3>Ice cappuccino</h3>
@@ -142,9 +157,9 @@
                 <div class="menu-price">$5.00</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Espresso">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-5.jpg" alt="Espresso">
+                <img src="./img/menu/coffee/coffee-5.jpg" alt="Espresso" />
               </div>
               <div class="menu-item__description">
                 <h3>Espresso</h3>
@@ -152,9 +167,9 @@
                 <div class="menu-price">$4.50</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Latte">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-6.jpg" alt="Latte">
+                <img src="./img/menu/coffee/coffee-6.jpg" alt="Latte" />
               </div>
               <div class="menu-item__description">
                 <h3>Latte</h3>
@@ -165,9 +180,9 @@
                 <div class="menu-price">$5.50</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Latte macchiato">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-7.jpg" alt="Latte">
+                <img src="./img/menu/coffee/coffee-7.jpg" alt="Latte" />
               </div>
               <div class="menu-item__description">
                 <h3>Latte macchiato</h3>
@@ -175,9 +190,12 @@
                 <div class="menu-price">$5.50</div>
               </div>
             </div>
-            <div class="menu-item">
+            <div class="menu-item" data-name="Coffee with cognac">
               <div class="menu-item__img">
-                <img src="./img/menu/coffee/coffee-8.jpg" alt="Coffee with cognac">
+                <img
+                  src="./img/menu/coffee/coffee-8.jpg"
+                  alt="Coffee with cognac"
+                />
               </div>
               <div class="menu-item__description">
                 <h3>Coffee with cognac</h3>
@@ -195,7 +213,7 @@
       </div>
     </main>
     <footer id="footer">
-      <div class="wrapper">
+      <div class="wrapper wrapper_footer">
         <div class="container__footer">
           <div class="footer__left">
             <h2>Sip, Savor, Smile. <span>It’s coffee time!</span></h2>
@@ -227,7 +245,8 @@
             <h3>Contact us</h3>
             <ul>
               <li>
-                <a target="_blank"
+                <a
+                  target="_blank"
                   class="reference_underlined"
                   href="https://maps.app.goo.gl/xftpbfBeqmgVsG1W7"
                 >
@@ -256,9 +275,75 @@
         </div>
       </div>
     </footer>
+    <div class="modal now">
+      <div class="modal__window">
+        <div class="menu-item__img modal__img">
+          <img src="./img/menu/coffee/coffee-1.jpg" alt="Irish coffee" />
+        </div>
+        <div class="modal__content">
+          <div class="modal__description">
+            <h3>Irish coffee</h3>
+            <p class="description-product">
+              Fragrant black coffee with Jameson Irish whiskey and whipped milk
+            </p>
+          </div>
+          <div class="modal__choose size">
+            <p>Size</p>
+            <div class="modal__tabs">
+              <div class="tab tab_checked">
+                <div class="tab__circle modal__circle">S</div>
+                <span>200 ml</span>
+              </div>
+              <div class="tab">
+                <div class="tab__circle modal__circle">M</div>
+                <span>300 ml</span>
+              </div>
+              <div class="tab">
+                <div class="tab__circle modal__circle">L</div>
+                <span>400 ml</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal__choose additives">
+            <p>Additives</p>
+            <div class="modal__tabs">
+              <div class="tab">
+                <div class="tab__circle modal__circle">1</div>
+                <span>Sugar</span>
+              </div>
+              <div class="tab">
+                <div class="tab__circle modal__circle">2</div>
+                <span>Cinnamon</span>
+              </div>
+              <div class="tab">
+                <div class="tab__circle modal__circle">3</div>
+                <span>Syrup</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal__total">
+            <div class="total">Total:</div>
+            <div class="price">$7.00</div>
+          </div>
+          <div class="modal__alert">
+            <svg class="alert__icon">
+              <use xlink:href="./img/sprite.svg#info-empty"></use>
+            </svg>
+            <p>
+              The cost is not final. Download our mobile app to see the final
+              price and place your order. Earn loyalty points and enjoy your
+              favorite coffee with up to 20% discount.
+            </p>
+          </div>
+          <div class="modal__close">Close</div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="./js/burger.js"></script>
 
     <script type="module" src="./js/menu.js"></script>
     <script type="module" src="./js/Product.js"></script>
+    <script type="module" src="./js/Modal.js"></script>
   </body>
 </html>

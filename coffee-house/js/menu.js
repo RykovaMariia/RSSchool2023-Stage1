@@ -1,13 +1,15 @@
 import productList from "../products.json" assert { type: "json" };
 import { Product } from "./Product.js";
+import { Modal } from "./Modal.js";
 
 const tabs = document.querySelectorAll(".tab");
-console.log(productList);
 
 window.onload = function () {
   //Tabs
   addTabsClickHandler();
   addCardsLoadMoreClickHandler();
+  addModalCardClickHandler();
+
 };
 
 const addTabsClickHandler = () => {
@@ -29,6 +31,7 @@ const addCardsLoadMoreClickHandler = () => {
             card.style.display = 'block';
         })
         deleteLoadMore();
+
     })
 
 }
@@ -43,8 +46,9 @@ const addCheckedTabs = (tab) => {
 
 const renderProductsToDom = (productList, categoryCard) => {
   let menuContainer = cleanContainer();
-  console.log(generateProducts(productList, categoryCard));
+  
   menuContainer.append(...generateProducts(productList, categoryCard));
+  addModalCardClickHandler();
 };
 
 const cleanContainer = () => {
@@ -75,9 +79,36 @@ const generateProducts = (productList, categoryCard) => {
 };
 
 const deleteLoadMore = () => {
-    document.querySelector('.menu__refresh').classList.add('menu__refresh_none');
+  document.querySelector('.menu__refresh').classList.add('menu__refresh_none');
 }
 
 const addLoadMore = () => {
-    document.querySelector('.menu__refresh').classList.remove('menu__refresh_none');
+  document.querySelector('.menu__refresh').classList.remove('menu__refresh_none');
 }
+
+//Modal
+const addModalCardClickHandler = () => {
+  
+  document.querySelectorAll('.menu-item').forEach(productCard => {
+    productCard.addEventListener('click', () => {
+      renderProductModalToDom(productList, productCard.getAttribute("data-name"));
+      
+    })
+  })
+
+}
+
+const renderProductModalToDom = (productList, nameCard) => {
+
+  productList.forEach((productCard) => {
+    if (productCard.name.toLowerCase() === nameCard.toLowerCase()) {
+      let modal = new Modal(productCard);
+
+      modal.openModal();
+
+      
+    }
+    
+  });
+};
+

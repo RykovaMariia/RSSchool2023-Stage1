@@ -6,6 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    animation: open 0.5s;
    
     display: flex;
     justify-content: center;
@@ -17,8 +18,14 @@
     z-index: 10;
     background: constants.$color-background-backdrop;
 }
-.now {
-    display: none;
+
+@keyframes open {
+    0% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .modal__window {

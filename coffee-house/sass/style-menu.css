@@ -586,7 +586,16 @@ h3 {
   }
 }
 
+@keyframes open {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .menu-item {
+  animation: open 0.5s;
   border-radius: 40px;
   border: 1px solid #C1B6AD;
   cursor: pointer;
@@ -744,6 +753,7 @@ h3 {
   position: fixed;
   top: 0;
   left: 0;
+  animation: open 0.5s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -755,10 +765,14 @@ h3 {
   background: rgba(64, 63, 61, 0.8);
 }
 
-.now {
-  display: none;
+@keyframes open {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
 .modal__window {
   margin: auto 40px;
   box-sizing: border-box;

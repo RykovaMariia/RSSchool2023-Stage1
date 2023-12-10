@@ -38,6 +38,7 @@
 .menu-coffee {
     @include mixins.columns(308px);
     flex-wrap: wrap;
+    
 
     @include mixins.media-tablet {
         .menu-item:nth-of-type(n+5) {
@@ -46,7 +47,19 @@
     }
 }
 
+@keyframes open {
+    0% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .menu-item {
+
+    animation: open 0.5s;
     border-radius: 40px;
     border: 1px solid constants.$color-border-light;
     cursor: pointer;

@@ -11,6 +11,7 @@ function buttonBurgerClickHandler() {
       closeButtonBurger();
       addScroll();
     } else {
+      window.scrollTo(0, 0);
       openBurgerMenu();
       openButtonBurger();
       removeScroll();

@@ -66,13 +66,12 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-    }
 
-    .p {
-        color: constants.$color-text-dark;
-        @include mixins.font(1.6rem, 400, 150%);
+        p {
+            color: constants.$color-text-dark;
+            @include mixins.font(1.6rem, 400, 150%);
+        }
     }
-    
 
     .menu-price {
         position: absolute;
@@ -92,14 +91,6 @@
 
 .menu-item__img {
 
-    @include mixins.media-hover {
-        &:hover {
-            img {
-                transform: scale(1);
-            }
-        }
-    }
-    
     width: 308px;
     height: 308px;
     border-radius: 39.6px;
@@ -112,6 +103,14 @@
         object-position: center;
         transform: scale(1.1);
         transition: all 0.6s ease 0s;
+    }
+
+    @include mixins.media-hover {
+        &:hover {
+            img {
+                transform: scale(1);
+            }
+        }
     }
 }
 

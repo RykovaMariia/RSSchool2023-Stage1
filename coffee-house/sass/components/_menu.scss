@@ -26,11 +26,11 @@
         background-image: url(../img/menu/icon-coffee1.svg);
     }
 
-    &:nth-child(2) .tab__circle {
+    .tab:nth-child(2) .tab__circle {
         background-image: url(../img/menu/icon-tea1.svg);
     }
 
-    &:nth-child(3) .tab__circle {
+    .tab:nth-child(3) .tab__circle {
         background-image: url(../img/menu/icon-dessert1.svg);
     }
 }

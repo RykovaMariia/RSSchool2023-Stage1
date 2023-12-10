@@ -292,7 +292,7 @@ h3 {
   }
 }
 
-.tab, .tab span, .tab .tab__circle, .icon, .icon_arrow, .icon_social {
+.modal__content .modal__close, .tab, .tab span, .tab .tab__circle, .icon, .icon_arrow, .icon_social {
   transition: all 0.7s ease;
 }
 
@@ -632,6 +632,11 @@ h3 {
   border-radius: 39.6px;
   overflow: hidden;
 }
+@media (hover: hover) {
+  .menu-item__img:hover img {
+    transform: scale(1);
+  }
+}
 .menu-item__img img {
   object-fit: cover;
   width: 100%;
@@ -755,10 +760,11 @@ h3 {
 }
 
 .modal__window {
+  margin: auto 40px;
   box-sizing: border-box;
   display: flex;
   gap: 20px;
-  width: 800px;
+  max-width: 800px;
   padding: 16px;
   border-radius: 40px;
   background-color: #E1D4C9;
@@ -768,10 +774,25 @@ h3 {
   font-style: normal;
   color: #403F3D;
 }
+@media (max-width: 768px) {
+  .modal__window {
+    max-width: 688px;
+  }
+}
+@media (max-width: 730px) {
+  .modal__window {
+    margin: auto 19px;
+  }
+}
 .modal__window .modal__img {
   width: 309px;
   height: 309px;
   flex-shrink: 0;
+}
+@media (max-width: 730px) {
+  .modal__window .modal__img {
+    display: none;
+  }
 }
 
 .modal__content {
@@ -792,6 +813,14 @@ h3 {
 .modal__content .modal__tabs {
   display: flex;
   gap: 8px;
+}
+.modal__content .modal__tabs .tab {
+  padding: 7px 16px 7px 7px;
+}
+@media (max-width: 768px) {
+  .modal__content .modal__tabs {
+    flex-wrap: wrap;
+  }
 }
 .modal__content .modal__tabs .modal__circle {
   padding: 0;
@@ -834,10 +863,18 @@ h3 {
   border-radius: 100px;
   border: 1px solid #665F55;
   padding: 10px 78px;
+  cursor: pointer;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 150%;
   font-style: normal;
+}
+@media (hover: hover) {
+  .modal__content .modal__close:hover {
+    background-color: #665F55;
+    border-color: #665F55;
+    color: #E1D4C9;
+  }
 }
 
 /*# sourceMappingURL=style-menu.css.map */

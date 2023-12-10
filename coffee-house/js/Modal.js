@@ -127,6 +127,7 @@ export class Modal {
   openModal() {
     document.body.prepend(this.generateModal());
     this.removeScroll();
+    
     this.buttonsCloseClickHandler();
     this.buttonsSizeClickHandler();
     this.buttonsAdditivesClickHandler();

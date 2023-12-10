@@ -19,9 +19,10 @@
 }
 
 .slider__arrow {
-    @media (max-width: 730px) {
+    
+    @include mixins.media-tablet-middle {
         display: none;
-    }
+    } 
 }
 
 .slider__content {
@@ -47,9 +48,9 @@
         margin: auto;
         max-width: 480px;
 
-        @media (max-width: 730px) {
+        @include mixins.media-tablet-middle {
             max-width: 348px;
-        }
+        } 
     }
 
     .slide__description {

@@ -79,10 +79,11 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-
+        
         p {
             color: constants.$color-text-dark;
             @include mixins.font(1.6rem, 400, 150%);
+            letter-spacing: -0.1px;
         }
     }
 

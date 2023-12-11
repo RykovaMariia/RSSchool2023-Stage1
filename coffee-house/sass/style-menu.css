@@ -619,6 +619,7 @@ h3 {
   font-weight: 400;
   line-height: 150%;
   font-style: normal;
+  letter-spacing: -0.1px;
 }
 .menu-item .menu-price {
   position: absolute;
@@ -823,6 +824,7 @@ h3 {
   display: flex;
   gap: 8px;
   flex-direction: column;
+  letter-spacing: -0.1px;
 }
 .modal__content .modal__tabs {
   display: flex;

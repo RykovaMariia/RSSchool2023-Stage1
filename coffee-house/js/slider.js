@@ -111,7 +111,6 @@ function mouseSwipeHandler() {
 
     if (runtime <= maxTime) {
       if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
-        console.log("object");
         if (distanceX > 0) {
           moveLeft();
         } else {
@@ -146,7 +145,6 @@ function touchSwipeHandler() {
 
   slider.addEventListener("touchstart", function (eventStart) {
     let target = eventStart.target;
-    console.log(target);
     if (
       target.classList.contains("slider__arrow") ||
       target.classList.contains("icon_arrow")
@@ -166,7 +164,6 @@ function touchSwipeHandler() {
 
   slider.addEventListener("touchstart", function (eventStart) {
     let touch = eventStart.changedTouches[0];
-    console.log(eventStart);
     x = touch.pageX;
     y = touch.pageY;
     time = new Date().getTime();
@@ -185,7 +182,6 @@ function touchSwipeHandler() {
 
     if (runtime <= maxTime) {
       if (Math.abs(distanceX) >= maxDistanceX && distanceY <= maxDistanceY) {
-        console.log("object");
         if (distanceX > 0) {
           moveLeft();
         } else if (distanceX < 0) {

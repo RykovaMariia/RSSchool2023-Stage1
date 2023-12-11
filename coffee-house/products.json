@@ -434,7 +434,7 @@
     {
       "name": "Marble cheesecake",
       "urlToImage": "./img/menu/dessert/dessert-1.jpg",
-      "description": "Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
+      "description": "Philadelphia cheese with lemon zest on a light sponge cake and  red currant jam",
       "price": "3.50",
       "category": "dessert",
       "sizes": {

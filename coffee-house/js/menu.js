@@ -74,7 +74,6 @@ const generateProducts = (productList, categoryCard) => {
   } else {
     addLoadMore();
   }
-
   return productCards;
 };
 

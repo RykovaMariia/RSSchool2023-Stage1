@@ -1,3 +1,5 @@
+import { alphabet } from "./alphabet.js";
+
 export class HangmanGame {
   constructor({ word, hint, incorrectGuesses = 0 }) {
     this.word = word;
@@ -20,35 +22,6 @@ export class HangmanGame {
   }
 
   generateMain() {
-    const alphabet = [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-    ];
-
     let main = document.createElement("main");
     main.className = "game";
 
@@ -190,6 +163,7 @@ export class HangmanGame {
     document.body.prepend(this.generateHeader());
 
     this.buttonsClickHandler();
+    this.buttonsKeyboardHandler();
   }
 
   buttonsClickHandler() {
@@ -200,19 +174,41 @@ export class HangmanGame {
         const indexes = this.searchIndexes(letter);
 
         if (indexes.length > 0) {
-          this.hideButton(e);
+          this.hideButton(e.target);
           this.unhideLetter(indexes, letter);
         } else {
           this.addIncorrectGuesses();
           this.drawHangman();
-          this.hideButton(e);
+          this.hideButton(e.target);
         }
       }
     });
   }
 
+  buttonsKeyboardHandler() {
+    document.addEventListener('keyup', (e) => {
+      let indexLetter = alphabet.indexOf(e.key);
+      const el = document.querySelector(`.keyboard__button:nth-child(${indexLetter + 1})`);
+      console.log(el);
+
+      if (indexLetter >= 0) {
+        let letter = e.key;
+        const indexes = this.searchIndexes(letter);
+
+        if (indexes.length > 0) {
+          this.hideButton(el);
+          this.unhideLetter(indexes, letter);
+        } else {
+          this.addIncorrectGuesses();
+          this.drawHangman();
+          this.hideButton(el);
+        }
+      }
+    })
+  }
+
   searchIndexes(letter) {
-    let currentWord = this.word.toUpperCase().split("");
+    let currentWord = this.word.split("");
 
     let index = [];
     currentWord.forEach((el, i) => {
@@ -223,9 +219,9 @@ export class HangmanGame {
     return index;
   }
 
-  hideButton(e) {
-    e.target.classList.add("keyboard__button_hide");
-    e.target.disabled = true;
+  hideButton(el) {
+    el.classList.add("keyboard__button_hide");
+    el.disabled = true;
   }
 
   unhideLetter(indexes, letter) {
@@ -278,9 +274,5 @@ export class HangmanGame {
           break;
       }
     }
-  }
-
-  win() {
-
   }
 }

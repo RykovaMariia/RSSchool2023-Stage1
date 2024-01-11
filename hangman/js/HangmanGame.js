@@ -279,4 +279,8 @@ export class HangmanGame {
       }
     }
   }
+
+  win() {
+
+  }
 }

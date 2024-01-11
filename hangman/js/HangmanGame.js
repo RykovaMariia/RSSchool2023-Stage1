@@ -14,14 +14,48 @@ export class HangmanGame {
     return header;
   }
 
-  generateMain() {
-    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  hideWord() {
+    console.log(this.word);
+    return this.word.replace(/[a-zA-Z]/g, "_");
+  }
 
-    let template = "";
+  generateMain() {
+    const alphabet = [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+    ];
+
     let main = document.createElement("main");
     main.className = "game";
 
-    template += '<section class="picture">';
+    let sectionPicture = document.createElement("section");
+    sectionPicture.className = "picture";
+    let template = "";
+
     template += `<svg class="picture__img" x="0" y="0" version="1.0" xmlns="http://www.w3.org/2000/svg"
     width="100%"
     height="1080.000000pt"
@@ -97,31 +131,152 @@ export class HangmanGame {
     191 -184 240 -35 50 -71 96 -79 103 -23 17 -56 15 -75 -6z"
                 />
     </g></svg>`;
-    template += "</section>";
 
-    template += `<section class="gameplay">`;
+    sectionPicture.innerHTML = template;
 
-    template += `<div class="gameplay__word">${this.word}</div>`;
-    template += `<div class="hint">Hint:
-    <span class="hint__text">${this.hint}</span>
-    </div>`;
+    let sectionGameplay = document.createElement("section");
+    sectionGameplay.className = "gameplay";
 
-    template += `<div class="incorrect-guesses">
-    Incorrect guesses: <span class="incorrect-guesses__count">${this.incorrectGuesses}</span></div>`
+    let divWord = document.createElement("div");
+    divWord.className = "gameplay__word";
+    divWord.innerText = `${this.hideWord()}`;
 
-    template += `<div class="keyboard">`
-    alphabet.forEach(el => template += `<button class="keyboard__button">${el}</button>`)
-    template += `</div>`
+    let divHint = document.createElement("div");
+    divHint.className = "hint";
+    divHint.innerText = `Hint: `;
 
-    template += "</section>";
+    let spanHint = document.createElement("span");
+    spanHint.className = "hint__text";
+    spanHint.innerText = `${this.hint}`;
 
-    main.innerHTML = template;
+    divHint.append(spanHint);
+
+    let divGuesses = document.createElement("div");
+    divGuesses.className = "incorrect-guesses";
+    divGuesses.innerText = `Incorrect guesses: `;
+
+    let spanGuessesCount = document.createElement("span");
+    spanGuessesCount.className = "incorrect-guesses__count";
+    spanGuessesCount.innerText = `${this.incorrectGuesses}`;
+    let spanGuesses = document.createElement("span");
+    spanGuesses.innerText = `/6`;
+
+    divGuesses.append(spanGuessesCount);
+    divGuesses.append(spanGuesses);
+
+    let divKeyboard = document.createElement("div");
+    divKeyboard.className = "keyboard";
+
+    alphabet.forEach((el) => {
+      let divKey = document.createElement("button");
+      divKey.className = "keyboard__button";
+      divKey.innerText = `${el}`;
+
+      divKeyboard.append(divKey);
+    });
+
+    sectionGameplay.append(divWord);
+    sectionGameplay.append(divHint);
+    sectionGameplay.append(divGuesses);
+    sectionGameplay.append(divKeyboard);
+
+    main.append(sectionPicture);
+    main.append(sectionGameplay);
     return main;
   }
 
   showGame() {
     document.body.prepend(this.generateMain());
     document.body.prepend(this.generateHeader());
-    
+
+    this.buttonsClickHandler();
+  }
+
+  buttonsClickHandler() {
+    document.querySelector(".keyboard").addEventListener("click", (e) => {
+      if (e.target.classList.contains("keyboard__button")) {
+        let letter = e.target.innerText;
+
+        const indexes = this.searchIndexes(letter);
+
+        if (indexes.length > 0) {
+          this.hideButton(e);
+          this.unhideLetter(indexes, letter);
+        } else {
+          this.addIncorrectGuesses();
+          this.drawHangman();
+          this.hideButton(e);
+        }
+      }
+    });
+  }
+
+  searchIndexes(letter) {
+    let currentWord = this.word.toUpperCase().split("");
+
+    let index = [];
+    currentWord.forEach((el, i) => {
+      if (el === letter) {
+        index.push(i);
+      }
+    });
+    return index;
+  }
+
+  hideButton(e) {
+    e.target.classList.add("keyboard__button_hide");
+    e.target.disabled = true;
+  }
+
+  unhideLetter(indexes, letter) {
+    const wordEl = document.querySelector(".gameplay__word");
+    const displayWord = wordEl.innerText.split("");
+
+    indexes.forEach((i) => (displayWord[i] = letter));
+
+    wordEl.innerText = displayWord.join("");
+  }
+
+  addIncorrectGuesses() {
+    this.incorrectGuesses++;
+    document.querySelector(".incorrect-guesses__count").innerText =
+      this.incorrectGuesses;
+  }
+
+  drawHangman() {
+    if (this.incorrectGuesses > 0) {
+      switch (this.incorrectGuesses) {
+        case 1:
+          document
+            .querySelector(".picture__head")
+            .classList.add("picture__head_unhide");
+          break;
+        case 2:
+          document
+            .querySelector(".picture__body")
+            .classList.add("picture__body_unhide");
+          break;
+        case 4:
+          document
+            .querySelector(".picture__right-hand")
+            .classList.add("picture__right-hand_unhide");
+          break;
+        case 3:
+          document
+            .querySelector(".picture__left-hand")
+            .classList.add("picture__left-hand_unhide");
+          break;
+        case 5:
+          document
+            .querySelector(".picture__left-leg")
+            .classList.add("picture__left-leg_unhide");
+          break;
+        case 6:
+          document
+            .querySelector(".picture__right-leg")
+            .classList.add("picture__right-leg_unhide");
+          break;
+      }
+    }
   }
 }

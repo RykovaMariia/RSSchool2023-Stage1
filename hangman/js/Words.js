@@ -1,6 +1,6 @@
 export const words = [
   {
-    word: 'push',
+    word: 'PUSH',
     hint: 'What method is used to add an element to the end of an array in JavaScript?'
   },
 

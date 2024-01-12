@@ -1,4 +1,4 @@
-import { alphabet } from "./alphabet.js";
+import { alphabet } from "./alphabetLetter.js";
 
 export class HangmanGame {
   constructor({ word, hint, incorrectGuesses = 0 }) {

@@ -37,15 +37,14 @@ function isWin(word) {
   document.addEventListener("keyup", (e) => { 
       const isWinOrLoose = localStorage.getItem("isWin");
       if(isWinOrLoose === 'false') {
-        setTimeout(() =>{
-          alert("loose")
-          localStorage.setItem("isWin", '')
-        }, 500)
+        const modal = new Modal(word, false);
+        modal.showModal()
+        localStorage.setItem("isWin", '')
         
       } else if (isWinOrLoose === 'true') {
 
-        alert("win");
-
+        const modal = new Modal(word, true);
+        modal.showModal()
         localStorage.setItem("isWin", '')
       ;
     }

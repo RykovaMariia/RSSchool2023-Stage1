@@ -65,6 +65,12 @@ main {
 .picture__img .picture__right-leg_unhide {
   fill: #1e1c12;
 }
+.picture__img .st0 {
+  fill: none;
+}
+.picture__img .st0_unhide {
+  fill: aliceblue;
+}
 
 .gameplay {
   box-sizing: border-box;

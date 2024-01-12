@@ -1,7 +1,6 @@
 import { words } from "./Words.js";
 import { HangmanGame } from "./HangmanGame.js";
 
-
 window.onload = function () {
   playGame();
 
@@ -9,9 +8,29 @@ window.onload = function () {
 
 function playGame() {
   const game = new HangmanGame(words[randomWord()]);
-  game.showGame()
+  game.showGame();
+  isWin(game);
+}
 
-  
+function isWin(game) {
+  document.querySelector(".keyboard").addEventListener("click", e => {
+    if (e.target.classList.contains("keyboard__button")) {
+      const isWinOrLoose = localStorage.getItem("isWin");
+      if(isWinOrLoose === 'false') {
+        setTimeout(() =>{
+          alert("loose")
+          localStorage.setItem("isWin", '')
+        }, 500)
+        
+      } else if (isWinOrLoose === 'true') {
+
+        alert("win");
+
+        localStorage.setItem("isWin", '')
+      }
+      ;
+    }
+  })
 }
 
 function randomWord() {

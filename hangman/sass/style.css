@@ -1,7 +1,7 @@
 html {
   font-size: 30px;
   font-family: "Rubik Doodle Shadow", system-ui;
-  color: #1e1c12;
+  color: #000;
 }
 
 body {
@@ -57,6 +57,37 @@ main {
   background-color: #daaaf2;
 }
 
+.alarm-window {
+  width: 230px;
+  height: 230px;
+  position: absolute;
+  right: 10%;
+  top: 0;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.alarm-window_open {
+  opacity: 1;
+}
+
+.modal-alarm {
+  width: 230px;
+  position: absolute;
+  z-index: 1;
+}
+
+.alarm-lang {
+  font-size: 0.4rem;
+  text-align: center;
+  position: relative;
+  padding: 70px 40px 80px 80px;
+  z-index: 10;
+  line-height: 0.6rem;
+  letter-spacing: 0.05rem;
+  color: #000;
+}
+
 .picture {
   width: 40%;
 }
@@ -91,7 +122,7 @@ main {
 .picture__img .picture__left-hand_unhide,
 .picture__img .picture__left-leg_unhide,
 .picture__img .picture__right-leg_unhide {
-  fill: #1e1c12;
+  fill: #000;
 }
 .picture__img .st0 {
   fill: none;
@@ -175,10 +206,10 @@ main {
 
 .modal__window {
   position: absolute;
-  width: 30%;
+  width: 400px;
   border-radius: 30px;
-  border: #1e1c12 2px solid;
-  border-color: #1e1c12;
+  border: #000 2px solid;
+  border-color: #000;
   background-color: #e0e0e0;
   padding: 2%;
   display: flex;

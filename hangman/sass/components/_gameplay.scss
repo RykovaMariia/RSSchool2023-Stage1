@@ -1,4 +1,5 @@
 @use "../abstracts/mixins";
+@use "../abstracts/constants";
 
 .gameplay {
   box-sizing: border-box;
@@ -47,7 +48,7 @@
 }
 
 .incorrect-guesses__count {
-  color: #a1458a;
+  color: constants.$color-accent;
   font-size: 0.8rem;
   
 }
@@ -61,23 +62,3 @@
   gap: 10px;
 }
 
-.keyboard__button {
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 60px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #b3f2dd;
-  border-color: #82b0a1;
-
-  font-family: 'Rubik Doodle Shadow', system-ui;
-  font-size: 0.7rem;
-
-  opacity: 1;
-  transition: opacity 1s ease;
-
-  &_hide {
-    opacity: 0;
-    cursor: default;
-  }
-}

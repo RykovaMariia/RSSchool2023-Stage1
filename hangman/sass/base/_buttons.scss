@@ -1,0 +1,36 @@
+@use "../abstracts/constants";
+
+.button {
+  cursor: pointer;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  font-family: 'Rubik Doodle Shadow', system-ui;
+  font-size: 0.7rem;
+
+
+}
+
+.keyboard__button {
+  width: 60px;
+  
+  background-color: constants.$color-key;
+  border-color: constants.$color-key-border;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+
+  &_hide {
+    opacity: 0;
+    cursor: default;
+  }
+}
+
+.modal__button {
+  font-size: 0.9rem;
+  width: 200px;
+  height: 50px;
+  background-color: constants.$color-background-modal-button;
+}
+

@@ -18,7 +18,7 @@ export class HangmanGame {
   }
 
   hideWord() {
-    console.log(this.word);
+    console.log(`answer: ${this.word.toUpperCase()}`);
     this.displayWord = this.word.replace(/[a-zA-Z]/g, "_");
     return this.displayWord 
   }
@@ -121,7 +121,7 @@ export class HangmanGame {
 
     alphabet.forEach((el) => {
       let divKey = document.createElement("button");
-      divKey.className = "keyboard__button";
+      divKey.className = "button keyboard__button";
       divKey.innerText = `${el}`;
 
       divKeyboard.append(divKey);
@@ -147,9 +147,7 @@ export class HangmanGame {
     }
 
   buttonsClickHandler() {
-    document.querySelector(".keyboard").addEventListener("click", this);
-
-    this.handleEvent = function (e) {
+    document.querySelector(".keyboard").addEventListener("click", (e) => {
         if (e.target.classList.contains("keyboard__button")) {
           let letter = e.target.innerText;
   
@@ -163,13 +161,15 @@ export class HangmanGame {
             this.hideButton(e.target);
           }
         }
-    }
+    })
   }
 
   buttonsKeyboardHandler() {
     const clickedKey = [];
-    document.addEventListener("keyup", (e) => {
-      let letter = e.key;
+
+    document.addEventListener("keyup", this)
+    this.handleEvent = function (e) {
+      let letter = e.code.slice(3).toLowerCase();
       let indexLetter = alphabet.indexOf(letter);
 
       if (!clickedKey.includes(letter)) {
@@ -191,7 +191,7 @@ export class HangmanGame {
         clickedKey.push(letter);
       }
       }
-    });
+    };
   }
 
   searchIndexes(letter) {
@@ -282,7 +282,7 @@ export class HangmanGame {
   getIsWin(boolean) {
     const isWin = boolean;
     if(isWin || isWin === false) {
-      document.querySelector(".keyboard").removeEventListener("click", this);
+      document.removeEventListener("keyup", this);
       localStorage.setItem('isWin', isWin);
     }
   }

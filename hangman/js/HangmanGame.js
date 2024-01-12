@@ -1,4 +1,5 @@
-import { alphabet } from "./alphabetLetter.js";
+import { alphabetEng } from "./alphabetLetter.js";
+import { alphabetRu } from "./alphabetLetter.js";
 
 export class HangmanGame {
   constructor({ word, hint, incorrectGuesses = 0 }) {
@@ -7,6 +8,8 @@ export class HangmanGame {
     this.incorrectGuesses = incorrectGuesses;
     this.displayWord = this.hideWord();
   }
+
+  clickedKey = [];
 
   generateHeader() {
     let header = document.createElement("header");
@@ -18,9 +21,9 @@ export class HangmanGame {
   }
 
   hideWord() {
-    console.log(`answer: ${this.word.toUpperCase()}`);
+    console.info(`answer: ${this.word.toUpperCase()}`);
     this.displayWord = this.word.replace(/[a-zA-Z]/g, "_");
-    return this.displayWord 
+    return this.displayWord;
   }
 
   generateMain() {
@@ -119,7 +122,7 @@ export class HangmanGame {
     let divKeyboard = document.createElement("div");
     divKeyboard.className = "keyboard";
 
-    alphabet.forEach((el) => {
+    alphabetEng.forEach((el) => {
       let divKey = document.createElement("button");
       divKey.className = "button keyboard__button";
       divKey.innerText = `${el}`;
@@ -137,59 +140,87 @@ export class HangmanGame {
     return main;
   }
 
+  generateAlarm() {
+    let modalWindow = document.createElement('div');
+    modalWindow.className = 'alarm-window';
+
+    let img = document.createElement('img');
+    img.className = 'modal-alarm';
+    img.setAttribute('src', './assets/alarm.gif');
+    img.setAttribute('alt', '');
+
+    let modal = document.createElement('div');
+    modal.className = 'alarm-lang';
+    modal.innerText = 'please change the language to English';
+
+    modalWindow.append(img);
+    modalWindow.append(modal);
+    return modalWindow;
+  }
+
   showGame() {
     document.body.prepend(this.generateMain());
     document.body.prepend(this.generateHeader());
+    document.body.prepend(this.generateAlarm());
 
     this.buttonsClickHandler();
     this.buttonsKeyboardHandler();
-   
-    }
+  }
 
   buttonsClickHandler() {
     document.querySelector(".keyboard").addEventListener("click", (e) => {
-        if (e.target.classList.contains("keyboard__button")) {
-          let letter = e.target.innerText;
-  
-          const indexes = this.searchIndexes(letter);
-  
-          if (indexes.length > 0) {
-            this.hideButton(e.target);
-            this.unhideLetter(indexes, letter);
-          } else {
-            this.addIncorrectGuesses();
-            this.hideButton(e.target);
-          }
-        }
-    })
-  }
+      if (e.target.classList.contains("keyboard__button")) {
+        let letter = e.target.innerText;
 
-  buttonsKeyboardHandler() {
-    const clickedKey = [];
-
-    document.addEventListener("keyup", this)
-    this.handleEvent = function (e) {
-      let letter = e.code.slice(3).toLowerCase();
-      let indexLetter = alphabet.indexOf(letter);
-
-      if (!clickedKey.includes(letter)) {
-      const el = document.querySelector(
-        `.keyboard__button:nth-child(${indexLetter + 1})`
-      );
-
-
-      if (indexLetter >= 0) {
         const indexes = this.searchIndexes(letter);
 
         if (indexes.length > 0) {
-          this.hideButton(el);
+          this.hideButton(e.target);
           this.unhideLetter(indexes, letter);
         } else {
           this.addIncorrectGuesses();
-          this.hideButton(el);
+          this.hideButton(e.target);
         }
-        clickedKey.push(letter);
+        this.clickedKey.push(letter);
       }
+    });
+  }
+
+  buttonsKeyboardHandler() {
+
+    document.addEventListener("keyup", this);
+    this.handleEvent = function (e) {
+      let letter = e.key.toLowerCase();
+      let indexEngLetter = alphabetEng.indexOf(letter);
+      let indexRuLetter = alphabetRu.indexOf(letter);
+
+      if (!clickedKey.includes(letter)) {
+        const el = document.querySelector(
+          `.keyboard__button:nth-child(${indexEngLetter + 1})`
+        );
+
+        if (indexEngLetter >= 0) {
+          const indexes = this.searchIndexes(letter);
+
+          if (indexes.length > 0) {
+            this.hideButton(el);
+            this.unhideLetter(indexes, letter);
+          } else {
+            this.addIncorrectGuesses();
+            this.hideButton(el);
+          }
+          clickedKey.push(letter);
+        }
+        if (indexRuLetter >= 0) {
+
+          const alarm = document.querySelector('.alarm-window');
+
+          alarm.classList.add("alarm-window_open");
+
+          setTimeout(() => {
+            alarm.classList.remove("alarm-window_open");
+          }, 4000)
+        }
       }
     };
   }
@@ -216,27 +247,26 @@ export class HangmanGame {
     this.displayWord = this.displayWord.split("");
 
     indexes.forEach((i) => (this.displayWord[i] = letter));
-    
+
     this.displayWord = this.displayWord.join("");
     wordEl.innerText = this.displayWord;
 
-    if (!this.displayWord.includes('_')) {
+    if (!this.displayWord.includes("_")) {
       this.getIsWin(true);
     }
   }
 
   addIncorrectGuesses() {
     this.incorrectGuesses++;
-    if(this.incorrectGuesses <= 6){
+    if (this.incorrectGuesses <= 6) {
       document.querySelector(".incorrect-guesses__count").innerText =
-      this.incorrectGuesses;
+        this.incorrectGuesses;
       this.drawHangman();
-    } 
+    }
 
     if (this.incorrectGuesses >= 6) {
       this.getIsWin(false);
     }
-    
   }
 
   drawHangman() {
@@ -281,9 +311,9 @@ export class HangmanGame {
 
   getIsWin(boolean) {
     const isWin = boolean;
-    if(isWin || isWin === false) {
+    if (isWin || isWin === false) {
       document.removeEventListener("keyup", this);
-      localStorage.setItem('isWin', isWin);
+      localStorage.setItem("isWin", isWin);
     }
   }
 }

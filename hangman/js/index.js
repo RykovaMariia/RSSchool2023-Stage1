@@ -3,6 +3,9 @@ import { HangmanGame } from "./HangmanGame.js";
 import { Modal } from "./Modal.js";
 
 window.onload = function () {
+
+  console.warn('♡ Dear reviewer ♡ \n\n please use the English keyboard layout\n ');
+
   playGame();
 
 };

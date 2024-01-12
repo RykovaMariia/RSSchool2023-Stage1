@@ -5,6 +5,7 @@ export class HangmanGame {
     this.word = word;
     this.hint = hint;
     this.incorrectGuesses = incorrectGuesses;
+    this.displayWord = this.hideWord();
   }
 
   generateHeader() {
@@ -17,8 +18,9 @@ export class HangmanGame {
   }
 
   hideWord() {
-    console.log(this.word);
-    return this.word.replace(/[a-zA-Z]/g, "_");
+    console.log(`answer: ${this.word.toUpperCase()}`);
+    this.displayWord = this.word.replace(/[a-zA-Z]/g, "_");
+    return this.displayWord 
   }
 
   generateMain() {
@@ -29,81 +31,58 @@ export class HangmanGame {
     sectionPicture.className = "picture";
     let template = "";
 
-    template += `<svg class="picture__img" x="0" y="0" version="1.0" xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="1080.000000pt"
-    viewBox="0 0 1080.000000 1080.000000"
-    preserveAspectRatio="xMidYMid meet"
-    >
-    <g
-    transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)"
-              >
-                <path
-                  class="picture__gallows"
-                  d="M7247 8416 c-21 -8 -77 -36 -125 -64 -126 -72 -133 -75 -334 -151
-    -540 -204 -1057 -336 -1788 -456 -273 -45 -371 -59 -945 -135 -659 -88 -766
-    -103 -1173 -166 -232 -35 -561 -87 -730 -114 -169 -28 -312 -50 -318 -50 -14
-    0 -46 122 -84 317 -46 239 -77 323 -130 350 -57 29 -194 1 -283 -58 -84 -56
-    -84 -122 3 -320 86 -196 137 -335 127 -346 -12 -11 -730 -93 -823 -93 -40 0
-    -42 -1 -48 -37 -10 -64 -7 -233 6 -276 8 -26 23 -47 42 -59 48 -30 197 -20
-    421 31 194 43 317 66 407 76 l56 6 21 -88 c32 -140 68 -355 87 -528 l17 -160
-    -71 -150 c-39 -82 -72 -156 -74 -164 -2 -8 28 -33 77 -62 44 -27 85 -52 92
-    -56 26 -17 34 -510 40 -2304 l6 -1806 -394 -7 c-273 -5 -396 -11 -400 -18 -14
-    -23 -33 -144 -33 -209 0 -81 17 -123 59 -149 32 -20 49 -20 716 -20 376 0 731
-    4 789 10 232 22 390 30 710 40 376 11 565 21 950 50 146 11 429 31 630 45 201
-    14 426 30 500 35 404 29 1660 64 2675 75 559 6 1104 25 1470 52 121 8 405 18
-    630 22 388 6 412 7 449 27 66 34 80 62 84 164 5 106 -14 173 -59 216 -30 29
-    -31 29 -152 28 -95 -1 -156 -8 -273 -32 -204 -42 -267 -49 -649 -72 -466 -28
-    -771 -38 -1480 -50 -1438 -23 -2294 -48 -2740 -80 -77 -6 -246 -17 -375 -25
-    -129 -9 -320 -22 -425 -30 -809 -62 -909 -67 -1602 -72 l-673 -5 0 808 c0 612
-    -4 856 -15 1004 -19 250 -32 675 -45 1420 -9 520 -24 912 -46 1170 l-6 75 149
-    240 c208 335 261 429 405 717 16 31 36 59 46 62 9 3 179 30 377 60 349 53 572
-    84 1295 181 752 101 1214 181 1650 286 91 22 173 42 183 45 16 5 17 -12 17
-    -261 0 -242 2 -269 19 -303 41 -81 133 -81 195 1 40 52 83 154 110 260 24 93
-    66 344 66 397 0 23 11 29 173 83 94 32 235 83 312 113 77 30 182 66 234 80 52
-    14 112 32 133 41 51 20 88 66 88 108 0 45 -32 144 -63 197 -49 84 -94 108
-    -160 84z m-5087 -1451 c0 -24 -198 -371 -206 -362 -4 3 -57 254 -67 312 -1 5
-    50 19 113 31 122 23 160 27 160 19z"
-                />
-                <path
-                  class="picture__head"
-                  d="M6334 6730 c-109 -12 -172 -28 -233 -60 -31 -16 -76 -34 -101 -40
-    -133 -34 -261 -143 -328 -280 -67 -138 -115 -374 -115 -570 -1 -114 2 -133 30
-    -212 65 -187 202 -352 354 -427 105 -51 202 -76 397 -101 277 -36 464 -24 599
-    39 205 96 368 269 434 458 97 279 43 725 -110 917 -77 97 -256 203 -411 245
-    -135 37 -342 49 -516 31z"
-                />
-                <path
-                  class="picture__body"
-                  d="M6544 4695 c-25 -38 -37 -477 -27 -970 4 -220 7 -431 5 -470 -4 -103
-    6 -173 30 -197 16 -16 28 -19 62 -14 61 10 86 30 86 69 0 18 -4 37 -9 42 -8
-    10 -24 507 -37 1203 -7 363 -7 362 -64 362 -20 0 -35 -8 -46 -25z"
-                />
-                <path
-                  class="picture__right-hand"
-                  d="M7117 4572 c-32 -35 -21 -64 50 -132 89 -87 209 -250 285 -388 102
-    -184 167 -279 200 -293 56 -23 110 29 88 86 -32 84 -226 377 -373 563 -65 82
-    -180 182 -211 182 -12 0 -30 -8 -39 -18z"
-                />
-                <path
-                  class="picture__left-hand"
-                  d="M6046 4559 c-99 -53 -274 -201 -459 -386 -140 -142 -163 -176 -145
-    -223 11 -31 25 -40 62 -40 24 0 62 33 235 203 113 112 252 240 309 286 56 46
-    102 87 102 92 0 4 3 14 6 23 6 17 -37 66 -58 66 -7 0 -31 -9 -52 -21z"
-                />
-                <path
-                  class="picture__left-leg"
-                  d="M6078 2803 c-76 -80 -459 -618 -507 -710 -26 -52 -26 -64 0 -97 23
-    -29 54 -33 86 -11 12 8 91 120 176 248 84 127 201 299 260 381 59 82 107 159
-    107 171 0 12 -8 29 -18 38 -30 28 -64 21 -104 -20z"
-                />
-                <path
-                  class="picture__right-leg"
-                  d="M7147 2722 c-41 -45 -3 -118 169 -327 63 -77 165 -213 226 -303 61
-    -90 119 -167 129 -173 48 -25 99 3 99 57 0 46 -46 112 -285 409 -66 83 -149
-    191 -184 240 -35 50 -71 96 -79 103 -23 17 -56 15 -75 -6z"
-                />
-    </g></svg>`;
+    template += `<svg class="picture__img" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+    viewBox="0 0 1080 1080">
+ <g transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)">
+   <path class="picture__gallows" d="M7237.9,10511.7c-22.2-11.6-81.3-52.2-131.9-92.7c-133-104.3-140.4-108.7-352.5-218.8
+     c-569.9-295.6-1232.1-469.6-2003.5-643.4c-288.1-65.2-391.5-85.5-997.3-195.6c-695.4-127.5-808.4-149.2-1237.9-240.5
+     c-244.8-50.7-495.1-91.8-673.5-130.9c-178.3-40.6-329.3-72.4-335.6-72.4c-14.8,0-101.6,290.8-141.7,573.3
+     c-48.5,346.3-81.3,468-137.2,507.1c-60.2,42-204.7,1.4-298.6-84c-88.6-81.1-88.6-176.8,3.2-463.6c90.8-284,197.6-599.4,187.1-615.3
+     C1105.8,8818.8,348.1,8700,250,8700c-42.2,0-44.3-1.4-50.7-53.6c-10.6-92.7-60.5-223.6-46.7-285.9c8.4-37.7,24.3-68.1,44.3-85.5
+     c50.7-43.5,207.9-29,444.3,44.9c204.7,62.3,334.5,95.6,429.5,110.1l59.1,8.7l22.2-127.5c33.8-202.8,71.8-514.3,91.8-765l17.9-231.8
+     l-74.9-217.3c-41.2-118.8-76-226-78.1-237.6s29.5-47.8,81.3-89.8c46.4-39.1,89.7-75.3,97.1-81.1c27.4-24.6,35.9-738.9,42.2-3338.1
+     L1355.4,526l-415.8-10.1c-288.1-7.2-417.9-15.9-422.1-26.1c-14.8-33.3-54.7-0.8-54.7-94.9c0-117.4,17.9-178.2,62.3-215.9
+     c33.8-29,51.7-29,755.6-29c396.8,0,771.4,5.8,832.6,14.5c244.8,31.9,411.6,43.5,749.3,58c396.8,15.9,596.2,30.4,1002.5,72.4
+     c154.1,15.9,452.7,44.9,664.8,65.2c212.1,20.3,449.6,43.5,527.6,50.7c426.3,42,1751.8,92.7,2822.9,108.7
+     c589.9,8.7,1165.1,36.2,1551.3,75.3c127.7,11.6,427.4,26.1,664.8,31.9c409.5,8.7,344.4,5.6,431.1,1.1
+     c60,10.7,132.5,44.4,131.4,134.9c5.3,153.6-8.3,154.4-55.8,216.7c-31.7,42-32.7,42-160.4,40.6c-100.3-1.4-164.6-11.6-288.1-46.4
+     c-215.3-60.9-281.8-71-684.9-104.3c-491.8-40.6-813.6-55.1-1561.8-72.4C6390.6,763.6,5500.7,756.4,5030,710
+     c-81.3-8.7-259.6-24.6-395.7-36.2c-136.1-13-337.7-31.9-448.5-43.5C3332,540.5,3226.5,533.2,2495.2,526l-710.2-7.2l-19.8,1378.5
+     c0,886.7-4.2,1240.2-15.8,1454.6c-20.1,362.2-33.8,978-47.5,2057.3c-9.5,753.4-25.3,1321.3-48.5,1695.1l-6.3,108.7l157.2,347.7
+     c219.5,485.4,275.4,621.5,427.4,1038.8c16.9,44.9,38,85.5,48.5,89.8c9.5,4.3,188.9,43.5,397.8,86.9
+     c368.3,76.8,603.6,121.7,1366.6,262.2c737.3,136,1184.2,230.2,1741.2,414.4c96,31.9,182.6,60.9,193.1,65.2
+     c16.9,7.2,17.9-17.4,17.9-378.1c0-350.6,2.1-389.7,20.1-439c43.3-117.4,29.9-162,95.3-43.2c42.2,75.3-32.9,304.2-4.4,457.8
+     c0,152.7-29.1,360,26.7,440c19.1,27.3,285.6,140.8,456.5,219c99.2,46.4,248,120.3,329.3,163.7c81.3,43.5,192.1,95.6,246.9,115.9
+     c54.9,20.3,118.2,46.4,140.4,59.4c53.8,29,92.9,95.6,92.9,156.5c0,65.2,39,43.1,6.3,119.9
+     C7355,10511.7,7307.5,10546.5,7237.9,10511.7z M1796.8,8575c0-34.8-208.9-537.5-217.4-524.5c-4.2,4.3-60.2,368-70.7,452
+     c-1.1,7.2,52.8,27.5,119.2,44.9C1756.7,8580.8,1796.8,8586.6,1796.8,8575z"/>
+   <path class="picture__head" d="M6675.5,8887.2c-94.7,7.3-151.5,2.1-210.2-20.3c-29.8-11.1-71.8-21.7-94.3-23.4c-119.9-11.3-252.6-102.1-340.2-233.3
+     c-87.8-132.3-181.8-370.6-226.2-575.9c-26.7-119.2-28.5-139.6-22.7-227.5c12.5-207.7,90.6-405.5,201.9-511.8
+     c77-72.6,153.2-116.5,312-178.2c225.5-88.3,386-109.9,514.2-68.5c194.7,63.1,371.4,214.5,469.9,400.3
+     c145.1,274.4,200.6,751.3,115,980.3c-43,115.6-170,259.3-291.2,331.6C6998.3,8823.9,6826.4,8874.3,6675.5,8887.2z"/>
+   <path class="picture__body" d="M6257.5,7231.2c-39.5-58.7-58.4-736.7-42.6-1498.2c6.3-339.8,11-665.7,7.9-725.9c-6.3-159.1,9.5-267.2,47.3-304.3
+     c25.3-24.7,44.2-29.3,97.9-21.6c96.3,15.4,135.7,46.3,135.7,106.6c0,27.8-6.3,57.1-14.2,64.9c-12.6,15.4-37.9,783.1-58.4,1858.1
+     c-11,560.7-11,559.1-101,559.1C6298.5,7269.8,6274.8,7257.5,6257.5,7231.2z"/>
+   <path class="picture__right-hand" d="M6383.4,6908.1c-50.5-67.7-33.1-123.7,78.9-255.2c140.5-168.2,329.9-483.4,449.8-750.2c161-355.8,263.6-539.4,315.7-566.5
+     c88.4-44.5,173.6,56.1,138.9,166.3C7316.2,5664.9,7010,6231.4,6778,6591c-102.6,158.5-284.1,351.9-333,351.9
+     C6426,6942.9,6397.6,6927.4,6383.4,6908.1z"/>
+   <path class="picture__left-hand" d="M6099.7,6902.3c-156.2-102.5-432.4-388.6-724.4-746.3c-221-274.5-257.3-340.3-228.8-431.2c17.4-59.9,39.5-77.3,97.9-77.3
+     c37.9,0,97.9,63.8,370.9,392.5c178.3,216.5,397.7,464,487.7,553c88.4,88.9,161,168.2,161,177.9c0,7.7,4.7,27.1,9.5,44.5
+     c9.5,32.9-58.4,127.6-91.5,127.6C6170.7,6942.9,6132.8,6925.5,6099.7,6902.3z"/>
+   <path class="picture__left-leg" d="M6169.4,4808.7C6049.4,4654,5444.9,3613.8,5369.2,3436c-41-100.5-41-123.7,0-187.5c36.3-56.1,85.2-63.8,135.7-21.3
+     c18.9,15.5,143.6,232,277.8,479.5c132.6,245.5,317.2,578.1,410.3,736.6c93.1,158.5,168.9,307.4,168.9,330.6s-12.6,56.1-28.4,73.5
+     C6286.2,4901.5,6232.5,4888,6169.4,4808.7z"/>
+   <path class="picture__right-leg" d="M6391.3,4892.3c-64.7-87-4.7-228.1,266.7-632.2c99.4-148.9,260.4-411.8,356.7-585.8c96.3-174,187.8-322.9,203.6-334.5
+     c75.8-48.3,156.2,5.8,156.2,110.2c0,88.9-72.6,216.5-449.8,790.8c-104.2,160.5-235.2,369.3-290.4,464
+     c-55.2,96.7-112.1,185.6-124.7,199.1C6473.3,4936.8,6421.3,4932.9,6391.3,4892.3z"/>
+ </g>
+ <path  d="M752,182.7"/>
+ <path class="st0" d="M657.7,275.5c0,0,5.1,14.2,10.1,14.9c5,0.7-5.1-17.3-5.1-17.3s18.5-7.8,15.8-11.2s-18.3,6.9-18.3,6.9
+   s-10.6-18.8-11.1-14c-0.5,4.7,4.5,15.4,4.5,15.4s-13.9,7.6-12.3,10.9C642.9,284.4,657.7,275.5,657.7,275.5z"/>
+ <path class="st0" d="M722.9,288.1c0,0,6.1,13.5,10.2,14.1c4.1,0.6-6.1-16.2-6.1-16.2s15.1-8,12.8-10.8c-2.3-2.8-14.9,7.2-14.9,7.2
+   s-10.2-17.3-10.6-13.3c-0.4,4,5.2,14.5,5.2,14.5s-15.2,7.1-13.8,9.9C707,296.4,722.9,288.1,722.9,288.1z"/>
+ </svg>
+ `;
 
     sectionPicture.innerHTML = template;
 
@@ -112,7 +91,7 @@ export class HangmanGame {
 
     let divWord = document.createElement("div");
     divWord.className = "gameplay__word";
-    divWord.innerText = `${this.hideWord()}`;
+    divWord.innerText = `${this.displayWord}`;
 
     let divHint = document.createElement("div");
     divHint.className = "hint";
@@ -142,7 +121,7 @@ export class HangmanGame {
 
     alphabet.forEach((el) => {
       let divKey = document.createElement("button");
-      divKey.className = "keyboard__button";
+      divKey.className = "button keyboard__button";
       divKey.innerText = `${el}`;
 
       divKeyboard.append(divKey);
@@ -164,35 +143,42 @@ export class HangmanGame {
 
     this.buttonsClickHandler();
     this.buttonsKeyboardHandler();
-  }
+   
+    }
 
   buttonsClickHandler() {
     document.querySelector(".keyboard").addEventListener("click", (e) => {
-      if (e.target.classList.contains("keyboard__button")) {
-        let letter = e.target.innerText;
-
-        const indexes = this.searchIndexes(letter);
-
-        if (indexes.length > 0) {
-          this.hideButton(e.target);
-          this.unhideLetter(indexes, letter);
-        } else {
-          this.addIncorrectGuesses();
-          this.drawHangman();
-          this.hideButton(e.target);
+        if (e.target.classList.contains("keyboard__button")) {
+          let letter = e.target.innerText;
+  
+          const indexes = this.searchIndexes(letter);
+  
+          if (indexes.length > 0) {
+            this.hideButton(e.target);
+            this.unhideLetter(indexes, letter);
+          } else {
+            this.addIncorrectGuesses();
+            this.hideButton(e.target);
+          }
         }
-      }
-    });
+    })
   }
 
   buttonsKeyboardHandler() {
-    document.addEventListener('keyup', (e) => {
-      let indexLetter = alphabet.indexOf(e.key);
-      const el = document.querySelector(`.keyboard__button:nth-child(${indexLetter + 1})`);
-      console.log(el);
+    const clickedKey = [];
+
+    document.addEventListener("keyup", this)
+    this.handleEvent = function (e) {
+      let letter = e.code.slice(3).toLowerCase();
+      let indexLetter = alphabet.indexOf(letter);
+
+      if (!clickedKey.includes(letter)) {
+      const el = document.querySelector(
+        `.keyboard__button:nth-child(${indexLetter + 1})`
+      );
+
 
       if (indexLetter >= 0) {
-        let letter = e.key;
         const indexes = this.searchIndexes(letter);
 
         if (indexes.length > 0) {
@@ -200,11 +186,12 @@ export class HangmanGame {
           this.unhideLetter(indexes, letter);
         } else {
           this.addIncorrectGuesses();
-          this.drawHangman();
           this.hideButton(el);
         }
+        clickedKey.push(letter);
       }
-    })
+      }
+    };
   }
 
   searchIndexes(letter) {
@@ -226,17 +213,30 @@ export class HangmanGame {
 
   unhideLetter(indexes, letter) {
     const wordEl = document.querySelector(".gameplay__word");
-    const displayWord = wordEl.innerText.split("");
+    this.displayWord = this.displayWord.split("");
 
-    indexes.forEach((i) => (displayWord[i] = letter));
+    indexes.forEach((i) => (this.displayWord[i] = letter));
+    
+    this.displayWord = this.displayWord.join("");
+    wordEl.innerText = this.displayWord;
 
-    wordEl.innerText = displayWord.join("");
+    if (!this.displayWord.includes('_')) {
+      this.getIsWin(true);
+    }
   }
 
   addIncorrectGuesses() {
     this.incorrectGuesses++;
-    document.querySelector(".incorrect-guesses__count").innerText =
+    if(this.incorrectGuesses <= 6){
+      document.querySelector(".incorrect-guesses__count").innerText =
       this.incorrectGuesses;
+      this.drawHangman();
+    } 
+
+    if (this.incorrectGuesses >= 6) {
+      this.getIsWin(false);
+    }
+    
   }
 
   drawHangman() {
@@ -271,8 +271,19 @@ export class HangmanGame {
           document
             .querySelector(".picture__right-leg")
             .classList.add("picture__right-leg_unhide");
+          document
+            .querySelectorAll(".st0")
+            .forEach((el) => el.classList.add("st0_unhide"));
           break;
       }
+    }
+  }
+
+  getIsWin(boolean) {
+    const isWin = boolean;
+    if(isWin || isWin === false) {
+      document.removeEventListener("keyup", this);
+      localStorage.setItem('isWin', isWin);
     }
   }
 }

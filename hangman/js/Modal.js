@@ -85,10 +85,14 @@ export class Modal {
 
   showModal() {
     document.body.prepend(this.generateModal());
+    this.playAgainClickHandler();
   }
 
   playAgainClickHandler() {
-
+    document.querySelector('.modal__button').addEventListener('click', () => {
+      console.log("nooooo");
+      location. reload();
+    })
     
   }
 }

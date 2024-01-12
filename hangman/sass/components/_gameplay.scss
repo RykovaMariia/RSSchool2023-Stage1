@@ -1,26 +1,40 @@
+@use "../abstracts/mixins";
+
 .gameplay {
   box-sizing: border-box;
   width: 60%;
-  height: 95%;
-  margin-top: 5%;
 
   display: flex;
   flex-direction: column;
   gap: 30px;
   align-items: center;
+  justify-content: center;
+
+  @include mixins.media-middle {
+    width: 100%;
+    }
 }
 
 .gameplay__word {
-  font-size: 1.5rem;
+  margin: 10% auto 0 auto;
+  max-width: min-content;
+  font-size: 1.2rem;
   line-height: 2;
   letter-spacing: 1rem;
+
+  @include mixins.media-middle {
+    margin: 0 auto 0 auto;
+    }
+  
 }
 
 .hint {
   width: 80%;
-  font-size: 0.8rem;
+  margin: auto;
+  font-size: 0.7rem;
   align-content: center;
   letter-spacing: 0.1rem;
+  text-align: justify;
 }
 
 .hint__text {
@@ -28,13 +42,13 @@
 }
 
 .incorrect-guesses {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1rem;
 }
 
 .incorrect-guesses__count {
   color: #a1458a;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   
 }
 
@@ -52,12 +66,12 @@
   box-sizing: border-box;
   width: 60px;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #b3f2dd;
   border-color: #82b0a1;
 
   font-family: 'Rubik Doodle Shadow', system-ui;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
 
   opacity: 1;
   transition: opacity 1s ease;

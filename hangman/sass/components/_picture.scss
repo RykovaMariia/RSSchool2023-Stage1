@@ -1,14 +1,22 @@
 @use "../abstracts/constants";
+@use "../abstracts/mixins";
 
 .picture {
   width: 40%;
-
+  
 }
 
 .picture__img {
   width: 90%;
+  min-width: 400px;
   height:auto;
-  margin: 40px 0 0 10%;
+  margin: 10% 0 0 10%;
+
+  @include mixins.media-middle {
+    margin: auto;
+    min-width: none;
+    height: 40vh;
+    }
 
     .picture__gallows {
       fill: constants.$color-gallows;

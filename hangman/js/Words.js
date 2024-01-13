@@ -5,10 +5,6 @@ export const words = [
   },
 
   {
-    word: 'concatenation',
-    hint: 'What is the process called when combining two strings in JavaScript?'
-  },
-  {
     word: 'location',
     hint: 'What is the object that provides information about the current URL and allows interaction with it in JavaScript?'
   },
@@ -19,8 +15,8 @@ export const words = [
   },
 
   {
-    word: 'triple equals',
-    hint: 'Which operator is used for strict comparison of values and their types in JavaScript?'
+    word: 'opacity',
+    hint: 'What property is used to set the transparency of an element in CSS?'
   },
 
   {
@@ -46,5 +42,20 @@ export const words = [
   {
     word: 'break',
     hint: 'How can you break out of a loop in JavaScript?'
+  },
+
+  {
+    word: 'margin',
+    hint: "What property is used to specify the space around an element's content, outside of its border?"
+  },
+
+  {
+    word: 'display',
+    hint: 'Which CSS property is used to control the layout of elements in a page, either horizontally or vertically?'
+  },
+
+  {
+    word: 'color',
+    hint: 'What property is used to set the color of text in CSS?'
   },
 ];

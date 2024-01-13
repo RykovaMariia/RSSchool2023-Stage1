@@ -7,24 +7,31 @@
 
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  font-size: 0.7rem;
 
   @include mixins.media-middle {
     width: 100%;
+    font-size: 0.5rem;
+    gap: 30px;
     }
 }
 
 .gameplay__word {
-  margin: 10% auto 0 auto;
-  max-width: min-content;
+  margin: auto;
   font-size: 1.2rem;
   line-height: 2;
   letter-spacing: 1rem;
 
+  @include mixins.media-tablet {
+    font-size: 1rem;
+    }
+
   @include mixins.media-middle {
-    margin: 0 auto 0 auto;
+    font-size: 0.7rem;
+    letter-spacing: 0.7rem;
     }
   
 }
@@ -32,18 +39,16 @@
 .hint {
   width: 80%;
   margin: auto;
-  font-size: 0.7rem;
   align-content: center;
   letter-spacing: 0.1rem;
   text-align: justify;
-}
 
-.hint__text {
-  font-size: 0.7rem;
+  @include mixins.media-mobile {
+    width: 100%;
+  }
 }
 
 .incorrect-guesses {
-  font-size: 0.7rem;
   letter-spacing: 0.1rem;
 }
 
@@ -60,5 +65,10 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+
+  @include mixins.media-mobile {
+    width: 100%;
+    gap: 5px;
+  }
 }
 

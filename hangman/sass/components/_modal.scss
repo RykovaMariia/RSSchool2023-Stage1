@@ -1,4 +1,6 @@
 @use "../abstracts/constants";
+@use "../abstracts/mixins";
+
 
 .modal {
   position: fixed;
@@ -22,7 +24,7 @@
   border: constants.$color-text 2px solid;
   border-color: constants.$color-text;
   background-color: constants.$color-background-modal-window;
-  padding: 2%;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
@@ -31,6 +33,16 @@
   gap: 25px;
 
   font-size: 1.3rem;
+
+  @include mixins.media-tablet {
+    font-size: 1rem;
+  }
+
+  @include mixins.media-mobile {
+    width: 280px;
+    font-size: 0.9rem;
+    gap: 15px;
+  }
 }
 
 .modal__firework_right {
@@ -49,9 +61,21 @@
 
 .modal__img {
   margin-bottom: 25px;
+
+  @include mixins.media-mobile {
+    margin-bottom: 10px;
+  }
 }
 
 .modal__answer {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
+
+  @include mixins.media-tablet {
+    font-size: 0.7rem;
+  }
+
+  @include mixins.media-mobile {
+    font-size: 0.6rem;
+  }
 }

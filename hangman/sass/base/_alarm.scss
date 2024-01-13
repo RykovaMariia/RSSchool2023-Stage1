@@ -1,4 +1,5 @@
 @use "../abstracts/constants";
+@use "../abstracts/mixins";
 
 .alarm-window {
   width: 230px;
@@ -12,6 +13,10 @@
 
 .alarm-window_open {
   opacity: 1;
+
+  @include mixins.media-mobile {
+    opacity: 0;
+  }
 }
 
 .modal-alarm {

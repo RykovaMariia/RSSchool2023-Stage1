@@ -194,7 +194,7 @@ export class HangmanGame {
       let indexEngLetter = alphabetEng.indexOf(letter);
       let indexRuLetter = alphabetRu.indexOf(letter);
 
-      if (!clickedKey.includes(letter)) {
+      if (!this.clickedKey.includes(letter)) {
         const el = document.querySelector(
           `.keyboard__button:nth-child(${indexEngLetter + 1})`
         );
@@ -209,7 +209,7 @@ export class HangmanGame {
             this.addIncorrectGuesses();
             this.hideButton(el);
           }
-          clickedKey.push(letter);
+          this.clickedKey.push(letter);
         }
         if (indexRuLetter >= 0) {
 

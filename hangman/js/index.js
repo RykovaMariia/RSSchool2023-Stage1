@@ -55,14 +55,12 @@ function isWin(word) {
 }
 
 function randomWord() {
-  let currentNumber = localStorage.getItem('currentNumber') || 0;
-  if (currentNumber >= words.length - 1) {
-    currentNumber = 0;
+  let currentNumber = Math.floor(Math.random() * ((words.length - 1) - 0) + 0);
+  let localNumber = localStorage.getItem('currentNumber') || 0;
+  if (currentNumber === localNumber) {
+    currentNumber = randomWord();
   } else {
-    currentNumber++;
+    localStorage.setItem('currentNumber', currentNumber);
+    return currentNumber;
   }
-
-  localStorage.setItem('currentNumber', currentNumber);
-
-  return currentNumber;
 }

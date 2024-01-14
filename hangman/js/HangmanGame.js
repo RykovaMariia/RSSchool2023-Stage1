@@ -1,5 +1,6 @@
 import { alphabetEng } from "./alphabetLetter.js";
 import { alphabetRu } from "./alphabetLetter.js";
+import { Modal } from "./Modal.js";
 
 export class HangmanGame {
   constructor({ word, hint, incorrectGuesses = 0 }) {
@@ -11,13 +12,16 @@ export class HangmanGame {
 
   clickedKey = [];
 
+  main = document.createElement("main");
+  header = document.createElement("header");
+  alarm = document.createElement("div");
+
   generateHeader() {
-    let header = document.createElement("header");
     let heading = document.createElement("h1");
     heading.innerText = "Hangman Game";
 
-    header.appendChild(heading);
-    return header;
+    this.header.appendChild(heading);
+    return this.header;
   }
 
   hideWord() {
@@ -27,8 +31,8 @@ export class HangmanGame {
   }
 
   generateMain() {
-    let main = document.createElement("main");
-    main.className = "game";
+    
+    this.main.className = "game";
 
     let sectionPicture = document.createElement("section");
     sectionPicture.className = "picture";
@@ -135,27 +139,27 @@ export class HangmanGame {
     sectionGameplay.append(divGuesses);
     sectionGameplay.append(divKeyboard);
 
-    main.append(sectionPicture);
-    main.append(sectionGameplay);
-    return main;
+    this.main.append(sectionPicture);
+    this.main.append(sectionGameplay);
+    return this.main;
   }
 
   generateAlarm() {
-    let modalWindow = document.createElement('div');
-    modalWindow.className = 'alarm-window';
+   
+    this.alarm.className = "alarm-window";
 
-    let img = document.createElement('img');
-    img.className = 'modal-alarm';
-    img.setAttribute('src', './assets/alarm.gif');
-    img.setAttribute('alt', '');
+    let img = document.createElement("img");
+    img.className = "modal-alarm";
+    img.setAttribute("src", "./assets/alarm.gif");
+    img.setAttribute("alt", "");
 
-    let modal = document.createElement('div');
-    modal.className = 'alarm-lang';
-    modal.innerText = 'please change the language to English';
+    let modal = document.createElement("div");
+    modal.className = "alarm-lang";
+    modal.innerText = "please change the language to English";
 
-    modalWindow.append(img);
-    modalWindow.append(modal);
-    return modalWindow;
+    this.alarm.append(img);
+    this.alarm.append(modal);
+    return this.alarm;
   }
 
   showGame() {
@@ -165,6 +169,14 @@ export class HangmanGame {
 
     this.buttonsClickHandler();
     this.buttonsKeyboardHandler();
+    this.isWin()
+  }
+
+  deleteGame() {
+   document.querySelector('main').remove();
+   document.querySelector('header').remove();
+   document.querySelector('.alarm-window').remove();
+
   }
 
   buttonsClickHandler() {
@@ -187,7 +199,6 @@ export class HangmanGame {
   }
 
   buttonsKeyboardHandler() {
-
     document.addEventListener("keyup", this);
     this.handleEvent = function (e) {
       let letter = e.key.toLowerCase();
@@ -212,14 +223,13 @@ export class HangmanGame {
           this.clickedKey.push(letter);
         }
         if (indexRuLetter >= 0) {
-
-          const alarm = document.querySelector('.alarm-window');
+          const alarm = document.querySelector(".alarm-window");
 
           alarm.classList.add("alarm-window_open");
 
           setTimeout(() => {
             alarm.classList.remove("alarm-window_open");
-          }, 4000)
+          }, 4000);
         }
       }
     };
@@ -315,5 +325,42 @@ export class HangmanGame {
       document.removeEventListener("keyup", this);
       localStorage.setItem("isWin", isWin);
     }
+  }
+
+  isWin() {
+    document.querySelector(".keyboard").addEventListener("click", e => {
+      if (e.target.classList.contains("keyboard__button")) {
+        const isWinOrLoose = localStorage.getItem("isWin");
+  
+        if(isWinOrLoose === 'false') {
+  
+          const modal = new Modal(this.word, false);
+          modal.showModal()
+          localStorage.setItem("isWin", '')
+          
+        } else if (isWinOrLoose === 'true') {
+          const modal = new Modal(this.word, true);
+          modal.showModal()
+          localStorage.setItem("isWin", '')
+        }
+        ;
+      }
+    })
+  
+    document.addEventListener("keyup", (e) => { 
+        const isWinOrLoose = localStorage.getItem("isWin");
+        if(isWinOrLoose === 'false') {
+          const modal = new Modal(this.word, false);
+          modal.showModal()
+          localStorage.setItem("isWin", '')
+          
+        } else if (isWinOrLoose === 'true') {
+  
+          const modal = new Modal(this.word, true);
+          modal.showModal()
+          localStorage.setItem("isWin", '')
+        ;
+      }
+    })
   }
 }

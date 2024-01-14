@@ -333,7 +333,7 @@ export class HangmanGame {
         const isWinOrLoose = localStorage.getItem("isWin");
   
         if(isWinOrLoose === 'false') {
-  
+
           const modal = new Modal(this.word, false);
           modal.showModal()
           localStorage.setItem("isWin", '')

@@ -2,7 +2,7 @@ import { HangmanGame } from "./HangmanGame.js";
 import { words } from "./Words.js";
 
 export class Modal {
-  constructor({ word }, isWin) {
+  constructor(word, isWin) {
     this.word = word;
     this.isWin = isWin;
   }

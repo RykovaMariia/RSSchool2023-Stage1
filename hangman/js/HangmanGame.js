@@ -225,44 +225,6 @@ export class HangmanGame {
     }
   }
 
-  // drawHangman() {
-  //   if (this.incorrectGuesses > 0) {
-  //     switch (this.incorrectGuesses) {
-  //       case 1:
-  //         this.svgElement.headPath.classList.add("picture__head_unhide");
-  //         break;
-  //       case 2:
-  //         document
-  //           .querySelector(".picture__body")
-  //           .classList.add("picture__body_unhide");
-  //         break;
-  //       case 4:
-  //         document
-  //           .querySelector(".picture__right-hand")
-  //           .classList.add("picture__right-hand_unhide");
-  //         break;
-  //       case 3:
-  //         document
-  //           .querySelector(".picture__left-hand")
-  //           .classList.add("picture__left-hand_unhide");
-  //         break;
-  //       case 5:
-  //         document
-  //           .querySelector(".picture__left-leg")
-  //           .classList.add("picture__left-leg_unhide");
-  //         break;
-  //       case 6:
-  //         document
-  //           .querySelector(".picture__right-leg")
-  //           .classList.add("picture__right-leg_unhide");
-  //         document
-  //           .querySelectorAll(".st0")
-  //           .forEach((el) => el.classList.add("st0_unhide"));
-  //         break;
-  //     }
-  //   }
-  // }
-
   getIsWin(boolean) {
     const isWin = boolean;
     if (isWin || isWin === false) {

@@ -8,6 +8,7 @@ export class Modal {
   }
 
   modal = document.createElement("div");
+  button = document.createElement("button");
 
   wonOrLost() {
     return this.isWin ? "won" : "lost";
@@ -34,14 +35,13 @@ export class Modal {
     answer.className = "modal__answer";
     answer.innerText = `answer: ${this.word}`;
 
-    let button = document.createElement("button");
-    button.className = "button modal__button";
-    button.innerText = "play again";
+    this.button.className = "button modal__button";
+    this.button.innerText = "play again";
 
     modalWindow.append(result);
     modalWindow.append(divImg);
     modalWindow.append(answer);
-    modalWindow.append(button);
+    modalWindow.append(this.button);
 
     this.modal.append(modalWindow);
 
@@ -93,7 +93,7 @@ export class Modal {
   }
 
   playAgainClickHandler() {
-    document.querySelector(".modal__button").addEventListener("click", () => {
+    this.button.addEventListener("click", () => {
       let currentNumber = +localStorage.getItem("currentNumber");
       if (currentNumber < words.length - 1) {
         currentNumber += 1;

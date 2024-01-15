@@ -89,6 +89,7 @@ export class Modal {
   showModal() {
     document.body.prepend(this.generateModal());
     this.playAgainClickHandler();
+    document.body.classList.add("lock");
   }
 
   playAgainClickHandler() {
@@ -106,6 +107,8 @@ export class Modal {
       game.showGame();
 
       this.modal.remove();
+
+      document.body.classList.remove("lock");
     });
   }
 }

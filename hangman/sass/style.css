@@ -20,6 +20,10 @@ body {
   }
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 h1 {
   max-width: max-content;
   margin: 50px auto 20px;

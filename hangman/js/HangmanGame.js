@@ -18,6 +18,7 @@ export class HangmanGame {
   main = document.createElement("main");
   header = document.createElement("header");
   alarm = document.createElement("div");
+  divKeyboard = document.createElement("div");
 
   generateHeader() {
     let heading = document.createElement("h1");
@@ -71,21 +72,21 @@ export class HangmanGame {
     divGuesses.append(spanGuessesCount);
     divGuesses.append(spanGuesses);
 
-    let divKeyboard = document.createElement("div");
-    divKeyboard.className = "keyboard";
+    
+    this.divKeyboard.className = "keyboard";
 
     alphabetEng.forEach((el) => {
       let divKey = document.createElement("button");
       divKey.className = "button keyboard__button";
       divKey.innerText = `${el}`;
 
-      divKeyboard.append(divKey);
+      this.divKeyboard.append(divKey);
     });
 
     sectionGameplay.append(divWord);
     sectionGameplay.append(divHint);
     sectionGameplay.append(divGuesses);
-    sectionGameplay.append(divKeyboard);
+    sectionGameplay.append(this.divKeyboard);
 
     this.main.append(sectionPicture);
     this.main.append(sectionGameplay);
@@ -228,6 +229,8 @@ export class HangmanGame {
   getIsWin(boolean) {
     const isWin = boolean;
     if (isWin || isWin === false) {
+      this.divKeyboard.childNodes.forEach(el => el.disabled = true);
+      
       document.removeEventListener("keyup", this);
       localStorage.setItem("isWin", isWin);
     }

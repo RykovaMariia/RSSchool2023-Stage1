@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nonograms</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nonograms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="game">
+        <h1>Nonograms</h1>
+        <div class="game__time">15:00:00</div>
+        <table class="nonograms">
+          <tbody>
+            <tr>
+              <td class="nonograms__top nonograms__top_none"></td>
+              <td class="nonograms__top">1<br>2<br>2<br>2</td>
+              <td class="nonograms__top">3<br>4</td>
+              <td class="nonograms__top">2</td>
+              <td class="nonograms__top">3</td>
+              <td class="nonograms__top">3</td>
+            </tr>
+            <tr class="first">
+              <td class="nonograms__left"><span>1 5 9 10</span></td>
+              <td class="cell cell_first"></td>
+              <td class="cell cell_dark"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell cell_five"></td>
+            </tr>
+            <tr>
+              <td class="nonograms__left"><span>1 5 9</span></td>
+              <td class="cell cell_first"></td>
+              <td class="cell cell_dark"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell cell_five"></td>
+            </tr>
+            <tr>
+              <td class="nonograms__left"><span>1 5 9</span></td>
+              <td class="cell cell_first"></td>
+              <td class="cell cell_dark"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell cell_five"></td>
+            </tr>
+            <tr>
+              <td class="nonograms__left"><span>1 5 9</span></td>
+              <td class="cell cell_first"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell cell_five"></td>
+            </tr>
+            <tr class="five">
+              <td class="nonograms__left"><span>1 5 9</span></td>
+              <td class="cell cell_first"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell"></td>
+              <td class="cell cell_five"></td>
+            </tr cell_five>
+          </tbody>
+        </table>
+        <div class="game_buttons">
+        <button class="button button_reset-game">reset</button>
+        <button class="button button_save-game">save</button>
+        <button class="button button_solution">solution</button></div>
+      </section>
+      <section class="score">
+        <h2>The high score table</h2>
+        <ol>
+          <li class="score__first">apple - 1 level <br>stop-watch</li>
+          <li>solved puzzle - level <br>stop-watch</li>
+          <li>solved puzzle - level <br>stop-watch</li>
+          <li>solved puzzle - level <br>stop-watch</li>
+          <li>solved puzzle - level <br>stop-watch</li>
+        </ol>
+      </section>
+      <section class="menu">
+        <h2>Menu</h2>
+        <div class="levels">
+          <div class="level level_selected" tabindex="0">easy</div>
+          <div class="level" tabindex="0">medium</div>
+          <div class="level" tabindex="0">hard </div>
+        </div>
+        <ul class="menu__name-game">
+          <li class="name-game name-game_selected" tabindex="0">Android</li>
+          <li class="name-game" tabindex="0">Smile</li>
+          <li class="name-game" tabindex="0">Dog</li>
+          <li class="name-game" tabindex="0">Airplane</li>
+          <li class="name-game" tabindex="0">Window</li>
+        </ul>
+        <button class="button button_random-game">random</button>
+      </section>
+    </main>
+  </body>
 </html>

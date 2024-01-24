@@ -1,0 +1,62 @@
+@use "../abstracts/constants";
+
+.menu {
+  border: solid 1px constants.$color-text-dark;
+  border-radius: 10px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+
+.levels {
+  padding: 2px;
+  background-color: constants.$color-border-background;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.level {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 75px;
+  font-size: 1.7rem;
+
+  border: solid 1px constants.$color-border-opacity;
+  border-radius: 10px;
+  transition: border-color 0.5s linear;
+
+  &_selected {
+    cursor: auto;
+    background-color: constants.$color-text-light;
+    border: solid 1px constants.$color-text-dark;
+    border-radius: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    border: solid 1px constants.$color-text-dark;
+  }
+}
+
+.name-game {
+  height: 32px;
+  list-style: none;
+  cursor: pointer;
+
+  &:hover,
+  &_selected {
+    font-size: 2.2rem;
+  }
+}
+
+

@@ -1,0 +1,19 @@
+@use '../abstracts/constants';
+
+.button {
+  cursor: pointer;
+  background-color: constants.$color-button;
+  border-color: constants.$color-button-border;
+
+  border-radius: 10px;
+
+  color: constants.$color-text-dark;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2rem;
+}
+
+.button_solution {
+  background-color: constants.$color-text-dark;
+  border-color: constants.$color-text-dark;
+  color: constants.$color-text-light;
+}

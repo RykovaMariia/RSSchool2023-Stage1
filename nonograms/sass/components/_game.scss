@@ -1,0 +1,26 @@
+@use "../abstracts/constants";
+
+.game {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.game__time {
+  font-size: 3rem;
+  background-color: constants.$color-button;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.game_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+}

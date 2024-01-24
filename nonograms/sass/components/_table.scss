@@ -1,0 +1,41 @@
+@use "../abstracts/constants";
+
+table,
+tr,
+td {
+  border: solid 1px constants.$color-text-dark;
+  border-collapse: collapse;
+}
+
+.nonograms__left,
+.nonograms__top {
+  padding: 4px 10px;
+  border-radius: 30%;
+  font-size: 1.5rem;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+}
+
+.cell_dark {
+  background-color: constants.$color-text-dark;
+}
+
+.first .cell {
+  border-top: solid 2px constants.$color-text-dark;
+}
+
+.cell_first {
+  border-left: solid 2px constants.$color-text-dark;
+}
+
+.five .cell {
+  border-bottom: solid 2px constants.$color-text-dark;
+}
+
+.cell_five {
+  border-right: solid 2px constants.$color-text-dark;
+}
+

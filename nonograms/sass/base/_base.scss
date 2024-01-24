@@ -1,0 +1,27 @@
+@use '../abstracts/constants';
+
+html {
+  font-size: 10px;
+}
+
+body {
+  padding: 30px;
+  max-width: 1440px;
+  margin: auto;
+  background-color: constants.$color-background-body-light;
+  color: constants.$color-text-dark;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2rem;
+}
+
+h1 {
+  width: max-content;
+  margin: auto;
+  font-size: 5rem;
+  padding-bottom: 30px;
+}
+
+h2 {
+  margin: auto;
+  padding-bottom: 10px;
+}

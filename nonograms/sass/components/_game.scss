@@ -1,6 +1,7 @@
 @use "../abstracts/constants";
 
 .game {
+  order: 1;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

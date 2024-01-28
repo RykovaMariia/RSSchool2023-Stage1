@@ -2,21 +2,27 @@ import { CreatorElement } from "../../../utils/CreatorElement.js";
 import { BaseView } from "../../BaseView.js";
 import { LevelView } from "./LevelView.js";
 import { NameView } from "./NameView.js";
-
-const START_LEVEL_INDEX = 0;
-const START_NAME_INDEX = 0;
+import { games } from "../../../../data/games.js";
 
 export class MenuView extends BaseView {
-  constructor() {
+  constructor(startNameGame, gameComponent) {
     super("section", ["menu"]);
+    this.startLevel = games[startNameGame].level;
+    this.namesGame = new NameView(
+      this.startLevel,
+      startNameGame,
+      gameComponent
+    );
+    this.levels = new LevelView(this.startLevel, this.namesGame);
+
     this.appendInnerMenu();
-  }
-  namesGame = new NameView(START_LEVEL_INDEX, START_NAME_INDEX);
+  } 
 
   appendInnerMenu() {
     this.appendHeading();
     this.appendLevels();
     this.appendNamesGame();
+    this.appendButtonRandom();
   }
 
   appendHeading() {
@@ -25,11 +31,29 @@ export class MenuView extends BaseView {
   }
 
   appendLevels() {
-    const levels = new LevelView(START_LEVEL_INDEX, this.namesGame);
-    this.viewElement.appendElement(levels.getHTMLElement());
+    
+    this.viewElement.appendElement(this.levels.getHTMLElement());
   }
 
   appendNamesGame() {
     this.viewElement.appendElement(this.namesGame.getHTMLElement());
   }
+
+  appendButtonRandom() {
+    const buttonRandom = new CreatorElement(
+      "button",
+      ["button_random-game", "button"],
+      "random", () => this.cbRandomButton()
+    );
+    this.viewElement.appendElement(buttonRandom.getElement());
+  }
+
+  cbRandomButton() {
+    const randomIndex = Math.floor(Math.random() * games.length);
+    
+    this.level = games[randomIndex].level;
+    this.levels.selectedLevel(this.level);
+    this.namesGame.selectedName(randomIndex);
+  }
 }
+

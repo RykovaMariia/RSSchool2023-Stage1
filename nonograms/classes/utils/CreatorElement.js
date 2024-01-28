@@ -28,8 +28,7 @@ export class CreatorElement {
 
     this.setClassName(this.classNames);
     this.setTextContent(this.text);
-    this.setHandler(this.cb)
-    
+    this.setHandler(this.cb);
   }
   /**
    *
@@ -37,13 +36,13 @@ export class CreatorElement {
    */
   setClassName(classes) {
     if (classes.length > 0) {
-      this.element.classList.add(classes.join(" "));
+      classes.forEach((el) => this.element.classList.add(el));
     }
   }
 
   /**
-   * 
-   * @param {string} text 
+   *
+   * @param {string} text
    */
   setTextContent(text) {
     if (text) {
@@ -52,8 +51,8 @@ export class CreatorElement {
   }
 
   /**
-   * 
-   * @param {function} cb 
+   *
+   * @param {function} cb
    */
   setHandler(cb) {
     if (typeof cb === "function") {

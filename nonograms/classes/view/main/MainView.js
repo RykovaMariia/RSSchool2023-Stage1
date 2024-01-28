@@ -3,23 +3,19 @@ import { GameView } from "./game/GameView.js";
 import { MenuView } from "./menu/MenuView.js";
 import { ScoreView } from "./score/ScoreView.js";
 
+const START_NAME_INDEX = 0;
+
 export class MainView extends BaseView {
   constructor() {
     super("main");
     this.appendMain();
   }
 
-  /**
-   * {number} level
-   * {string} game
-   */
-
-
   appendMain() {
-    const game = new GameView(0);
+    const game = new GameView(START_NAME_INDEX);
     this.viewElement.appendElement(game.getHTMLElement());
 
-    const menu = new MenuView();
+    const menu = new MenuView(START_NAME_INDEX, game);
     this.viewElement.appendElement(menu.getHTMLElement());
 
     const score = new ScoreView();

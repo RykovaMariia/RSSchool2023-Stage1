@@ -3,21 +3,22 @@ import { games } from "../../../../data/games.js";
 import { CreatorElement } from "../../../utils/CreatorElement.js";
 
 export class NameView extends BaseView {
-  constructor(levelGame, nameGame) {
+  constructor(levelGame, indexGame, gameComponent) {
     super("ul", ["menu__name-game"]);
-
-    this.appendName(levelGame, nameGame);
+    this.indexGame = indexGame;
+    this.gameComponent = gameComponent;
+    this.appendName(levelGame);
   }
 
   nameElements = [];
 
-  appendName(levelGame, nameGame) {
-    games.forEach((el) => {
+  appendName(levelGame) {
+    games.forEach((el, index) => {
       if (el.level === levelGame) {
         const liName = new CreatorElement("li", ["name-game"], el.name, (e) =>
-          this.selectedName(e)
+          this.cbName(e)
         );
-        if (el.name === nameGame) {
+        if (index === this.indexGame) {
           liName.setClassName(['name-game_selected']);
         }
         this.viewElement.appendElement(liName.getElement());
@@ -26,16 +27,30 @@ export class NameView extends BaseView {
     });
   }
 
-  selectedName(e) {
+  cbName(e) {
     if (e.target.classList.contains("name-game")) {
-      this.nameElements.forEach((el) =>
-        el.classList.remove("name-game_selected")
-      );
-      e.target.classList.add("name-game_selected");
-      
-      this.nameGame = e.target.innerHTML;
-    }
+      const nameGame = e.target.innerText;
+      games.forEach((el, i) => {
+       if (el.name === nameGame){
+         this.indexGame = i;
+       }
+     })
+  this.selectedName(this.indexGame);
   }
+}
+
+  selectedName(index) {
+   
+      this.nameElements.forEach((el) => {
+        el.classList.remove("name-game_selected");
+    })
+    
+    this.nameElements[index].classList.add("name-game_selected");
+    console.log(this.nameElements[index]);
+     
+      this.gameComponent.removeField();
+      this.gameComponent.appendField(index);
+    }
 
   removeNames() {
     this.nameElements.forEach((el) => el.remove());

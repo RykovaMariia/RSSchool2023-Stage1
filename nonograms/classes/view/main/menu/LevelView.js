@@ -8,14 +8,14 @@ export class LevelView extends BaseView {
     this.nameObj = nameObj;
     this.appendLevels();
   }
-  
+
   levels = ["easy", "medium", "hard"];
   levelElements = [];
 
   appendLevels() {
     for (let i = 0; i < 3; i++) {
       const divLevel = new CreatorElement("div", ["level"], "", (e) =>
-        this.selectedLevel(e)
+        this.cbLevel(e)
       );
       divLevel.setTextContent(this.levels[i]);
       if (i === this.levelGame) {
@@ -26,14 +26,21 @@ export class LevelView extends BaseView {
     }
   }
 
-  selectedLevel(e) {
+  cbLevel(e) {
     if (e.target.classList.contains("level")) {
-      this.levelElements.forEach((el) => el.classList.remove("level_selected"));
-      e.target.classList.add("level_selected");
-
       this.levelGame = this.levels.indexOf(e.target.innerText);
-      this.nameObj.removeNames();
-      this.nameObj.appendName(this.levelGame);
+      this.selectedLevel(this.levelGame);
     }
+  }
+  selectedLevel(level) {
+    this.levelElements.forEach((el, i) => {
+      el.classList.remove("level_selected");
+      if (i === level) {
+        el.classList.add("level_selected");
+      }
+    });
+
+    this.nameObj.removeNames();
+    this.nameObj.appendName(level);
   }
 }

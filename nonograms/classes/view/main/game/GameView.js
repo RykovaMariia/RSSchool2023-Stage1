@@ -1,6 +1,7 @@
 import { CreatorElement } from "../../../utils/CreatorElement.js";
 import { BaseView } from "../../BaseView.js";
 import { games } from "../../../../data/games.js";
+import { ModalView } from "../../modal/ModalView.js";
 
 export class GameView extends BaseView {
   /**
@@ -153,8 +154,8 @@ export class GameView extends BaseView {
         result.length === solution.length &&
         solution.every((el, i) => el === result[i])
       ) {
-        alert("aaaaaa");
-        console.log("hghgjh");
+        const modal = new ModalView();
+        document.body.prepend(modal.getHTMLElement());
       }
     }
   }

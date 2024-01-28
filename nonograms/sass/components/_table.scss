@@ -26,6 +26,7 @@ td {
 }
 
 .cell {
+  position: relative;
   box-sizing: border-box;
   width: 90px;
   height: 90px;
@@ -45,6 +46,16 @@ td {
 
 .cell_dark {
   background-color: constants.$color-text-dark;
+}
+
+.cell_cross::before {
+    padding: 0;
+    content: 'x';
+    position: absolute;
+    font-size: 3rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .first .cell,

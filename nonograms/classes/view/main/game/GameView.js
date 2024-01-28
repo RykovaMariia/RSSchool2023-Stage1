@@ -23,6 +23,7 @@ export class GameView extends BaseView {
     this.appendHeading();
     this.appendTime();
     this.appendField(this.gameIndex);
+    this.clickRightMouse();
   }
 
   appendHeading() {
@@ -44,10 +45,9 @@ export class GameView extends BaseView {
     const tbody = new CreatorElement("tbody");
     this.table.appendElement(tbody.getElement());
 
-    let cell = 'cell'
-    if(level === 1) cell = 'cell-medium'
-    if(level === 2) cell = 'cell-small'
-
+    let cell = "cell";
+    if (level === 1) cell = "cell-medium";
+    if (level === 2) cell = "cell-small";
 
     const n = (level + 1) * 5 + 1;
 
@@ -64,7 +64,7 @@ export class GameView extends BaseView {
       }
 
       for (let j = 0; j < n; j++) {
-        const td = new CreatorElement("td", [], '', (e) => this.cbClick(e));
+        const td = new CreatorElement("td", [], "", (e) => this.cbClick(e));
 
         if (i === 0 && j > 0) {
           td.setClassName(["nonograms__top"]);
@@ -78,7 +78,7 @@ export class GameView extends BaseView {
           this.nonogramsCluesLeft.push(td);
         }
         if (i > 0 && j > 0) {
-          td.setClassName(['cell', cell]);
+          td.setClassName(["cell", cell]);
           this.cells.push(td.getElement());
         }
         if (j % 5 === 1 && i > 0) {
@@ -134,27 +134,39 @@ export class GameView extends BaseView {
   }
 
   cbClick(e) {
-    if(e.target.classList.contains('cell')) {
-        e.target.classList.toggle('cell_dark');
+    if (e.target.classList.contains("cell")) {
+      e.target.classList.remove("cell_cross");
+      e.target.classList.toggle("cell_dark");
 
-        const result = this.cells.map((el) => {
-          if(el.classList.contains('cell_dark')) {
-            el = 1;
-          } else {
-            el = 0;
-          }
-          return el;
-        })
-  
-        const solution = games[this.gameIndex].game.flat(1);
-        
-        if (result.length === solution.length 
-          && solution.every((el,i) => el === result[i])) {
-            alert('aaaaaa');
-            console.log('hghgjh');
-          }
+      const result = this.cells.map((el) => {
+        if (el.classList.contains("cell_dark")) {
+          el = 1;
+        } else {
+          el = 0;
+        }
+        return el;
+      });
+
+      const solution = games[this.gameIndex].game.flat(1);
+
+      if (
+        result.length === solution.length &&
+        solution.every((el, i) => el === result[i])
+      ) {
+        alert("aaaaaa");
+        console.log("hghgjh");
       }
-      
+    }
+  }
+
+  clickRightMouse() {
+    this.table.getElement().addEventListener("contextmenu", (e) => {
+      if (e.target.classList.contains("cell")) {
+        e.preventDefault();
+        e.target.classList.remove("cell_dark");
+        e.target.classList.toggle("cell_cross");
+      }
+    });
   }
 
   removeField() {

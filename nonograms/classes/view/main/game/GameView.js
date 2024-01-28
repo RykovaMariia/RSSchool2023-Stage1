@@ -9,18 +9,20 @@ export class GameView extends BaseView {
    */
   constructor(gameIndex) {
     super("section", ["game"]);
-
-    this.appendInnerGame(gameIndex);
+    this.gameIndex = gameIndex;
+    this.appendInnerGame();
   }
   table = new CreatorElement("table", ["nonograms"]);
 
   nonogramsCluesTop = [];
   nonogramsCluesLeft = [];
 
-  appendInnerGame(gameIndex) {
+  cells = [];
+
+  appendInnerGame() {
     this.appendHeading();
     this.appendTime();
-    this.appendField(gameIndex);
+    this.appendField(this.gameIndex);
   }
 
   appendHeading() {
@@ -34,10 +36,18 @@ export class GameView extends BaseView {
   }
 
   appendField(gameIndex) {
+    this.cells = [];
+    this.gameIndex = gameIndex;
     const level = games[gameIndex].level;
+
     this.viewElement.appendElement(this.table.getElement());
     const tbody = new CreatorElement("tbody");
     this.table.appendElement(tbody.getElement());
+
+    let cell = 'cell'
+    if(level === 1) cell = 'cell-medium'
+    if(level === 2) cell = 'cell-small'
+
 
     const n = (level + 1) * 5 + 1;
 
@@ -54,7 +64,7 @@ export class GameView extends BaseView {
       }
 
       for (let j = 0; j < n; j++) {
-        const td = new CreatorElement("td");
+        const td = new CreatorElement("td", [], '', (e) => this.cbClick(e));
 
         if (i === 0 && j > 0) {
           td.setClassName(["nonograms__top"]);
@@ -68,7 +78,8 @@ export class GameView extends BaseView {
           this.nonogramsCluesLeft.push(td);
         }
         if (i > 0 && j > 0) {
-          td.setClassName(["cell"]);
+          td.setClassName(['cell', cell]);
+          this.cells.push(td.getElement());
         }
         if (j % 5 === 1 && i > 0) {
           td.setClassName(["cell_first"]);
@@ -120,6 +131,30 @@ export class GameView extends BaseView {
     this.nonogramsCluesTop.forEach((el, i) => {
       el.setTextContent(cluesTop[i].join("\n") || "0");
     });
+  }
+
+  cbClick(e) {
+    if(e.target.classList.contains('cell')) {
+        e.target.classList.toggle('cell_dark');
+
+        const result = this.cells.map((el) => {
+          if(el.classList.contains('cell_dark')) {
+            el = 1;
+          } else {
+            el = 0;
+          }
+          return el;
+        })
+  
+        const solution = games[this.gameIndex].game.flat(1);
+        
+        if (result.length === solution.length 
+          && solution.every((el,i) => el === result[i])) {
+            alert('aaaaaa');
+            console.log('hghgjh');
+          }
+      }
+      
   }
 
   removeField() {

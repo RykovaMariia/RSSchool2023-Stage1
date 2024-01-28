@@ -9,21 +9,47 @@ td {
 
 .nonograms__left,
 .nonograms__top {
-  padding: 4px 10px;
+  padding: 5px;
   border-radius: 30%;
   font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.6rem;
+  text-align: center;
+}
+
+.nonograms__left {
+  width: 90px;
+}
+
+.nonograms__top {
+  height: 90px;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  box-sizing: border-box;
+  width: 90px;
+  height: 90px;
+}
+
+.cell-medium {
+  box-sizing: border-box;
+  width: 45px;
+  height: 45px;
+}
+
+.cell-small {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
 }
 
 .cell_dark {
   background-color: constants.$color-text-dark;
 }
 
-.first .cell {
+.first .cell,
+.first .cell-small,
+.first .cell-medium {
   border-top: solid 2px constants.$color-text-dark;
 }
 
@@ -31,7 +57,9 @@ td {
   border-left: solid 2px constants.$color-text-dark;
 }
 
-.five .cell {
+.five .cell,
+.five .cell-small,
+.five .cell-medium {
   border-bottom: solid 2px constants.$color-text-dark;
 }
 

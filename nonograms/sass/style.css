@@ -99,21 +99,47 @@ td {
 
 .nonograms__left,
 .nonograms__top {
-  padding: 4px 10px;
+  padding: 5px;
   border-radius: 30%;
   font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.6rem;
+  text-align: center;
+}
+
+.nonograms__left {
+  width: 90px;
+}
+
+.nonograms__top {
+  height: 90px;
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  box-sizing: border-box;
+  width: 90px;
+  height: 90px;
+}
+
+.cell-medium {
+  box-sizing: border-box;
+  width: 45px;
+  height: 45px;
+}
+
+.cell-small {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
 }
 
 .cell_dark {
   background-color: #023047;
 }
 
-.first .cell {
+.first .cell,
+.first .cell-small,
+.first .cell-medium {
   border-top: solid 2px #023047;
 }
 
@@ -121,7 +147,9 @@ td {
   border-left: solid 2px #023047;
 }
 
-.five .cell {
+.five .cell,
+.five .cell-small,
+.five .cell-medium {
   border-bottom: solid 2px #023047;
 }
 
@@ -173,11 +201,20 @@ td {
 }
 
 .name-game {
+  position: relative;
   height: 32px;
   list-style: none;
   cursor: pointer;
+  transition: all 0.2s linear;
 }
 .name-game:hover, .name-game_selected {
+  font-size: 2.2rem;
+}
+.name-game_selected::after {
+  content: "v";
+  position: absolute;
+  right: 10%;
+  color: #3892c0;
   font-size: 2.2rem;
 }
 

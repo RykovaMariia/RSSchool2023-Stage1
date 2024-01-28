@@ -50,14 +50,22 @@
 }
 
 .name-game {
+  position: relative;
   height: 32px;
   list-style: none;
   cursor: pointer;
+  transition: all 0.2s linear;
 
   &:hover,
   &_selected {
     font-size: 2.2rem;
   }
+
+  &_selected::after {
+    content: "v";
+    position: absolute;
+    right: 10%;
+    color: constants.$color-selected;
+    font-size: 2.2rem;
+  }
 }
-
-

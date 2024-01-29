@@ -82,10 +82,10 @@ export class GameView extends BaseView {
           td.setClassName(["cell", cell]);
           this.cells.push(td.getElement());
         }
-        if (j % 5 === 1 && i > 0) {
+        if (j % 5 === 1) {
           td.setClassName(["cell_first"]);
         }
-        if (j % 5 === 0 && i !== 0) {
+        if (j % 5 === 0 ) {
           td.setClassName(["cell_five"]);
         }
 

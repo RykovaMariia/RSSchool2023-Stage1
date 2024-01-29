@@ -150,17 +150,20 @@ td {
 
 .first .cell,
 .first .cell-small,
-.first .cell-medium {
+.first .cell-medium,
+.first .nonograms__left {
   border-top: solid 2px #023047;
 }
 
-.cell_first {
+.cell_first,
+.nonograms__top_first {
   border-left: solid 2px #023047;
 }
 
 .five .cell,
 .five .cell-small,
-.five .cell-medium {
+.five .cell-medium,
+.five .nonograms__left {
   border-bottom: solid 2px #023047;
 }
 

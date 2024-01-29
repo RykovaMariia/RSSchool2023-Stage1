@@ -180,6 +180,18 @@ td {
   width: 90px;
   height: 90px;
   cursor: pointer;
+  background-color: #edeae9;
+  transition: all 0.2s ease;
+}
+.cell::before {
+  padding: 0;
+  content: "x";
+  position: absolute;
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .cell-medium {
@@ -196,21 +208,14 @@ td {
 
 .cell_dark {
   background-color: #202E39;
+  border: solid 1px #edeae9;
 }
 
 .cell_cross::before {
-  padding: 0;
-  content: "x";
-  position: absolute;
-  font-size: 3rem;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
 }
 
 .first .cell,
-.first .cell-small,
-.first .cell-medium,
 .first .nonograms__left {
   border-top: solid 2px #202E39;
 }
@@ -221,8 +226,6 @@ td {
 }
 
 .five .cell,
-.five .cell-small,
-.five .cell-medium,
 .five .nonograms__left {
   border-bottom: solid 2px #202E39;
 }

@@ -105,6 +105,32 @@ export class GameView extends BaseView {
     this.createClues(gameIndex);
   }
 
+  appendButtons() {
+    const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
+    this.viewElement.appendElement(buttonsDiv.getElement());
+
+    const buttonSave = new CreatorElement(
+      "button",
+      ["button", "button_save-game"],
+      "Save game"
+    );
+    buttonsDiv.appendElement(buttonSave.getElement());
+
+    const buttonSolution = new CreatorElement(
+      "button",
+      ["button", "button_solution"],
+      "Solution"
+    );
+    buttonsDiv.appendElement(buttonSolution.getElement());
+
+    const buttonReset = new CreatorElement(
+      "button",
+      ["button", "button_reset-game"],
+      "Reset game", () => this.cbResetButton()
+    );
+    buttonsDiv.appendElement(buttonReset.getElement());
+  }
+
   createClues(gameIndex) {
     const solution = games[gameIndex].game;
     const cluesLeft = [];
@@ -202,32 +228,6 @@ export class GameView extends BaseView {
     this.table.getElement().remove();
   }
 
-  appendButtons() {
-    const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
-    this.viewElement.appendElement(buttonsDiv.getElement());
-
-    const buttonSave = new CreatorElement(
-      "button",
-      ["button", "button_save-game"],
-      "Save game"
-    );
-    buttonsDiv.appendElement(buttonSave.getElement());
-
-    const buttonSolution = new CreatorElement(
-      "button",
-      ["button", "button_solution"],
-      "Solution"
-    );
-    buttonsDiv.appendElement(buttonSolution.getElement());
-
-    const buttonReset = new CreatorElement(
-      "button",
-      ["button", "button_reset-game"],
-      "Reset game"
-    );
-    buttonsDiv.appendElement(buttonReset.getElement());
-  }
-
   updateTime() {
     this.sec++;
     if (this.sec === 60) {
@@ -247,5 +247,10 @@ export class GameView extends BaseView {
     this.min = 0;
     this.sec = 0;
     this.timeDiv.getElement().classList.remove("time-go");
+  }
+
+  cbResetButton() {
+    this.removeField();
+    this.appendField(this.gameIndex);
   }
 }

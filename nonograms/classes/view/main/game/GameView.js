@@ -49,6 +49,9 @@ export class GameView extends BaseView {
     this.gameIndex = gameIndex;
     const level = games[gameIndex].level;
 
+    if (this.table.getElement().classList.contains("nonograms_disabled")) {
+      this.table.getElement().classList.remove("nonograms_disabled");
+    }
     this.viewElement.appendElement(this.table.getElement());
     const tbody = new CreatorElement("tbody");
     this.table.appendElement(tbody.getElement());
@@ -143,32 +146,35 @@ export class GameView extends BaseView {
 
   cbClick(e) {
     if (e.target.classList.contains("cell")) {
-      if (!this.timeDiv.getElement().classList.contains("time-go")) {
-        this.timeDiv.setClassName(["time-go"]);
-        this.interval = setInterval(() => this.updateTime(), 1000);
-      }
-      e.target.classList.remove("cell_cross");
-      e.target.classList.toggle("cell_dark");
-
-      const result = this.cells.map((el) => {
-        if (el.classList.contains("cell_dark")) {
-          el = 1;
-        } else {
-          el = 0;
+      if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+        if (!this.timeDiv.getElement().classList.contains("time-go")) {
+          this.timeDiv.setClassName(["time-go"]);
+          this.interval = setInterval(() => this.updateTime(), 1000);
         }
-        return el;
-      });
+        e.target.classList.remove("cell_cross");
+        e.target.classList.toggle("cell_dark");
 
-      const solution = games[this.gameIndex].game.flat(1);
+        const result = this.cells.map((el) => {
+          if (el.classList.contains("cell_dark")) {
+            el = 1;
+          } else {
+            el = 0;
+          }
+          return el;
+        });
 
-      if (
-        result.length === solution.length &&
-        solution.every((el, i) => el === result[i])
-      ) {
-        const time = this.min * 60 + this.sec;
-        const modal = new ModalView(time);
-        document.body.prepend(modal.getHTMLElement());
-        this.resetTime();
+        const solution = games[this.gameIndex].game.flat(1);
+
+        if (
+          result.length === solution.length &&
+          solution.every((el, i) => el === result[i])
+        ) {
+          const time = this.min * 60 + this.sec;
+          const modal = new ModalView(time);
+          document.body.prepend(modal.getHTMLElement());
+          this.resetTime();
+          this.table.setClassName(["nonograms_disabled"]);
+        }
       }
     }
   }
@@ -176,13 +182,15 @@ export class GameView extends BaseView {
   clickRightMouse() {
     this.table.getElement().addEventListener("contextmenu", (e) => {
       if (e.target.classList.contains("cell")) {
-        if (!this.timeDiv.getElement().classList.contains("time-go")) {
-          this.timeDiv.setClassName(["time-go"]);
-          this.interval = setInterval(() => this.updateTime(), 1000);
+        if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+          if (!this.timeDiv.getElement().classList.contains("time-go")) {
+            this.timeDiv.setClassName(["time-go"]);
+            this.interval = setInterval(() => this.updateTime(), 1000);
+          }
+          e.preventDefault();
+          e.target.classList.remove("cell_dark");
+          e.target.classList.toggle("cell_cross");
         }
-        e.preventDefault();
-        e.target.classList.remove("cell_dark");
-        e.target.classList.toggle("cell_cross");
       }
     });
   }

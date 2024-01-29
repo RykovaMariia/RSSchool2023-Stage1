@@ -30,6 +30,10 @@ td {
   height: 90px;
 }
 
+.nonograms_disabled .cell {
+  cursor: auto;
+}
+
 .cell {
   position: relative;
   box-sizing: border-box;

@@ -170,11 +170,28 @@ td {
   height: 90px;
 }
 
+.nonograms_disabled .cell {
+  cursor: auto;
+}
+
 .cell {
   position: relative;
   box-sizing: border-box;
   width: 90px;
   height: 90px;
+  cursor: pointer;
+  background-color: #edeae9;
+  transition: all 0.2s ease;
+}
+.cell::before {
+  padding: 0;
+  content: "x";
+  position: absolute;
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .cell-medium {
@@ -191,21 +208,14 @@ td {
 
 .cell_dark {
   background-color: #202E39;
+  border: solid 1px #edeae9;
 }
 
 .cell_cross::before {
-  padding: 0;
-  content: "x";
-  position: absolute;
-  font-size: 3rem;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
 }
 
 .first .cell,
-.first .cell-small,
-.first .cell-medium,
 .first .nonograms__left {
   border-top: solid 2px #202E39;
 }
@@ -216,8 +226,6 @@ td {
 }
 
 .five .cell,
-.five .cell-small,
-.five .cell-medium,
 .five .nonograms__left {
   border-bottom: solid 2px #202E39;
 }
@@ -317,7 +325,7 @@ td {
   position: absolute;
   width: 400px;
   border-radius: 10px;
-  border: #202E39 1px solid;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
   background-color: #edeae9;
   padding: 20px;
   display: flex;

@@ -14,9 +14,14 @@ export class GameView extends BaseView {
     this.appendInnerGame();
   }
   table = new CreatorElement("table", ["nonograms"]);
+  timeDiv = new CreatorElement("div", ["game__time"], "00:00");
 
   nonogramsCluesTop = [];
   nonogramsCluesLeft = [];
+
+  interval;
+  sec = 0;
+  min = 0;
 
   cells = [];
 
@@ -26,7 +31,6 @@ export class GameView extends BaseView {
     this.appendField(this.gameIndex);
     this.appendButtons();
     this.clickRightMouse();
-    
   }
 
   appendHeading() {
@@ -35,15 +39,19 @@ export class GameView extends BaseView {
   }
 
   appendTime() {
-    const timeDiv = new CreatorElement("div", ["game__time"], "00:00");
-    this.viewElement.appendElement(timeDiv.getElement());
+    this.viewElement.appendElement(this.timeDiv.getElement());
   }
 
   appendField(gameIndex) {
+    this.resetTime();
+    this.timeDiv.setTextContent("00:00");
     this.cells = [];
     this.gameIndex = gameIndex;
     const level = games[gameIndex].level;
 
+    if (this.table.getElement().classList.contains("nonograms_disabled")) {
+      this.table.getElement().classList.remove("nonograms_disabled");
+    }
     this.viewElement.appendElement(this.table.getElement());
     const tbody = new CreatorElement("tbody");
     this.table.appendElement(tbody.getElement());
@@ -97,6 +105,32 @@ export class GameView extends BaseView {
     this.createClues(gameIndex);
   }
 
+  appendButtons() {
+    const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
+    this.viewElement.appendElement(buttonsDiv.getElement());
+
+    const buttonSave = new CreatorElement(
+      "button",
+      ["button", "button_save-game"],
+      "Save game"
+    );
+    buttonsDiv.appendElement(buttonSave.getElement());
+
+    const buttonSolution = new CreatorElement(
+      "button",
+      ["button", "button_solution"],
+      "Solution"
+    );
+    buttonsDiv.appendElement(buttonSolution.getElement());
+
+    const buttonReset = new CreatorElement(
+      "button",
+      ["button", "button_reset-game"],
+      "Reset game", () => this.cbResetButton()
+    );
+    buttonsDiv.appendElement(buttonReset.getElement());
+  }
+
   createClues(gameIndex) {
     const solution = games[gameIndex].game;
     const cluesLeft = [];
@@ -138,26 +172,35 @@ export class GameView extends BaseView {
 
   cbClick(e) {
     if (e.target.classList.contains("cell")) {
-      e.target.classList.remove("cell_cross");
-      e.target.classList.toggle("cell_dark");
-
-      const result = this.cells.map((el) => {
-        if (el.classList.contains("cell_dark")) {
-          el = 1;
-        } else {
-          el = 0;
+      if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+        if (!this.timeDiv.getElement().classList.contains("time-go")) {
+          this.timeDiv.setClassName(["time-go"]);
+          this.interval = setInterval(() => this.updateTime(), 1000);
         }
-        return el;
-      });
+        e.target.classList.remove("cell_cross");
+        e.target.classList.toggle("cell_dark");
 
-      const solution = games[this.gameIndex].game.flat(1);
+        const result = this.cells.map((el) => {
+          if (el.classList.contains("cell_dark")) {
+            el = 1;
+          } else {
+            el = 0;
+          }
+          return el;
+        });
 
-      if (
-        result.length === solution.length &&
-        solution.every((el, i) => el === result[i])
-      ) {
-        const modal = new ModalView();
-        document.body.prepend(modal.getHTMLElement());
+        const solution = games[this.gameIndex].game.flat(1);
+
+        if (
+          result.length === solution.length &&
+          solution.every((el, i) => el === result[i])
+        ) {
+          const time = this.min * 60 + this.sec;
+          const modal = new ModalView(time);
+          document.body.prepend(modal.getHTMLElement());
+          this.resetTime();
+          this.table.setClassName(["nonograms_disabled"]);
+        }
       }
     }
   }
@@ -165,9 +208,15 @@ export class GameView extends BaseView {
   clickRightMouse() {
     this.table.getElement().addEventListener("contextmenu", (e) => {
       if (e.target.classList.contains("cell")) {
-        e.preventDefault();
-        e.target.classList.remove("cell_dark");
-        e.target.classList.toggle("cell_cross");
+        if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+          if (!this.timeDiv.getElement().classList.contains("time-go")) {
+            this.timeDiv.setClassName(["time-go"]);
+            this.interval = setInterval(() => this.updateTime(), 1000);
+          }
+          e.preventDefault();
+          e.target.classList.remove("cell_dark");
+          e.target.classList.toggle("cell_cross");
+        }
       }
     });
   }
@@ -179,29 +228,29 @@ export class GameView extends BaseView {
     this.table.getElement().remove();
   }
 
-  appendButtons() {
-    const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
-    this.viewElement.appendElement(buttonsDiv.getElement());
+  updateTime() {
+    this.sec++;
+    if (this.sec === 60) {
+      this.min++;
+      this.sec = 0;
+    }
 
-    const buttonSave = new CreatorElement(
-      "button",
-      ["button", "button_save-game"],
-      "Save game"
+    this.timeDiv.setTextContent(
+      `${this.min.toString().padStart(2, "0")}:${this.sec
+        .toString()
+        .padStart(2, "0")}`
     );
-    buttonsDiv.appendElement(buttonSave.getElement());
+  }
 
-    const buttonSolution = new CreatorElement(
-      "button",
-      ["button", "button_solution"],
-      "Solution"
-    );
-    buttonsDiv.appendElement(buttonSolution.getElement());
+  resetTime() {
+    clearInterval(this.interval);
+    this.min = 0;
+    this.sec = 0;
+    this.timeDiv.getElement().classList.remove("time-go");
+  }
 
-    const buttonReset = new CreatorElement(
-      "button",
-      ["button", "button_reset-game"],
-      "Reset game"
-    );
-    buttonsDiv.appendElement(buttonReset.getElement());
+  cbResetButton() {
+    this.removeField();
+    this.appendField(this.gameIndex);
   }
 }

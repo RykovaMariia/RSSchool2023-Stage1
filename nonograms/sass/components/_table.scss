@@ -30,11 +30,29 @@ td {
   height: 90px;
 }
 
+.nonograms_disabled .cell {
+  cursor: auto;
+}
+
 .cell {
   position: relative;
   box-sizing: border-box;
   width: 90px;
   height: 90px;
+  cursor: pointer;
+  background-color: constants.$color-text-light;
+  transition: all 0.2s ease;
+
+  &::before {
+    padding: 0;
+    content: "x";
+    position: absolute;
+    font-size: 3rem;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
 .cell-medium {
@@ -51,23 +69,18 @@ td {
 
 .cell_dark {
   background-color: constants.$color-text-dark;
+  border: solid 1px constants.$color-text-light;
 }
 
 .cell_cross::before {
-    padding: 0;
-    content: 'x';
-    position: absolute;
-    font-size: 3rem;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  opacity: 1;
 }
 
-.first .cell,
-.first .cell-small,
-.first .cell-medium,
-.first .nonograms__left {
-  border-top: solid 2px constants.$color-text-dark;
+.first {
+  .cell,
+  .nonograms__left {
+    border-top: solid 2px constants.$color-text-dark;
+  }
 }
 
 .cell_first,
@@ -75,14 +88,13 @@ td {
   border-left: solid 2px constants.$color-text-dark;
 }
 
-.five .cell,
-.five .cell-small,
-.five .cell-medium,
-.five .nonograms__left {
-  border-bottom: solid 2px constants.$color-text-dark;
+.five {
+  .cell,
+  .nonograms__left {
+    border-bottom: solid 2px constants.$color-text-dark;
+  }
 }
 
 .cell_five {
   border-right: solid 2px constants.$color-text-dark;
 }
-

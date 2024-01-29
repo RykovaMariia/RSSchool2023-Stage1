@@ -175,6 +175,7 @@ td {
   box-sizing: border-box;
   width: 90px;
   height: 90px;
+  cursor: pointer;
 }
 
 .cell-medium {
@@ -317,7 +318,7 @@ td {
   position: absolute;
   width: 400px;
   border-radius: 10px;
-  border: #202E39 1px solid;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
   background-color: #edeae9;
   padding: 20px;
   display: flex;

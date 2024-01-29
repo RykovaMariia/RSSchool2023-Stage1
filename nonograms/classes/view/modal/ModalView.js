@@ -6,19 +6,19 @@ export class ModalView extends BaseView {
    *
    * @param {number} gameIndex
    */
-  constructor() {
+  constructor(time) {
     super("div", ["modal"]);
-    this.appendInnerModal();
+    this.appendInnerModal(time);
   }
 
-  appendInnerModal() {
+  appendInnerModal(time) {
     const window = new CreatorElement("div", ["modal__window"]);
     this.viewElement.appendElement(window.getElement());
 
     const text = new CreatorElement(
       "div",
       ["result-game"],
-      "Great!\nYou have solved the nonogram!"
+      `Great!\n You have solved the nonogram\nin ${time} seconds!`
     );
     window.appendElement(text.getElement());
 

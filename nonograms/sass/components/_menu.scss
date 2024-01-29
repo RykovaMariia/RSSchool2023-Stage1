@@ -2,21 +2,21 @@
 
 .menu {
   order: 2;
-  border: solid 1px constants.$color-text-dark;
-  border-radius: 10px;
   padding: 15px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 30px;
   padding: 15px;
 }
 
 .levels {
   padding: 2px;
-  background-color: constants.$color-border-background;
+  background-color: constants.$color-button;
   border-radius: 10px;
-
+  padding: 2px 2px;
+  box-shadow: inset 0px 0px 5px 0px constants.$color-shadow-dark2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,44 +28,53 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
-  padding: 5px 10px;
-  width: 75px;
-  font-size: 1.7rem;
-
-  border: solid 1px constants.$color-border-opacity;
+  padding: 0 5px;
+  width: 85px;
+  font-size: 2rem;
   border-radius: 10px;
-  transition: border-color 0.5s linear;
+
+  transition: all 0.2s ease;
 
   &_selected {
     cursor: auto;
     background-color: constants.$color-text-light;
-    border: solid 1px constants.$color-text-dark;
+    box-shadow: 0px 0px 5px 0px constants.$color-shadow-dark2;
     border-radius: 10px;
+    font-size: 2.2rem;
   }
 
   &:hover,
   &:focus {
-    border: solid 1px constants.$color-text-dark;
+    font-size: 2.2rem;
   }
 }
 
+.menu__name-game {
+  margin-top: 50px;
+  padding: 3px ;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: inset 0px 0px 7px 0px constants.$color-shadow-dark2;
+
+  background-color: constants.$color-background-body-light-center;
+}
+
 .name-game {
-  position: relative;
+  padding: 3px 10px;
   height: 32px;
   list-style: none;
   cursor: pointer;
   transition: all 0.2s linear;
 
-  &:hover,
+  
   &_selected {
     font-size: 2.2rem;
+    background-color: constants.$color-text-light;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px constants.$color-shadow-dark2;
   }
 
-  &_selected::after {
-    content: "v";
-    position: absolute;
-    right: 10%;
-    color: constants.$color-selected;
+  &:hover {
     font-size: 2.2rem;
   }
 }

@@ -24,7 +24,9 @@ export class GameView extends BaseView {
     this.appendHeading();
     this.appendTime();
     this.appendField(this.gameIndex);
+    this.appendButtons();
     this.clickRightMouse();
+    
   }
 
   appendHeading() {
@@ -85,7 +87,7 @@ export class GameView extends BaseView {
         if (j % 5 === 1) {
           td.setClassName(["cell_first"]);
         }
-        if (j % 5 === 0 ) {
+        if (j % 5 === 0) {
           td.setClassName(["cell_five"]);
         }
 
@@ -175,5 +177,31 @@ export class GameView extends BaseView {
     this.nonogramsCluesLeft = [];
     this.table.getElement().innerHTML = "";
     this.table.getElement().remove();
+  }
+
+  appendButtons() {
+    const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
+    this.viewElement.appendElement(buttonsDiv.getElement());
+
+    const buttonSave = new CreatorElement(
+      "button",
+      ["button", "button_save-game"],
+      "Save game"
+    );
+    buttonsDiv.appendElement(buttonSave.getElement());
+
+    const buttonSolution = new CreatorElement(
+      "button",
+      ["button", "button_solution"],
+      "Solution"
+    );
+    buttonsDiv.appendElement(buttonSolution.getElement());
+
+    const buttonReset = new CreatorElement(
+      "button",
+      ["button", "button_reset-game"],
+      "Reset game"
+    );
+    buttonsDiv.appendElement(buttonReset.getElement());
   }
 }

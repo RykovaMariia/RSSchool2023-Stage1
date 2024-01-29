@@ -1,20 +1,45 @@
-@use '../abstracts/constants';
+@use "../abstracts/constants";
 
 .score {
   order: -1;
-  border: solid 1px constants.$color-text-dark;
   border-radius: 10px;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.score__wrapper {
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: inset 0px 0px 7px 0px constants.$color-shadow-dark2;
+
+  background-color: constants.$color-background-body-light-center;
 }
 
 ol {
   font-size: 1.5rem;
+  list-style: none;
+  counter-reset: item;
+
+  li {
+    counter-increment: item;
+    padding: 10px;
+  }
+  li:before {
+    margin-right: 10px 0;
+    content: counter(item);
   
+    width: 3rem;
+    text-align: center;
+    display: inline-block;
+  }
 }
 
 .score__first {
-  margin-top: 10px;
   font-size: 1.8rem;
   font-weight: bold;
+  background-color: constants.$color-button;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-

@@ -14,8 +14,11 @@ export class ScoreView extends BaseView {
   }
 
   appendList() {
+    const scoreWrapper = new CreatorElement("div", ['score__wrapper']);
+    this.viewElement.appendElement(scoreWrapper.getElement());
+
     const ol = new CreatorElement("ol");
-    this.viewElement.appendElement(ol.getElement());
+    scoreWrapper.appendElement(ol.getElement());
 
     for (let i = 0; i < 5; i++) {
       const li = new CreatorElement("li");

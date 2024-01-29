@@ -16,13 +16,14 @@ export class MenuView extends BaseView {
     this.levels = new LevelView(this.startLevel, this.namesGame);
 
     this.appendInnerMenu();
-  } 
+  }
 
   appendInnerMenu() {
     this.appendHeading();
     this.appendLevels();
     this.appendNamesGame();
     this.appendButtonRandom();
+    this.appendButtonContinueLastGame();
   }
 
   appendHeading() {
@@ -31,7 +32,6 @@ export class MenuView extends BaseView {
   }
 
   appendLevels() {
-    
     this.viewElement.appendElement(this.levels.getHTMLElement());
   }
 
@@ -43,17 +43,26 @@ export class MenuView extends BaseView {
     const buttonRandom = new CreatorElement(
       "button",
       ["button_random-game", "button"],
-      "random", () => this.cbRandomButton()
+      "random",
+      () => this.cbRandomButton()
     );
     this.viewElement.appendElement(buttonRandom.getElement());
   }
 
   cbRandomButton() {
     const randomIndex = Math.floor(Math.random() * games.length);
-    
+
     this.level = games[randomIndex].level;
     this.levels.selectedLevel(this.level);
     this.namesGame.selectedName(randomIndex);
   }
-}
 
+  appendButtonContinueLastGame() {
+    const buttonContinue = new CreatorElement(
+      "button",
+      ["button_continue-last-game", "button"],
+      "Continue last game"
+    );
+    this.viewElement.appendElement(buttonContinue.getElement());
+  }
+}

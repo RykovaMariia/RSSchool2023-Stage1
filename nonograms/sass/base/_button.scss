@@ -1,0 +1,33 @@
+@use '../abstracts/constants';
+
+.button {
+  cursor: pointer;
+  background-color: constants.$color-button;
+  border-color: constants.$color-background-body-light;
+
+  border-radius: 10px;
+
+  color: constants.$color-text-dark;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2.5rem;
+  
+  padding: 0 15px;
+  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light, 5px 5px 10px 0px constants.$color-shadow-dark;
+
+}
+
+.button_solution {
+  background-color: constants.$color-background-body-light-center;
+  color: constants.$color-text-dark;
+}
+
+.button_random-game {
+  width: 150px;
+  margin: auto;
+}
+
+.button_continue-last-game {
+  margin-top: 50px;
+  background-color: constants.$color-background-body-light-center;
+  color: constants.$color-text-dark;
+}

@@ -10,6 +10,7 @@ html {
 }
 
 body {
+  position: relative;
   width: 100%;
   margin: auto;
   background-color: constants.$color-background-body-light-center;
@@ -28,7 +29,7 @@ h1 {
 
 h2 {
   // box-shadow: -5px -5px 10px 0px constants.$color-shadow-light, 5px 5px 10px 0px constants.$color-shadow-dark;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 15px;
   border-radius: 10px;
   font-size: 3rem;

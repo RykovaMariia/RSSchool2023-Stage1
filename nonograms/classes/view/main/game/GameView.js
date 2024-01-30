@@ -112,7 +112,8 @@ export class GameView extends BaseView {
     const buttonSave = new CreatorElement(
       "button",
       ["button", "button_save-game"],
-      "Save game"
+      "Save game",
+      () => this.cbSaveGame()
     );
     buttonsDiv.appendElement(buttonSave.getElement());
 
@@ -126,7 +127,8 @@ export class GameView extends BaseView {
     const buttonReset = new CreatorElement(
       "button",
       ["button", "button_reset-game"],
-      "Reset game", () => this.cbResetButton()
+      "Reset game",
+      () => this.cbResetButton()
     );
     buttonsDiv.appendElement(buttonReset.getElement());
   }
@@ -177,8 +179,15 @@ export class GameView extends BaseView {
           this.timeDiv.setClassName(["time-go"]);
           this.interval = setInterval(() => this.updateTime(), 1000);
         }
+
         e.target.classList.remove("cell_cross");
-        e.target.classList.toggle("cell_dark");
+        if (e.target.classList.contains("cell_dark")) {
+          e.target.classList.remove("cell_dark");
+          this.addAudio("assets/music/tap_2.mp3");
+        } else {
+          e.target.classList.add("cell_dark");
+          this.addAudio("assets/music/tap_1.mp3");
+        }
 
         const result = this.cells.map((el) => {
           if (el.classList.contains("cell_dark")) {
@@ -196,6 +205,7 @@ export class GameView extends BaseView {
           solution.every((el, i) => el === result[i])
         ) {
           const time = this.min * 60 + this.sec;
+          this.addAudio("assets/music/win.mp3");
           const modal = new ModalView(time);
           document.body.prepend(modal.getHTMLElement());
           this.resetTime();
@@ -215,7 +225,13 @@ export class GameView extends BaseView {
           }
           e.preventDefault();
           e.target.classList.remove("cell_dark");
-          e.target.classList.toggle("cell_cross");
+          if (e.target.classList.contains("cell_cross")) {
+            e.target.classList.remove("cell_cross");
+            this.addAudio("assets/music/tap_2.mp3");
+          } else {
+            e.target.classList.add("cell_cross");
+            this.addAudio("assets/music/tcs.mp3");
+          }
         }
       }
     });
@@ -252,5 +268,53 @@ export class GameView extends BaseView {
   cbResetButton() {
     this.removeField();
     this.appendField(this.gameIndex);
+  }
+
+  cbSaveGame() {
+    const result = this.cells.map((el) => {
+      if (el.classList.contains("cell_dark")) {
+        el = 1;
+      } else {
+        el = 0;
+      }
+      return el;
+    });
+    const saveGame = {
+      'id': this.gameIndex,
+      'time': [this.min, this.sec],
+      'cell': result
+    };
+    localStorage.setItem('saveGame', JSON.stringify(saveGame));
+  }
+
+  continueLastGame(saveGame) {
+    this.removeField();
+    this.appendField(saveGame.id);
+    this.min = saveGame.time[0];
+    this.sec = saveGame.time[1];
+    
+    const result = saveGame.cell;
+
+    result.map((el, i) => {
+      if (el === 1) {
+        this.cells[i].classList.add('cell_dark');
+      } 
+      return el;
+    });
+    this.timeDiv.setTextContent(`${this.min.toString().padStart(2, "0")}:${this.sec
+      .toString()
+      .padStart(2, "0")}`);
+    this.timeDiv.setClassName(["time-go"]);
+          this.interval = setInterval(() => this.updateTime(), 1000);
+  }
+
+
+  /**
+   * @param {url} url
+   */
+  addAudio(url) {
+    var audio = new Audio();
+    audio.src = url;
+    audio.autoplay = true;
   }
 }

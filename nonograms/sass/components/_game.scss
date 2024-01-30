@@ -1,6 +1,8 @@
 @use "../abstracts/constants";
+@use "../abstracts/mixins";
 
 .game {
+  position: relative;
   width: 640px;
   order: 1;
   box-sizing: border-box;
@@ -11,6 +13,16 @@
   background-color: constants.$color-background-body-light-center;
   box-shadow: 5px -40px 40px constants.$color-shadow-dark,
     -5px -40px 40px constants.$color-shadow-dark;
+
+    @include mixins.media-middle {
+      width: 60%;
+      box-shadow: 40px -40px 40px 0px constants.$color-shadow-dark;
+    }
+
+    @include mixins.media-tablet {
+      width: 100%;
+      
+    }
 }
 
 .game__time {
@@ -20,9 +32,9 @@
   padding: 0 5px;
   border-radius: 10px;
   text-align: center;
-  line-height: 3rem;
+  line-height: 4rem;
   box-shadow: inset 0px 0px 10px 0px constants.$color-shadow-dark2;
-  margin: 30px auto 0;
+  margin: 120px auto 20px;
 }
 
 .game__buttons {

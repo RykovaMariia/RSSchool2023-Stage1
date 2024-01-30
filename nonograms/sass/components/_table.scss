@@ -68,8 +68,7 @@ td {
 }
 
 .cell_dark {
-  background-color: constants.$color-text-dark;
-  border: solid 1px constants.$color-text-light;
+  background-color: constants.$color-cell;
 }
 
 .cell_cross::before {

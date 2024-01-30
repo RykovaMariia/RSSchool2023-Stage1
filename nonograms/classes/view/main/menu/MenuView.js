@@ -76,6 +76,8 @@ export class MenuView extends BaseView {
      * }} lastGame
      */
     const lastGame = JSON.parse(localStorage.getItem("saveGame"));
+    this.levels.selectedLevel(games[lastGame.id].level);
+    this.namesGame.selectedName(lastGame.id);
     gameComponent.continueLastGame(lastGame);
   }
 }

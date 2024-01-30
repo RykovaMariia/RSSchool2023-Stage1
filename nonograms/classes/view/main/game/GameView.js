@@ -274,6 +274,8 @@ export class GameView extends BaseView {
     const result = this.cells.map((el) => {
       if (el.classList.contains("cell_dark")) {
         el = 1;
+      } else if (el.classList.contains("cell_cross")) {
+        el = 2;
       } else {
         el = 0;
       }
@@ -299,6 +301,9 @@ export class GameView extends BaseView {
       if (el === 1) {
         this.cells[i].classList.add('cell_dark');
       } 
+      if(el === 2) {
+        this.cells[i].classList.add('cell_cross');
+      }
       return el;
     });
     this.timeDiv.setTextContent(`${this.min.toString().padStart(2, "0")}:${this.sec

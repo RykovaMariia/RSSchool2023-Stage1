@@ -120,7 +120,8 @@ export class GameView extends BaseView {
     const buttonSolution = new CreatorElement(
       "button",
       ["button", "button_solution"],
-      "Solution"
+      "Solution",
+      () => this.cbSolution()
     );
     buttonsDiv.appendElement(buttonSolution.getElement());
 
@@ -206,8 +207,10 @@ export class GameView extends BaseView {
         ) {
           const time = this.min * 60 + this.sec;
           this.addAudio("assets/music/win.mp3");
+
           const modal = new ModalView(time);
           document.body.prepend(modal.getHTMLElement());
+
           this.resetTime();
           this.table.setClassName(["nonograms_disabled"]);
         }
@@ -282,11 +285,11 @@ export class GameView extends BaseView {
       return el;
     });
     const saveGame = {
-      'id': this.gameIndex,
-      'time': [this.min, this.sec],
-      'cell': result
+      id: this.gameIndex,
+      time: [this.min, this.sec],
+      cell: result,
     };
-    localStorage.setItem('saveGame', JSON.stringify(saveGame));
+    localStorage.setItem("saveGame", JSON.stringify(saveGame));
   }
 
   continueLastGame(saveGame) {
@@ -294,25 +297,40 @@ export class GameView extends BaseView {
     this.appendField(saveGame.id);
     this.min = saveGame.time[0];
     this.sec = saveGame.time[1];
-    
+
     const result = saveGame.cell;
 
     result.map((el, i) => {
       if (el === 1) {
-        this.cells[i].classList.add('cell_dark');
-      } 
-      if(el === 2) {
-        this.cells[i].classList.add('cell_cross');
+        this.cells[i].classList.add("cell_dark");
+      }
+      if (el === 2) {
+        this.cells[i].classList.add("cell_cross");
       }
       return el;
     });
-    this.timeDiv.setTextContent(`${this.min.toString().padStart(2, "0")}:${this.sec
-      .toString()
-      .padStart(2, "0")}`);
+    this.timeDiv.setTextContent(
+      `${this.min.toString().padStart(2, "0")}:${this.sec
+        .toString()
+        .padStart(2, "0")}`
+    );
     this.timeDiv.setClassName(["time-go"]);
-          this.interval = setInterval(() => this.updateTime(), 1000);
+    this.interval = setInterval(() => this.updateTime(), 1000);
   }
 
+  cbSolution() {
+    const solution = games[this.gameIndex].game.flat(1);
+    solution.map((el, i) => {
+      if (el === 1) {
+        this.cells[i].classList.add("cell_dark");
+      } else {
+        this.cells[i].classList.remove("cell_dark");
+      }
+      return el;
+    });
+    this.resetTime();
+    this.table.setClassName(["nonograms_disabled"]);
+  }
 
   /**
    * @param {url} url

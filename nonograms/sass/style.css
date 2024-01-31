@@ -313,6 +313,7 @@ td {
 }
 
 .cell {
+  box-sizing: border-box;
   position: relative;
   width: 90px;
   height: 90px;
@@ -320,7 +321,7 @@ td {
   background-color: #edeae9;
   font-size: 6rem;
   line-height: 6rem;
-  transition: all 0.4s ease;
+  transition: all 0.1s ease;
 }
 .cell::before {
   padding: 0;
@@ -330,7 +331,7 @@ td {
   left: 50%;
   opacity: 0;
   transform: translateX(-50%) translateY(-50%);
-  transition: all 0.4s ease;
+  transition: all 0.1s ease;
 }
 @media (max-width: 710px) {
   .cell {

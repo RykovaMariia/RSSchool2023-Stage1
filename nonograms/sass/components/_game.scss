@@ -14,6 +14,10 @@
   box-shadow: 5px -40px 40px constants.$color-shadow-dark,
     -5px -40px 40px constants.$color-shadow-dark;
 
+    .dark & {
+      background-color: constants.$color-background-body-dark-center;
+    }
+
   @include mixins.media-middle {
     width: 60%;
     box-shadow: 40px -40px 40px 0px constants.$color-shadow-dark;

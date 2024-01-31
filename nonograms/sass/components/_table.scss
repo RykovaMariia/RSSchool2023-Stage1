@@ -25,6 +25,10 @@ tr,
 td {
   border: solid 1px constants.$color-text-dark;
   border-collapse: collapse;
+
+  .dark & {
+    border-color: constants.$color-text-light;
+  }
 }
 
 .nonograms__left,
@@ -83,6 +87,10 @@ td {
   font-size: 6rem;
   line-height: 6rem;
   transition: all 0.1s ease;
+
+  .dark & {
+    background-color: constants.$color-text-dark;
+  }
 
   &::before {
     padding: 0;
@@ -155,6 +163,10 @@ td {
 
 .cell_dark {
   background-color: constants.$color-cell;
+
+  .dark & {
+    background-color: constants.$color-cell-light;
+  }
 }
 
 .cell_cross::before {
@@ -165,21 +177,33 @@ td {
   .cell,
   .nonograms__left {
     border-top: solid 2px constants.$color-text-dark;
+    .dark & {
+      border-color: constants.$color-text-light;
+    }
   }
 }
 
 .cell_first,
 .nonograms__top_first {
   border-left: solid 2px constants.$color-text-dark;
+  .dark & {
+    border-color: constants.$color-text-light;
+  }
 }
 
 .five {
   .cell,
   .nonograms__left {
     border-bottom: solid 2px constants.$color-text-dark;
+    .dark & {
+      border-color: constants.$color-text-light;
+    }
   }
 }
 
 .cell_five {
   border-right: solid 2px constants.$color-text-dark;
+  .dark & {
+    border-color: constants.$color-text-light;
+  }
 }

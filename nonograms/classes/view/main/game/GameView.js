@@ -28,6 +28,7 @@ export class GameView extends BaseView {
   appendInnerGame() {
     this.appendHeading();
     this.appendTime();
+    this.appendSwitchTheme()
     this.appendField(this.gameIndex);
     this.appendButtons();
     this.clickRightMouse();
@@ -40,6 +41,18 @@ export class GameView extends BaseView {
 
   appendTime() {
     this.viewElement.appendElement(this.timeDiv.getElement());
+  }
+
+  appendSwitchTheme() {
+    const switchTheme = new CreatorElement("label", ['switch'],'', );
+    this.viewElement.appendElement(switchTheme.getElement());
+
+    const input = new CreatorElement("input");
+    input.getElement().setAttribute("type", "checkbox");
+    switchTheme.appendElement(input.getElement());
+
+    const switchToggle = new CreatorElement("span", ["switch-toggle"], '', () => this.cbToggleSwitchTheme());
+    switchTheme.appendElement(switchToggle.getElement());
   }
 
   appendField(gameIndex) {
@@ -331,6 +344,10 @@ export class GameView extends BaseView {
     });
     this.resetTime();
     this.table.setClassName(["nonograms_disabled"]);
+  }
+
+  cbToggleSwitchTheme() {
+    document.body.classList.toggle('dark');
   }
 
   /**

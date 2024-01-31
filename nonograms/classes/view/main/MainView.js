@@ -22,29 +22,38 @@ export class MainView extends BaseView {
     const score = new ScoreView();
     this.viewElement.appendElement(score.getHTMLElement());
 
-    this.appendMenuButton(game, menu.getHTMLElement());
+    this.appendBurger(game, menu.getHTMLElement());
     this.appendScoreButton(game, score.getHTMLElement());
   }
 
-  appendMenuButton(game, menuEl) {
-    const menu = new CreatorElement("button", ["button","button_menu"], "", () =>
-      this.cbMenu(menuEl)
+  appendBurger(game, menuEl) {
+    const burger = new CreatorElement("div", [,"burger"], "", () =>
+      this.cbBurger(menuEl, burger.getElement())
     );
-    game.viewElement.appendElement(menu.getElement());
+
+    for(let i = 0; i < 3; i++) {
+      const burgerLine = new CreatorElement("div", ["burger__line"]);
+      burger.appendElement(burgerLine.getElement());
+
+    }
+
+    game.viewElement.appendElement(burger.getElement());
   }
 
-  cbMenu(menuEl) {
+  cbBurger(menuEl, burgerEl) {
     menuEl.classList.toggle("menu_opened");
+    burgerEl.classList.toggle('burger_opened')
   }
 
   appendScoreButton(game, scoreEl) {
     const button = new CreatorElement(
       "button",
       ["button", "button_score"],
-      "",
+      "Score",
       () => this.cbScoreButton(scoreEl)
     );
     game.viewElement.appendElement(button.getElement());
+
   }
 
   cbScoreButton(scoreEl) {

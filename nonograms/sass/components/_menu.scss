@@ -15,6 +15,7 @@
   @include mixins.media-tablet {
     z-index: 10;
     background-color: constants.$color-background-body-light-center;
+    border-radius: 10px;
     box-shadow: -5px 20px 15px 0px constants.$color-shadow-dark;
     position: fixed;
     overflow-y: auto;

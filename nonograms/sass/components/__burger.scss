@@ -1,0 +1,47 @@
+@use "../abstracts/constants";
+@use "../abstracts/mixins";
+
+.burger {
+  display: none;
+
+  @include mixins.media-tablet {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    width: 30px;
+    height: 20px;
+
+    cursor: pointer;
+    z-index: 11;
+    top: 25px;
+    right: 25px;
+
+    .burger__line {
+      width: 25px;
+      height: 2px;
+      border-radius: 10px;
+      background-color: constants.$color-background-body-dark;
+      transition: all 0.7s ease;
+    }
+
+    &_opened .burger__line:nth-child(1) {
+      transform-origin: left;
+      transform: translateY(-3px) rotate(45deg);
+    }
+    
+    &_opened .burger__line:nth-child(2) {
+      opacity: 0;
+    }
+    
+    &_opened .burger__line:nth-child(3) {
+      transform-origin: left;
+      transform: translateX(-1px) translateY(1px) rotate(-45deg);
+    }
+  }
+}
+
+

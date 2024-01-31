@@ -12,6 +12,10 @@
   @media (max-width: constants.$mobile-width) { @content; }
 }
 
+@mixin media-mobile-mini {
+  @media (max-width: constants.$mini-mobile-width) { @content; }
+}
+
 @mixin media-hover {
   @media (hover: hover) { @content; }
 }

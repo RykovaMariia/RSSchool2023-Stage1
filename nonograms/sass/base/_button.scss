@@ -1,4 +1,4 @@
-@use '../abstracts/constants';
+@use "../abstracts/constants";
 @use "../abstracts/mixins";
 
 .button {
@@ -9,12 +9,12 @@
   border-radius: 10px;
 
   color: constants.$color-text-dark;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
   font-size: 2.5rem;
-  
-  padding: 0 15px;
-  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light, 5px 5px 10px 0px constants.$color-shadow-dark;
 
+  padding: 0 15px;
+  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light,
+    5px 5px 10px 0px constants.$color-shadow-dark;
 }
 
 .button_solution {
@@ -35,42 +35,44 @@
 
 .button_score {
   display: none;
-  @include mixins.media-middle {
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 40px;
-  background-color: constants.$color-background-body-light-center;
-  color: constants.$color-text-dark;
-  z-index: 11;
-  font-size: 2rem;
-  top: 210px;
-  left: 50px;
 
-  background-image: url(../assets/trophy-svgrepo-com.svg) ;
-  background-position: center; 
-  background-size: 50%;
-  background-repeat: no-repeat;
-}
+  @include mixins.media-middle {
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 40px;
+    background-color: constants.$color-background-body-light-center;
+    color: constants.$color-text-dark;
+    z-index: 11;
+    font-size: 2rem;
+    top: 180px;
+    left: 50px;
+
+    background-image: url(../assets/trophy-svgrepo-com.svg);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
 }
 
 .button_menu {
   display: none;
+
   @include mixins.media-tablet {
     width: 50px;
     height: 40px;
     z-index: 11;
-  position: absolute;
+    position: absolute;
 
-  display: block;
-  cursor: pointer;
+    display: block;
+    cursor: pointer;
 
-  background-image: url(../assets/set-up-svgrepo-com.svg) ;
-  background-position: center; 
-  background-size: 50%;
-  background-repeat: no-repeat;
+    background-image: url(../assets/set-up-svgrepo-com.svg);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
 
-  top: 35px;
-  right: 30px;
+    top: 35px;
+    right: 30px;
   }
 }

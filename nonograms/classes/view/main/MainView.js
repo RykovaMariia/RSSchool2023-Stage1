@@ -43,6 +43,7 @@ export class MainView extends BaseView {
   cbBurger(menuEl, burgerEl) {
     menuEl.classList.toggle("menu_opened");
     burgerEl.classList.toggle('burger_opened')
+    document.body.classList.toggle('lock')
   }
 
   appendScoreButton(game, scoreEl) {
@@ -58,5 +59,6 @@ export class MainView extends BaseView {
 
   cbScoreButton(scoreEl) {
     scoreEl.classList.toggle("score_opened");
+    document.body.classList.add('lock')
   }
 }

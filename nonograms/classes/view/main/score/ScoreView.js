@@ -1,23 +1,34 @@
 import { CreatorElement } from "../../../utils/CreatorElement.js";
-import { BaseView } from "../../BaseView.js";
+import { BaseViewWithHandler } from "../../BaseViewWithHandler.js";
 
-export class ScoreView extends BaseView {
+export class ScoreView extends BaseViewWithHandler {
   constructor() {
-    super("section", ["score"]);
+    super("section", ["score"], (e) => this.cbClose(e));
     this.append();
   }
 
+  cbClose(e) {
+    if(e.target.classList.contains('score')) {
+      this.cbCloseButton()
+    }
+  }
+
   append() {
-    const wrapper = new CreatorElement("div", ["score__wrapper"],);
+    const wrapper = new CreatorElement("div", ["score__wrapper"]);
     this.viewElement.appendElement(wrapper.getElement());
 
-    const close = new CreatorElement("span", ["material-symbols-outlined"], "close", () => this.cbClose());
+    const close = new CreatorElement(
+      "span",
+      ["material-symbols-outlined"],
+      "close",
+      () => this.cbCloseButton()
+    );
     wrapper.appendElement(close.getElement());
 
     const h2 = new CreatorElement("h2", [], "The high score table");
     wrapper.appendElement(h2.getElement());
 
-    const list = new CreatorElement("div", ['score__list']);
+    const list = new CreatorElement("div", ["score__list"]);
     wrapper.appendElement(list.getElement());
 
     const ol = new CreatorElement("ol");
@@ -32,7 +43,9 @@ export class ScoreView extends BaseView {
     }
   }
 
-  cbClose() {
-    this.viewElement.getElement().classList.remove('score_opened');
+  cbCloseButton() {
+    this.viewElement.getElement().classList.remove("score_opened");
+    document.body.classList.remove('lock')
   }
+
 }

@@ -32,5 +32,6 @@ export class ModalView extends BaseView {
 
   cbButton() {
     this.viewElement.setClassName(['modal_none']);
+    document.body.classList.remove('lock')
   }
 }

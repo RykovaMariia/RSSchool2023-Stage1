@@ -19,7 +19,11 @@ body {
   font-size: 2rem;
 }
 
-.dark {
+body.lock {
+  overflow: hidden;
+}
+
+body.dark {
   background-color: constants.$color-background-body-dark-center;
   color: constants.$color-text-light;
 }

@@ -223,6 +223,7 @@ export class GameView extends BaseView {
 
           const modal = new ModalView(time);
           document.body.prepend(modal.getHTMLElement());
+          document.body.classList.add('lock')
 
           this.resetTime();
           this.table.setClassName(["nonograms_disabled"]);

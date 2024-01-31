@@ -19,7 +19,7 @@ body {
 
 .dark {
   background-color: #202E39;
-  color: #edeae9;
+  color: #e2dddc;
 }
 
 h1 {
@@ -50,7 +50,7 @@ h2 {
 .dark .button {
   border-color: #26333F;
   box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.4), 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
-  color: #edeae9;
+  color: #e2dddc;
 }
 
 .button_continue-last-game,
@@ -234,6 +234,9 @@ ol li:before {
   box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   margin: 100px auto 20px;
 }
+.dark .game__time {
+  color: #202E39;
+}
 
 .game__buttons {
   order: 10;
@@ -279,7 +282,7 @@ td {
 .dark table,
 .dark tr,
 .dark td {
-  border-color: #edeae9;
+  border-color: #e2dddc;
 }
 
 .nonograms__left,
@@ -345,7 +348,7 @@ td {
   width: 90px;
   height: 90px;
   cursor: pointer;
-  background-color: #edeae9;
+  background-color: #e2dddc;
   font-size: 6rem;
   line-height: 6rem;
   transition: all 0.1s ease;
@@ -443,7 +446,7 @@ td {
 }
 .dark .first .cell,
 .dark .first .nonograms__left {
-  border-color: #edeae9;
+  border-color: #e2dddc;
 }
 
 .cell_first,
@@ -452,7 +455,7 @@ td {
 }
 .dark .cell_first,
 .dark .nonograms__top_first {
-  border-color: #edeae9;
+  border-color: #e2dddc;
 }
 
 .five .cell,
@@ -461,14 +464,14 @@ td {
 }
 .dark .five .cell,
 .dark .five .nonograms__left {
-  border-color: #edeae9;
+  border-color: #e2dddc;
 }
 
 .cell_five {
   border-right: solid 2px #202E39;
 }
 .dark .cell_five {
-  border-color: #edeae9;
+  border-color: #e2dddc;
 }
 
 .menu {
@@ -530,7 +533,7 @@ td {
 }
 .level_selected {
   cursor: auto;
-  background-color: #edeae9;
+  background-color: #e2dddc;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   font-size: 2.2rem;
@@ -563,12 +566,12 @@ td {
 }
 .name-game_selected {
   font-size: 2.2rem;
-  background-color: #edeae9;
+  background-color: #e2dddc;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .dark .name-game_selected {
-  background-color: #202E39;
+  background-color: rgba(142, 202, 230, 0.3450980392);
 }
 .name-game:hover {
   font-size: 2.2rem;
@@ -636,7 +639,10 @@ td {
     top: 25px;
     right: 25px;
   }
-  .burger .burger__line {
+}
+
+@media (max-width: 1000px) {
+  .burger__line {
     width: 25px;
     height: 2px;
     border-radius: 10px;
@@ -653,6 +659,9 @@ td {
   .burger_opened .burger__line:nth-child(3) {
     transform-origin: left;
     transform: translateX(-1px) translateY(1px) rotate(-45deg);
+  }
+  .dark .burger__line {
+    background-color: #edeae9;
   }
 }
 

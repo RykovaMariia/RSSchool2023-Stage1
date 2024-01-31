@@ -8,7 +8,6 @@
 
   border-radius: 10px;
 
-  color: constants.$color-text-dark;
   font-family: "Indie Flower", cursive;
   font-size: 2.5rem;
 
@@ -17,9 +16,21 @@
     5px 5px 10px 0px constants.$color-shadow-dark;
 }
 
+.dark .button {
+  border-color: constants.$color-background-body-dark;
+  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light,
+    5px 5px 10px 0px constants.$color-shadow-dark;
+    color: constants.$color-text-light;
+}
+
+.button_continue-last-game,
 .button_solution {
   background-color: constants.$color-background-body-light-center;
-  color: constants.$color-text-dark;
+}
+
+.dark .button_continue-last-game,
+.dark .button_solution {
+  background-color: constants.$color-background-body-dark-center;
 }
 
 .button_random-game {
@@ -29,8 +40,6 @@
 
 .button_continue-last-game {
   margin-top: 50px;
-  background-color: constants.$color-background-body-light-center;
-  color: constants.$color-text-dark;
 }
 
 .button_score {
@@ -42,11 +51,14 @@
     width: max-content;
 
     background-color: constants.$color-background-body-light-center;
-    color: constants.$color-text-dark;
     font-size: 2rem;
     top: 195px;
     left: 25px;
-    border: none;
+    border: none; 
+
+    .dark &{
+      background-color: constants.$color-background-body-dark;
+    }
   }
 }
 

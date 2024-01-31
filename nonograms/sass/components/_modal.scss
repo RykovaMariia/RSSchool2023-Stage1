@@ -32,6 +32,10 @@
   gap: 25px;
 
   font-size: 3rem;
+
+  .dark & {
+    background-color: constants.$color-background-body-dark;
+  }
 }
 
 .result-game {

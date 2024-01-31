@@ -183,11 +183,11 @@ export class GameView extends BaseView {
 
         e.target.classList.remove("cell_cross");
         if (e.target.classList.contains("cell_dark")) {
-          e.target.classList.remove("cell_dark");
           this.addAudio("assets/music/tap_2.mp3");
+          e.target.classList.remove("cell_dark");
         } else {
-          e.target.classList.add("cell_dark");
           this.addAudio("assets/music/tap_1.mp3");
+          e.target.classList.add("cell_dark");
         }
 
         const result = this.cells.map((el) => {
@@ -229,11 +229,11 @@ export class GameView extends BaseView {
           e.preventDefault();
           e.target.classList.remove("cell_dark");
           if (e.target.classList.contains("cell_cross")) {
-            e.target.classList.remove("cell_cross");
             this.addAudio("assets/music/tap_2.mp3");
+            e.target.classList.remove("cell_cross");
           } else {
-            e.target.classList.add("cell_cross");
             this.addAudio("assets/music/tcs.mp3");
+            e.target.classList.add("cell_cross");
           }
         }
       }

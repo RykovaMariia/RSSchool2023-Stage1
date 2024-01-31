@@ -4,21 +4,24 @@ import { BaseView } from "../../BaseView.js";
 export class ScoreView extends BaseView {
   constructor() {
     super("section", ["score"]);
-    this.appendHeading();
-    this.appendList();
+    this.append();
   }
 
-  appendHeading() {
+  append() {
+    const wrapper = new CreatorElement("div", ["score__wrapper"],);
+    this.viewElement.appendElement(wrapper.getElement());
+
+    const close = new CreatorElement("span", ["material-symbols-outlined"], "close", () => this.cbClose());
+    wrapper.appendElement(close.getElement());
+
     const h2 = new CreatorElement("h2", [], "The high score table");
-    this.viewElement.appendElement(h2.getElement());
-  }
+    wrapper.appendElement(h2.getElement());
 
-  appendList() {
-    const scoreWrapper = new CreatorElement("div", ['score__wrapper']);
-    this.viewElement.appendElement(scoreWrapper.getElement());
+    const list = new CreatorElement("div", ['score__list']);
+    wrapper.appendElement(list.getElement());
 
     const ol = new CreatorElement("ol");
-    scoreWrapper.appendElement(ol.getElement());
+    list.appendElement(ol.getElement());
 
     for (let i = 0; i < 5; i++) {
       const li = new CreatorElement("li");
@@ -27,5 +30,9 @@ export class ScoreView extends BaseView {
       }
       ol.appendElement(li.getElement());
     }
+  }
+
+  cbClose() {
+    this.viewElement.getElement().classList.remove('score_opened');
   }
 }

@@ -321,6 +321,7 @@ export class GameView extends BaseView {
   cbSolution() {
     const solution = games[this.gameIndex].game.flat(1);
     solution.map((el, i) => {
+      this.cells[i].classList.remove("cell_cross");
       if (el === 1) {
         this.cells[i].classList.add("cell_dark");
       } else {

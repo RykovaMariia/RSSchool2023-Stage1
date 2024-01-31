@@ -16,10 +16,9 @@
     position: fixed;
     overflow-y: auto;
     right: 0;
-top: -100%;
+    top: -100%;
 
     gap: 10px;
-    
 
     padding: 60px 40px;
 
@@ -56,7 +55,7 @@ ol {
   li:before {
     margin-right: 10px 0;
     content: counter(item);
-  
+
     width: 3rem;
     text-align: center;
     display: inline-block;

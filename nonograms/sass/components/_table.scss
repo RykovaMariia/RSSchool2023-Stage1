@@ -1,8 +1,23 @@
 @use "../abstracts/constants";
+@use "../abstracts/mixins";
+
+$width: 540px;
+$width-mobile: 432px;
+$width-mobile-mini: 360px;
 
 .nonograms {
-  width: 540px;
+  min-width: $width;
+  min-height: $width;
   margin: auto;
+
+  @include mixins.media-mobile {
+    min-width: $width-mobile;
+    min-height: $width-mobile;
+  }
+  @include mixins.media-mobile-mini {
+    min-width: $width-mobile-mini;
+    min-height: $width-mobile-mini;
+  }
 }
 
 table,
@@ -14,20 +29,44 @@ td {
 
 .nonograms__left,
 .nonograms__top {
-  padding: 5px;
-  border-radius: 30%;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   line-height: 1.6rem;
   text-align: center;
+
+  @include mixins.media-mobile {
+    font-size: 1.2rem;
+    line-height: 1.1rem;
+  }
+  @include mixins.media-mobile-mini {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 
 .nonograms__left {
-  width: 90px;
+  width: calc(1 / 6 * $width);
+
+  @include mixins.media-mobile {
+    width: calc(1 / 6 * $width-mobile);
+    line-height: 1rem;
+    letter-spacing: 0.001rem;
+  }
+  @include mixins.media-mobile-mini {
+    width: calc(1 / 6 * $width-mobile-mini);
+    letter-spacing: 0.001rem;
+  }
 }
 
 .nonograms__top {
-  height: 90px;
+  height: calc(1 / 6 * $width);
+
+  @include mixins.media-mobile {
+    height: calc(1 / 6 * $width-mobile);
+  }
+  @include mixins.media-mobile-mini {
+    height: calc(1 / 6 * $width-mobile-mini);
+  }
 }
 
 .nonograms_disabled .cell {
@@ -36,35 +75,81 @@ td {
 
 .cell {
   position: relative;
-  box-sizing: border-box;
-  width: 90px;
-  height: 90px;
+  width: calc(1 / 6 * $width);
+  height: calc(1 / 6 * $width);
   cursor: pointer;
   background-color: constants.$color-text-light;
-  transition: all 0.2s ease;
+  font-size: 6rem;
+  line-height: 6rem;
+  transition: all 0.4s ease;
 
   &::before {
     padding: 0;
     content: "x";
     position: absolute;
-    font-size: 3rem;
     top: 50%;
     left: 50%;
     opacity: 0;
     transform: translateX(-50%) translateY(-50%);
+    transition: all 0.4s ease;
+  }
+
+  @include mixins.media-mobile {
+    width: calc(1 / 6 * $width-mobile);
+    height: calc(1 / 6 * $width-mobile);
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  @include mixins.media-mobile-mini {
+    width: calc(1 / 6 * $width-mobile-mini);
+    height: calc(1 / 6 * $width-mobile-mini);
+    font-size: 4rem;
+    line-height: 4rem;
   }
 }
 
 .cell-medium {
-  box-sizing: border-box;
-  width: 45px;
-  height: 45px;
+  width: calc((1 - 1 / 6) / 10 * $width);
+  height: calc((1 - 1 / 6) / 10 * $width);
+  font-size: 4rem;
+  line-height: 4rem;
+
+  @include mixins.media-mobile {
+    width: calc((1 - 1 / 6) / 10 * $width-mobile);
+    height: calc((1 - 1 / 6) / 10 * $width-mobile);
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  @include mixins.media-mobile-mini {
+    width: calc((1 - 1 / 6) / 10 * $width-mobile-mini);
+    height: calc((1 - 1 / 6) / 10 * $width-mobile-mini);
+    font-size: 2rem;
+    line-height: 2rem;
+  }
 }
 
 .cell-small {
-  box-sizing: border-box;
-  width: 30px;
-  height: 30px;
+  width: calc((1 - 1 / 6) / 15 * $width);
+  height: calc((1 - 1 / 6) / 15 * $width);
+
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+
+  @include mixins.media-mobile {
+    width: calc((1 - 1 / 6) / 15 * $width-mobile);
+    height: calc((1 - 1 / 6) / 15 * $width-mobile);
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  @include mixins.media-mobile-mini {
+    width: calc((1 - 1 / 6) / 15 * $width-mobile-mini);
+    height: calc((1 - 1 / 6) / 15 * $width-mobile-mini);
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 
 .cell_dark {

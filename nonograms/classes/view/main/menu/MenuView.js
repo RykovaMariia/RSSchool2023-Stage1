@@ -22,7 +22,7 @@ export class MenuView extends BaseView {
     this.appendHeading();
     this.appendLevels();
     this.appendNamesGame();
-    this.appendButtonRandom();
+    this.appendButtonRandom(gameComponent);
     this.appendButtonContinueLastGame(gameComponent);
   }
 
@@ -39,17 +39,18 @@ export class MenuView extends BaseView {
     this.viewElement.appendElement(this.namesGame.getHTMLElement());
   }
 
-  appendButtonRandom() {
+  appendButtonRandom(gameComponent) {
     const buttonRandom = new CreatorElement(
       "button",
       ["button_random-game", "button"],
       "random",
-      () => this.cbRandomButton()
+      () => this.cbRandomButton(gameComponent)
     );
     this.viewElement.appendElement(buttonRandom.getElement());
   }
 
-  cbRandomButton() {
+  cbRandomButton(gameComponent) {
+    gameComponent.buttonSave.getElement().disabled = true;
     const randomIndex = Math.floor(Math.random() * games.length);
 
     this.level = games[randomIndex].level;
@@ -62,12 +63,17 @@ export class MenuView extends BaseView {
       "button",
       ["button_continue-last-game", "button"],
       "Continue last game",
-      () => this.cbContinueLastGame(gameComponent)
+      () => this.cbContinueLastGame(gameComponent, buttonContinue.getElement())
     );
+    const lastGame = JSON.parse(localStorage.getItem("saveGame"));
+    if(!lastGame) {
+      buttonContinue.getElement().disabled = true;
+    }
+    
     this.viewElement.appendElement(buttonContinue.getElement());
   }
 
-  cbContinueLastGame(gameComponent) {
+  cbContinueLastGame(gameComponent, buttonContinue) {
     /**
      * @typedef {{
      * id: number,
@@ -76,8 +82,11 @@ export class MenuView extends BaseView {
      * }} lastGame
      */
     const lastGame = JSON.parse(localStorage.getItem("saveGame"));
-    this.levels.selectedLevel(games[lastGame.id].level);
-    this.namesGame.selectedName(lastGame.id);
-    gameComponent.continueLastGame(lastGame);
+    if (lastGame) {
+      buttonContinue.disabled = false;
+      this.levels.selectedLevel(games[lastGame.id].level);
+      this.namesGame.selectedName(lastGame.id);
+      gameComponent.continueLastGame(lastGame);
+    }
   }
 }

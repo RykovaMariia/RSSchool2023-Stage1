@@ -51,6 +51,10 @@ h2 {
   box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.4), 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
+button:disabled {
+  cursor: auto;
+}
+
 .dark .button {
   border-color: #26333F;
   box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.4), 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -537,7 +541,7 @@ td {
 }
 .level_selected {
   cursor: auto;
-  background-color: #e2dddc;
+  background-color: #edeae9;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   font-size: 2.2rem;
@@ -570,7 +574,7 @@ td {
 }
 .name-game_selected {
   font-size: 2.2rem;
-  background-color: #e2dddc;
+  background-color: #edeae9;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
@@ -704,12 +708,17 @@ td {
   border-radius: 20px;
   right: 2px;
   bottom: 2px;
-  background-color: #edeae9;
+  background-color: #ADD8E4;
+  background-image: url(../assets/theme/sun.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
   transition: all 0.4s ease;
 }
 
 input:checked + .switch-toggle::before {
   background-color: #26333F;
+  background-image: url(../assets/theme/moon.png);
 }
 
 input:checked + .switch-toggle {

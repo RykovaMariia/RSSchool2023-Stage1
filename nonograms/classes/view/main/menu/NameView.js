@@ -41,6 +41,7 @@ export class NameView extends BaseView {
   }
 
   selectedName(index) {
+    this.gameComponent.buttonSave.getElement().disabled = true;
     const nameGame = games[index].name;
     this.nameElements.forEach((el) => {
       el.classList.remove("name-game_selected");

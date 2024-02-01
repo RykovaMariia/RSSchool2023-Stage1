@@ -16,6 +16,7 @@ export class GameView extends BaseView {
   }
   table = new CreatorElement("table", ["nonograms"]);
   timeDiv = new CreatorElement("div", ["game__time"], "00:00");
+  buttonSave;
 
   nonogramsCluesTop = [];
   nonogramsCluesLeft = [];
@@ -29,7 +30,7 @@ export class GameView extends BaseView {
   appendInnerGame() {
     this.appendHeading();
     this.appendTime();
-    this.appendSwitchTheme()
+    this.appendSwitchTheme();
     this.appendField(this.gameIndex);
     this.appendButtons();
     this.clickRightMouse();
@@ -45,14 +46,18 @@ export class GameView extends BaseView {
   }
 
   appendSwitchTheme() {
-    const switchTheme = new CreatorElement("label", ['switch'],'', );
+    const switchTheme = new CreatorElement("label", ["switch"], "");
     this.viewElement.appendElement(switchTheme.getElement());
 
     const input = new CreatorElement("input");
     input.getElement().setAttribute("type", "checkbox");
     switchTheme.appendElement(input.getElement());
 
-    const switchToggle = new CreatorElement("span", ["switch-toggle"], '', () => this.cbToggleSwitchTheme());
+    this.theme(input.getElement());
+
+    const switchToggle = new CreatorElement("span", ["switch-toggle"], "", () =>
+      this.cbToggleSwitchTheme()
+    );
     switchTheme.appendElement(switchToggle.getElement());
   }
 
@@ -88,7 +93,6 @@ export class GameView extends BaseView {
         tr.setClassName(["five"]);
       }
 
-     
       for (let j = 0; j < n; j++) {
         const td = new CreatorElement("td", [], "", (e) => this.cbClick(e));
 
@@ -124,13 +128,15 @@ export class GameView extends BaseView {
     const buttonsDiv = new CreatorElement("div", ["game__buttons"]);
     this.viewElement.appendElement(buttonsDiv.getElement());
 
-    const buttonSave = new CreatorElement(
+    this.buttonSave = new CreatorElement(
       "button",
       ["button", "button_save-game"],
       "Save game",
       () => this.cbSaveGame()
     );
-    buttonsDiv.appendElement(buttonSave.getElement());
+
+    this.buttonSave.getElement().disabled = true;
+    buttonsDiv.appendElement(this.buttonSave.getElement());
 
     const buttonSolution = new CreatorElement(
       "button",
@@ -189,11 +195,10 @@ export class GameView extends BaseView {
   }
 
   cbClick(e) {
-
     if (e.target.classList.contains("cell")) {
-
       if (!this.table.getElement().classList.contains("nonograms_disabled")) {
-        
+        this.buttonSave.getElement().disabled = false;
+
         if (!this.timeDiv.getElement().classList.contains("time-go")) {
           this.timeDiv.setClassName(["time-go"]);
           this.interval = setInterval(() => this.updateTime(), 1000);
@@ -221,14 +226,14 @@ export class GameView extends BaseView {
           result.length === solution.length &&
           solution.every((el, i) => el === result[i])
         ) {
-  
           const time = this.min * 60 + this.sec;
+          this.buttonSave.getElement().disabled = true;
           this.addAudio("assets/music/win.mp3");
-          this.saveWinInLocalStorage(time)
+          this.saveWinInLocalStorage(time);
           this.score.appendTextInList();
           const modal = new ModalView(time);
           document.body.prepend(modal.getHTMLElement());
-          document.body.classList.add('lock')
+          document.body.classList.add("lock");
 
           this.resetTime();
           this.table.setClassName(["nonograms_disabled"]);
@@ -237,11 +242,10 @@ export class GameView extends BaseView {
     }
   }
 
-saveWinInLocalStorage(time) {
-  const thisWin = { index: this.gameIndex, time: time };
+  saveWinInLocalStorage(time) {
+    const thisWin = { index: this.gameIndex, time: time };
     let dataScore = [];
-   
-   
+
     if (!localStorage.getItem("score")) {
       dataScore.push(thisWin);
       localStorage.setItem("score", JSON.stringify(dataScore));
@@ -254,12 +258,13 @@ saveWinInLocalStorage(time) {
       dataScore.push(thisWin);
       localStorage.setItem("score", JSON.stringify(dataScore));
     }
-}
+  }
 
   clickRightMouse() {
     this.table.getElement().addEventListener("contextmenu", (e) => {
       if (e.target.classList.contains("cell")) {
         if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+          this.buttonSave.getElement().disabled = false;
           if (!this.timeDiv.getElement().classList.contains("time-go")) {
             this.timeDiv.setClassName(["time-go"]);
             this.interval = setInterval(() => this.updateTime(), 1000);
@@ -307,11 +312,13 @@ saveWinInLocalStorage(time) {
   }
 
   cbResetButton() {
+    this.buttonSave.getElement().disabled = true;
     this.removeField();
     this.appendField(this.gameIndex);
   }
 
   cbSaveGame() {
+    document.querySelector(".button_continue-last-game").disabled = false;
     const result = this.cells.map((el) => {
       if (el.classList.contains("cell_dark")) {
         el = 1;
@@ -357,6 +364,7 @@ saveWinInLocalStorage(time) {
   }
 
   cbSolution() {
+    this.buttonSave.getElement().disabled = true;
     const solution = games[this.gameIndex].game.flat(1);
     solution.map((el, i) => {
       this.cells[i].classList.remove("cell_cross");
@@ -372,7 +380,14 @@ saveWinInLocalStorage(time) {
   }
 
   cbToggleSwitchTheme() {
-    document.body.classList.toggle('dark');
+    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    if (theme) {
+      document.body.classList.remove("dark");
+      localStorage.removeItem('darkTheme')
+    } else {
+      localStorage.setItem("darkTheme", true);
+      document.body.classList.add("dark");
+    }
   }
 
   /**
@@ -382,5 +397,13 @@ saveWinInLocalStorage(time) {
     var audio = new Audio();
     audio.src = url;
     audio.autoplay = true;
+  }
+
+  theme(input) {
+    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    if(theme) {
+      document.body.classList.add('dark')
+      input.checked = true;
+    }
   }
 }

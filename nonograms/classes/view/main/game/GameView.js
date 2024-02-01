@@ -8,9 +8,10 @@ export class GameView extends BaseView {
    *
    * @param {number} gameIndex
    */
-  constructor(gameIndex) {
+  constructor(gameIndex, score) {
     super("section", ["game"]);
     this.gameIndex = gameIndex;
+    this.score = score;
     this.appendInnerGame();
   }
   table = new CreatorElement("table", ["nonograms"]);
@@ -87,6 +88,7 @@ export class GameView extends BaseView {
         tr.setClassName(["five"]);
       }
 
+     
       for (let j = 0; j < n; j++) {
         const td = new CreatorElement("td", [], "", (e) => this.cbClick(e));
 
@@ -187,8 +189,11 @@ export class GameView extends BaseView {
   }
 
   cbClick(e) {
+
     if (e.target.classList.contains("cell")) {
+
       if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+        
         if (!this.timeDiv.getElement().classList.contains("time-go")) {
           this.timeDiv.setClassName(["time-go"]);
           this.interval = setInterval(() => this.updateTime(), 1000);
@@ -211,16 +216,16 @@ export class GameView extends BaseView {
           }
           return el;
         });
-
         const solution = games[this.gameIndex].game.flat(1);
-
         if (
           result.length === solution.length &&
           solution.every((el, i) => el === result[i])
         ) {
+  
           const time = this.min * 60 + this.sec;
           this.addAudio("assets/music/win.mp3");
-
+          this.saveWinInLocalStorage(time)
+          this.score.appendTextInList();
           const modal = new ModalView(time);
           document.body.prepend(modal.getHTMLElement());
           document.body.classList.add('lock')
@@ -231,6 +236,25 @@ export class GameView extends BaseView {
       }
     }
   }
+
+saveWinInLocalStorage(time) {
+  const thisWin = { index: this.gameIndex, time: time };
+    let dataScore = [];
+   
+   
+    if (!localStorage.getItem("score")) {
+      dataScore.push(thisWin);
+      localStorage.setItem("score", JSON.stringify(dataScore));
+    } else {
+      dataScore = JSON.parse(localStorage.getItem("score"));
+
+      if (dataScore.length > 4) {
+        dataScore.shift();
+      }
+      dataScore.push(thisWin);
+      localStorage.setItem("score", JSON.stringify(dataScore));
+    }
+}
 
   clickRightMouse() {
     this.table.getElement().addEventListener("contextmenu", (e) => {

@@ -13,14 +13,14 @@ export class MainView extends BaseView {
   }
 
   appendMain() {
-    const game = new GameView(START_NAME_INDEX);
+    const score = new ScoreView();
+    this.viewElement.appendElement(score.getHTMLElement());
+
+    const game = new GameView(START_NAME_INDEX, score);
     this.viewElement.appendElement(game.getHTMLElement());
 
     const menu = new MenuView(START_NAME_INDEX, game);
     this.viewElement.appendElement(menu.getHTMLElement());
-
-    const score = new ScoreView();
-    this.viewElement.appendElement(score.getHTMLElement());
 
     this.appendBurger(game, menu.getHTMLElement());
     this.appendScoreButton(game, score.getHTMLElement());
@@ -61,4 +61,6 @@ export class MainView extends BaseView {
     scoreEl.classList.toggle("score_opened");
     document.body.classList.add('lock')
   }
+
+
 }

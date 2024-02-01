@@ -1,15 +1,19 @@
 import { CreatorElement } from "../../../utils/CreatorElement.js";
 import { BaseViewWithHandler } from "../../BaseViewWithHandler.js";
+import { games } from "../../../../data/games.js";
 
 export class ScoreView extends BaseViewWithHandler {
   constructor() {
     super("section", ["score"], (e) => this.cbClose(e));
     this.append();
+    this.appendTextInList();
   }
 
+  listElements = [];
+
   cbClose(e) {
-    if(e.target.classList.contains('score')) {
-      this.cbCloseButton()
+    if (e.target.classList.contains("score")) {
+      this.cbCloseButton();
     }
   }
 
@@ -36,6 +40,7 @@ export class ScoreView extends BaseViewWithHandler {
 
     for (let i = 0; i < 5; i++) {
       const li = new CreatorElement("li");
+      this.listElements.push(li);
       if (i === 0) {
         li.setClassName(["score__first"]);
       }
@@ -45,7 +50,25 @@ export class ScoreView extends BaseViewWithHandler {
 
   cbCloseButton() {
     this.viewElement.getElement().classList.remove("score_opened");
-    document.body.classList.remove('lock')
+    document.body.classList.remove("lock");
   }
 
+  appendTextInList() {
+    let dataScore = [];
+    dataScore = JSON.parse(localStorage.getItem("score"));
+    if(dataScore && dataScore.length > 0) {
+      let sortData = [];
+      sortData = dataScore.sort((a, b) => a.time - b.time);
+
+      sortData.forEach((el, i) => {
+        const levels = ["easy", "medium", "hard"];
+        const name = games[el.index].name;
+        const level = levels[games[el.index].level];
+        const min = Math.trunc(el.time / 60).toString().padStart(2, "0");
+        const sec = (el.time % 60).toString().padStart(2, "0");
+        this.listElements[i].setTextContent(`${name}, ${level} ${min}:${sec}`);
+      });
+    }
+    
+  }
 }

@@ -66,7 +66,7 @@
 
   &_selected {
     cursor: auto;
-    background-color: constants.$color-text-light;
+    background-color: constants.$color-background-body-light;
     box-shadow: 0px 0px 5px 0px constants.$color-shadow-dark2;
     border-radius: 10px;
     font-size: 2.2rem;
@@ -105,7 +105,7 @@
 
   &_selected {
     font-size: 2.2rem;
-    background-color: constants.$color-text-light;
+    background-color: constants.$color-background-body-light;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px constants.$color-shadow-dark2;
 

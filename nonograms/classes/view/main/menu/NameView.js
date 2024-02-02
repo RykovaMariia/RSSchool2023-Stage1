@@ -45,8 +45,8 @@ export class NameView extends BaseView {
     const nameGame = games[index].name;
     this.nameElements.forEach((el) => {
       el.classList.remove("name-game_selected");
-      
-      if(el.innerText === nameGame) {
+
+      if (el.innerText === nameGame) {
         el.classList.add("name-game_selected");
       }
     });

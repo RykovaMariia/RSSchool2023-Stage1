@@ -66,10 +66,10 @@ export class MenuView extends BaseView {
       () => this.cbContinueLastGame(gameComponent, buttonContinue.getElement())
     );
     const lastGame = JSON.parse(localStorage.getItem("saveGame"));
-    if(!lastGame) {
+    if (!lastGame) {
       buttonContinue.getElement().disabled = true;
     }
-    
+
     this.viewElement.appendElement(buttonContinue.getElement());
   }
 

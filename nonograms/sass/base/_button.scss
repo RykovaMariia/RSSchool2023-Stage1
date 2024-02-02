@@ -16,8 +16,12 @@
     5px 5px 10px 0px constants.$color-shadow-dark;
 }
 
-button:disabled {
+.button:disabled {
   cursor: auto;
+}
+
+.dark .button:disabled {
+  color: constants.$color-shadow-light;
 }
 
 .dark .button {

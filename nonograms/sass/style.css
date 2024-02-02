@@ -51,8 +51,12 @@ h2 {
   box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.4), 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-button:disabled {
+.button:disabled {
   cursor: auto;
+}
+
+.dark .button:disabled {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .dark .button {
@@ -356,13 +360,13 @@ td {
   width: 90px;
   height: 90px;
   cursor: pointer;
-  background-color: #e2dddc;
+  background-color: #edeae9;
   font-size: 6rem;
   line-height: 6rem;
   transition: all 0.1s ease;
 }
 .dark .cell {
-  background-color: #202E39;
+  background-color: #26333F;
 }
 .cell::before {
   padding: 0;

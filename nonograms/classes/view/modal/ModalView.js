@@ -1,14 +1,14 @@
+import { BaseViewWithHandler } from "../BaseViewWithHandler.js";
 import { CreatorElement } from "../../utils/CreatorElement.js";
-import { BaseView } from "../BaseView.js";
 
-export class ModalView extends BaseView {
+export class ModalView extends BaseViewWithHandler {
   #window;
 
   /**
    * @param {number} time
    */
   constructor(time) {
-    super("div", ["modal"]);
+    super("div", ["modal"], (e) => cbModal(e));
     this.appendInnerModal(time);
   }
 
@@ -16,6 +16,12 @@ export class ModalView extends BaseView {
     this.appendWindow();
     this.appendContent(time);
     this.appendButtonOk();
+  }
+
+  cbModal(e) {
+    if (e.target.classList.contains("modal")) {
+      this.cbButton();
+    }
   }
 
   appendWindow() {

@@ -68,7 +68,6 @@ export class MainView extends BaseView {
 
   clickHandlerGameCloseMenu(gameEl, menuEl) {
     gameEl.addEventListener("click", (e) => {
-      console.log(e.target);
       if (!e.target.closest(".burger")) {
         menuEl.classList.remove("menu_opened");
         this.#burger.getElement().classList.remove("burger_opened");

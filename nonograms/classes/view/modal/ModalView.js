@@ -1,37 +1,55 @@
+import { BaseViewWithHandler } from "../BaseViewWithHandler.js";
 import { CreatorElement } from "../../utils/CreatorElement.js";
-import { BaseView } from "../BaseView.js";
 
-export class ModalView extends BaseView {
+export class ModalView extends BaseViewWithHandler {
+  #window;
+
   /**
-   *
-   * @param {number} gameIndex
+   * @param {number} time
    */
   constructor(time) {
-    super("div", ["modal"]);
+    super("div", ["modal"], (e) => cbModal(e));
     this.appendInnerModal(time);
   }
 
   appendInnerModal(time) {
-    const window = new CreatorElement("div", ["modal__window"]);
-    this.viewElement.appendElement(window.getElement());
+    this.appendWindow();
+    this.appendContent(time);
+    this.appendButtonOk();
+  }
 
-    const text = new CreatorElement(
+  cbModal(e) {
+    if (e.target.classList.contains("modal")) {
+      this.cbButton();
+    }
+  }
+
+  appendWindow() {
+    this.#window = new CreatorElement("div", ["modal__window"]);
+    this.viewElement.appendElement(this.#window.getElement());
+  }
+
+  appendContent(time) {
+    const content = new CreatorElement(
       "div",
       ["result-game"],
       `Great!\n You have solved the nonogram\nin ${time} seconds!`
     );
-    window.appendElement(text.getElement());
+    this.#window.appendElement(content.getElement());
+  }
 
+  appendButtonOk() {
     const button = new CreatorElement(
       "button",
       ["button", "button_modal"],
-      "OK", () => this.cbButton()
+      "OK",
+      () => this.cbButton()
     );
-    window.appendElement(button.getElement());
+    this.#window.appendElement(button.getElement());
   }
 
   cbButton() {
-    this.viewElement.setClassName(['modal_none']);
-    document.body.classList.remove('lock')
+    this.viewElement.setClassName(["modal_none"]);
+    document.body.classList.remove("lock");
   }
 }

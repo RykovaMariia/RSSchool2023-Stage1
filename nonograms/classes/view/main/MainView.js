@@ -7,6 +7,8 @@ import { ScoreView } from "./score/ScoreView.js";
 const START_NAME_INDEX = 0;
 
 export class MainView extends BaseView {
+  #burger;
+
   constructor() {
     super("main");
     this.appendMain();
@@ -24,26 +26,29 @@ export class MainView extends BaseView {
 
     this.appendBurger(game, menu.getHTMLElement());
     this.appendScoreButton(game, score.getHTMLElement());
+    this.clickHandlerGameCloseMenu(
+      game.getHTMLElement(),
+      menu.getHTMLElement()
+    );
   }
 
   appendBurger(game, menuEl) {
-    const burger = new CreatorElement("div", [,"burger"], "", () =>
-      this.cbBurger(menuEl, burger.getElement())
+    this.#burger = new CreatorElement("div", ["burger"], "", () =>
+      this.cbBurger(menuEl)
     );
 
-    for(let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
       const burgerLine = new CreatorElement("div", ["burger__line"]);
-      burger.appendElement(burgerLine.getElement());
-
+      this.#burger.appendElement(burgerLine.getElement());
     }
 
-    game.viewElement.appendElement(burger.getElement());
+    game.viewElement.appendElement(this.#burger.getElement());
   }
 
-  cbBurger(menuEl, burgerEl) {
+  cbBurger(menuEl) {
     menuEl.classList.toggle("menu_opened");
-    burgerEl.classList.toggle('burger_opened')
-    document.body.classList.toggle('lock')
+    this.#burger.getElement().classList.toggle("burger_opened");
+    document.body.classList.toggle("lock");
   }
 
   appendScoreButton(game, scoreEl) {
@@ -54,13 +59,21 @@ export class MainView extends BaseView {
       () => this.cbScoreButton(scoreEl)
     );
     game.viewElement.appendElement(button.getElement());
-
   }
 
   cbScoreButton(scoreEl) {
     scoreEl.classList.toggle("score_opened");
-    document.body.classList.add('lock')
+    document.body.classList.add("lock");
   }
 
-
+  clickHandlerGameCloseMenu(gameEl, menuEl) {
+    gameEl.addEventListener("click", (e) => {
+      console.log(e.target);
+      if (!e.target.closest(".burger")) {
+        menuEl.classList.remove("menu_opened");
+        this.#burger.getElement().classList.remove("burger_opened");
+        document.body.classList.remove("lock");
+      }
+    });
+  }
 }

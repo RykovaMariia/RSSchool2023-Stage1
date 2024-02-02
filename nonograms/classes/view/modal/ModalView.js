@@ -2,6 +2,8 @@ import { CreatorElement } from "../../utils/CreatorElement.js";
 import { BaseView } from "../BaseView.js";
 
 export class ModalView extends BaseView {
+  #window;
+
   /**
    * @param {number} time
    */
@@ -9,8 +11,6 @@ export class ModalView extends BaseView {
     super("div", ["modal"]);
     this.appendInnerModal(time);
   }
-
-  #window;
 
   appendInnerModal(time) {
     this.appendWindow();

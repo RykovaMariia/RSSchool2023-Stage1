@@ -30,7 +30,6 @@ export class GameView extends BaseView {
   appendInnerGame() {
     this.appendHeading();
     this.appendTime();
-    this.appendSwitchTheme();
     this.appendField(this.gameIndex);
     this.appendButtons();
     this.clickRightMouse();
@@ -43,22 +42,6 @@ export class GameView extends BaseView {
 
   appendTime() {
     this.viewElement.appendElement(this.timeDiv.getElement());
-  }
-
-  appendSwitchTheme() {
-    const switchTheme = new CreatorElement("label", ["switch"], "");
-    this.viewElement.appendElement(switchTheme.getElement());
-
-    const input = new CreatorElement("input");
-    input.getElement().setAttribute("type", "checkbox");
-    switchTheme.appendElement(input.getElement());
-
-    this.theme(input.getElement());
-
-    const switchToggle = new CreatorElement("span", ["switch-toggle"], "", () =>
-      this.cbToggleSwitchTheme()
-    );
-    switchTheme.appendElement(switchToggle.getElement());
   }
 
   appendField(gameIndex) {
@@ -379,17 +362,6 @@ export class GameView extends BaseView {
     this.table.setClassName(["nonograms_disabled"]);
   }
 
-  cbToggleSwitchTheme() {
-    const theme = JSON.parse(localStorage.getItem("darkTheme"));
-    if (theme) {
-      document.body.classList.remove("dark");
-      localStorage.removeItem('darkTheme')
-    } else {
-      localStorage.setItem("darkTheme", true);
-      document.body.classList.add("dark");
-    }
-  }
-
   /**
    * @param {url} url
    */
@@ -397,13 +369,5 @@ export class GameView extends BaseView {
     var audio = new Audio();
     audio.src = url;
     audio.autoplay = true;
-  }
-
-  theme(input) {
-    const theme = JSON.parse(localStorage.getItem("darkTheme"));
-    if(theme) {
-      document.body.classList.add('dark')
-      input.checked = true;
-    }
   }
 }

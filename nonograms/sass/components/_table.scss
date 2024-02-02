@@ -83,13 +83,13 @@ td {
   width: calc(1 / 6 * $width);
   height: calc(1 / 6 * $width);
   cursor: pointer;
-  background-color: constants.$color-text-light;
+  background-color: constants.$color-background-body-light;
   font-size: 6rem;
   line-height: 6rem;
   transition: all 0.1s ease;
 
   .dark & {
-    background-color: constants.$color-text-dark;
+    background-color: constants.$color-background-body-dark;
   }
 
   &::before {

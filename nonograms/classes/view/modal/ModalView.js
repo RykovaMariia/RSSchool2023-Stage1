@@ -8,7 +8,7 @@ export class ModalView extends BaseViewWithHandler {
    * @param {number} time
    */
   constructor(time) {
-    super("div", ["modal"], (e) => cbModal(e));
+    super("div", ["modal"], (e) => this.cbModal(e));
     this.appendInnerModal(time);
   }
 

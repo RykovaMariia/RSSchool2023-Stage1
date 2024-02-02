@@ -26,6 +26,7 @@ export class MainView extends BaseView {
 
     this.appendBurger(game, menu.getHTMLElement());
     this.appendScoreButton(game, score.getHTMLElement());
+    this.appendSwitchTheme(game);
     this.clickHandlerGameCloseMenu(
       game.getHTMLElement(),
       menu.getHTMLElement()
@@ -74,5 +75,40 @@ export class MainView extends BaseView {
         document.body.classList.remove("lock");
       }
     });
+  }
+
+  appendSwitchTheme(game) {
+    const switchTheme = new CreatorElement("label", ["switch"], "");
+    game.viewElement.appendElement(switchTheme.getElement());
+
+    const input = new CreatorElement("input");
+    input.getElement().setAttribute("type", "checkbox");
+    switchTheme.appendElement(input.getElement());
+
+    this.theme(input.getElement());
+
+    const switchToggle = new CreatorElement("span", ["switch-toggle"], "", () =>
+      this.cbToggleSwitchTheme()
+    );
+    switchTheme.appendElement(switchToggle.getElement());
+  }
+
+  cbToggleSwitchTheme() {
+    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    if (theme) {
+      document.body.classList.remove("dark");
+      localStorage.removeItem("darkTheme");
+    } else {
+      localStorage.setItem("darkTheme", true);
+      document.body.classList.add("dark");
+    }
+  }
+
+  theme(input) {
+    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    if (theme) {
+      document.body.classList.add("dark");
+      input.checked = true;
+    }
   }
 }

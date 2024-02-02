@@ -3,35 +3,47 @@ import { BaseView } from "../BaseView.js";
 
 export class ModalView extends BaseView {
   /**
-   *
-   * @param {number} gameIndex
+   * @param {number} time
    */
   constructor(time) {
     super("div", ["modal"]);
     this.appendInnerModal(time);
   }
 
-  appendInnerModal(time) {
-    const window = new CreatorElement("div", ["modal__window"]);
-    this.viewElement.appendElement(window.getElement());
+  #window;
 
-    const text = new CreatorElement(
+  appendInnerModal(time) {
+    this.appendWindow();
+    this.appendContent(time);
+    this.appendButtonOk();
+  }
+
+  appendWindow() {
+    this.#window = new CreatorElement("div", ["modal__window"]);
+    this.viewElement.appendElement(this.#window.getElement());
+  }
+
+  appendContent(time) {
+    const content = new CreatorElement(
       "div",
       ["result-game"],
       `Great!\n You have solved the nonogram\nin ${time} seconds!`
     );
-    window.appendElement(text.getElement());
+    this.#window.appendElement(content.getElement());
+  }
 
+  appendButtonOk() {
     const button = new CreatorElement(
       "button",
       ["button", "button_modal"],
-      "OK", () => this.cbButton()
+      "OK",
+      () => this.cbButton()
     );
-    window.appendElement(button.getElement());
+    this.#window.appendElement(button.getElement());
   }
 
   cbButton() {
-    this.viewElement.setClassName(['modal_none']);
-    document.body.classList.remove('lock')
+    this.viewElement.setClassName(["modal_none"]);
+    document.body.classList.remove("lock");
   }
 }

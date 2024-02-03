@@ -33,7 +33,7 @@ export class ScoreView extends BaseViewWithHandler {
   appendCloseButton() {
     const close = new CreatorElement(
       "span",
-      ["material-symbols-outlined"],
+      ["material-symbols-outlined", "icon-close"],
       "close",
       () => this.cbCloseButton()
     );

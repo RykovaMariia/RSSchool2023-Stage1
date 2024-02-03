@@ -14,12 +14,12 @@ export class GameView extends BaseView {
     this.score = score;
     this.appendInnerGame();
   }
-  table = new CreatorElement("table", ["nonograms"]);
-  timeDiv = new CreatorElement("div", ["game__time"], "00:00");
+  #table;
+  #timeDiv;
   buttonSave;
 
-  nonogramsCluesTop = [];
-  nonogramsCluesLeft = [];
+  #nonogramsCluesTop = [];
+  #nonogramsCluesLeft = [];
 
   interval;
   sec = 0;
@@ -27,12 +27,43 @@ export class GameView extends BaseView {
 
   cells = [];
 
+  #audioBlackCell;
+  #audioWhileCell;
+  #audioCrossCell;
+  #audioWin;
+
   appendInnerGame() {
+
+    this.addAudio();
     this.appendHeading();
     this.appendTime();
     this.appendField(this.gameIndex);
     this.appendButtons();
-    this.clickRightMouse();
+  }
+
+  addAudio() {
+    this.#audioBlackCell = new Audio("assets/music/tap_1.mp3");
+    this.#audioWhileCell = new Audio("assets/music/tap_2.mp3");
+    this.#audioCrossCell = new Audio("assets/music/tcs.mp3");
+    this.#audioWin = new Audio("assets/music/win.mp3");
+  }
+  /**
+   * @param {Audio} audio
+   */
+  async audioPlay(audio) {
+    if (audio) {
+      await this.#audioBlackCell.pause();
+      await this.#audioWhileCell.pause();
+      await this.#audioCrossCell.pause();
+      await this.#audioWin.pause();
+
+      audio.currentTime = 0;
+      await audio.play();
+    }
+  }
+
+  appendAudio() {
+    
   }
 
   appendHeading() {
@@ -41,22 +72,24 @@ export class GameView extends BaseView {
   }
 
   appendTime() {
-    this.viewElement.appendElement(this.timeDiv.getElement());
+    this.#timeDiv = new CreatorElement("div", ["game__time"], "00:00");
+    this.viewElement.appendElement(this.#timeDiv.getElement());
   }
 
   appendField(gameIndex) {
     this.resetTime();
-    this.timeDiv.setTextContent("00:00");
+    this.#timeDiv.setTextContent("00:00");
     this.cells = [];
     this.gameIndex = gameIndex;
     const level = games[gameIndex].level;
 
-    if (this.table.getElement().classList.contains("nonograms_disabled")) {
-      this.table.getElement().classList.remove("nonograms_disabled");
+    this.#table = new CreatorElement("table", ["nonograms"]);
+    if (this.#table.getElement().classList.contains("nonograms_disabled")) {
+      this.#table.getElement().classList.remove("nonograms_disabled");
     }
-    this.viewElement.appendElement(this.table.getElement());
+    this.viewElement.appendElement(this.#table.getElement());
     const tbody = new CreatorElement("tbody");
-    this.table.appendElement(tbody.getElement());
+    this.#table.appendElement(tbody.getElement());
 
     let cell = "cell";
     if (level === 1) cell = "cell-medium";
@@ -77,18 +110,18 @@ export class GameView extends BaseView {
       }
 
       for (let j = 0; j < n; j++) {
-        const td = new CreatorElement("td", [], "", (e) => this.cbClick(e));
+        const td = new CreatorElement("td", [], "", (e) => this.cbClickCell(e));
 
         if (i === 0 && j > 0) {
           td.setClassName(["nonograms__top"]);
-          this.nonogramsCluesTop.push(td);
+          this.#nonogramsCluesTop.push(td);
         }
         if (j === 0 && i === 0) {
           td.setClassName(["nonograms__top_none"]);
         }
         if (j === 0 && i !== 0) {
           td.setClassName(["nonograms__left"]);
-          this.nonogramsCluesLeft.push(td);
+          this.#nonogramsCluesLeft.push(td);
         }
         if (i > 0 && j > 0) {
           td.setClassName(["cell", cell]);
@@ -105,6 +138,7 @@ export class GameView extends BaseView {
       }
     }
     this.createClues(gameIndex);
+    this.clickRightMouse();
   }
 
   appendButtons() {
@@ -117,7 +151,6 @@ export class GameView extends BaseView {
       "Save game",
       () => this.cbSaveGame()
     );
-
     this.buttonSave.getElement().disabled = true;
     buttonsDiv.appendElement(this.buttonSave.getElement());
 
@@ -169,30 +202,26 @@ export class GameView extends BaseView {
       cluesLeft.push(cluesLeftInner);
       cluesTop.push(cluesTopInner);
     }
-    this.nonogramsCluesLeft.forEach((el, i) => {
+    this.#nonogramsCluesLeft.forEach((el, i) => {
       el.setTextContent(cluesLeft[i].join(" ") || "0");
     });
-    this.nonogramsCluesTop.forEach((el, i) => {
+    this.#nonogramsCluesTop.forEach((el, i) => {
       el.setTextContent(cluesTop[i].join("\n") || "0");
     });
   }
 
-  cbClick(e) {
+  cbClickCell(e) {
     if (e.target.classList.contains("cell")) {
-      if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+      if (!this.#table.getElement().classList.contains("nonograms_disabled")) {
+        this.startTime();
         this.buttonSave.getElement().disabled = false;
-
-        if (!this.timeDiv.getElement().classList.contains("time-go")) {
-          this.timeDiv.setClassName(["time-go"]);
-          this.interval = setInterval(() => this.updateTime(), 1000);
-        }
-
         e.target.classList.remove("cell_cross");
+
         if (e.target.classList.contains("cell_dark")) {
-          this.addAudio("assets/music/tap_2.mp3");
+          this.audioPlay(this.#audioWhileCell);
           e.target.classList.remove("cell_dark");
         } else {
-          this.addAudio("assets/music/tap_1.mp3");
+          this.audioPlay(this.#audioBlackCell);
           e.target.classList.add("cell_dark");
         }
 
@@ -209,20 +238,33 @@ export class GameView extends BaseView {
           result.length === solution.length &&
           solution.every((el, i) => el === result[i])
         ) {
-          const time = this.min * 60 + this.sec;
-          this.buttonSave.getElement().disabled = true;
-          this.addAudio("assets/music/win.mp3");
-          this.saveWinInLocalStorage(time);
-          this.score.appendTextInList();
-          const modal = new ModalView(time);
-          document.body.prepend(modal.getHTMLElement());
-          document.body.classList.add("lock");
-
-          this.resetTime();
-          this.table.setClassName(["nonograms_disabled"]);
+          this.winGame();
         }
       }
     }
+  }
+
+  startTime() {
+    if (!this.#timeDiv.getElement().classList.contains("time-go")) {
+      this.#timeDiv.setClassName(["time-go"]);
+      this.interval = setInterval(() => this.updateTime(), 1000);
+    }
+  }
+
+  winGame() {
+    const time = this.min * 60 + this.sec;
+    this.buttonSave.getElement().disabled = true;
+
+    this.audioPlay(this.#audioWin);
+
+    this.saveWinInLocalStorage(time);
+    this.score.appendTextInList();
+    const modal = new ModalView(time);
+    document.body.prepend(modal.getHTMLElement());
+    document.body.classList.add("lock");
+
+    this.resetTime();
+    this.#table.setClassName(["nonograms_disabled"]);
   }
 
   saveWinInLocalStorage(time) {
@@ -244,21 +286,22 @@ export class GameView extends BaseView {
   }
 
   clickRightMouse() {
-    this.table.getElement().addEventListener("contextmenu", (e) => {
+    const tableElement = this.#table.getElement();
+
+    tableElement.addEventListener("contextmenu", (e) => {
       if (e.target.classList.contains("cell")) {
-        if (!this.table.getElement().classList.contains("nonograms_disabled")) {
+        console.log(e.target);
+        e.preventDefault();
+
+        if (!tableElement.classList.contains("nonograms_disabled")) {
+          this.startTime();
           this.buttonSave.getElement().disabled = false;
-          if (!this.timeDiv.getElement().classList.contains("time-go")) {
-            this.timeDiv.setClassName(["time-go"]);
-            this.interval = setInterval(() => this.updateTime(), 1000);
-          }
-          e.preventDefault();
           e.target.classList.remove("cell_dark");
           if (e.target.classList.contains("cell_cross")) {
-            this.addAudio("assets/music/tap_2.mp3");
+            this.audioPlay(this.#audioWhileCell);
             e.target.classList.remove("cell_cross");
           } else {
-            this.addAudio("assets/music/tcs.mp3");
+            this.audioPlay(this.#audioCrossCell);
             e.target.classList.add("cell_cross");
           }
         }
@@ -267,10 +310,10 @@ export class GameView extends BaseView {
   }
 
   removeField() {
-    this.nonogramsCluesTop = [];
-    this.nonogramsCluesLeft = [];
-    this.table.getElement().innerHTML = "";
-    this.table.getElement().remove();
+    this.#nonogramsCluesTop = [];
+    this.#nonogramsCluesLeft = [];
+    this.#table.getElement().innerHTML = "";
+    this.#table.getElement().remove();
   }
 
   updateTime() {
@@ -280,7 +323,7 @@ export class GameView extends BaseView {
       this.sec = 0;
     }
 
-    this.timeDiv.setTextContent(
+    this.#timeDiv.setTextContent(
       `${this.min.toString().padStart(2, "0")}:${this.sec
         .toString()
         .padStart(2, "0")}`
@@ -291,7 +334,7 @@ export class GameView extends BaseView {
     clearInterval(this.interval);
     this.min = 0;
     this.sec = 0;
-    this.timeDiv.getElement().classList.remove("time-go");
+    this.#timeDiv.getElement().classList.remove("time-go");
   }
 
   cbResetButton() {
@@ -337,12 +380,12 @@ export class GameView extends BaseView {
       }
       return el;
     });
-    this.timeDiv.setTextContent(
+    this.#timeDiv.setTextContent(
       `${this.min.toString().padStart(2, "0")}:${this.sec
         .toString()
         .padStart(2, "0")}`
     );
-    this.timeDiv.setClassName(["time-go"]);
+    this.#timeDiv.setClassName(["time-go"]);
     this.interval = setInterval(() => this.updateTime(), 1000);
   }
 
@@ -359,15 +402,6 @@ export class GameView extends BaseView {
       return el;
     });
     this.resetTime();
-    this.table.setClassName(["nonograms_disabled"]);
-  }
-
-  /**
-   * @param {url} url
-   */
-  addAudio(url) {
-    var audio = new Audio();
-    audio.src = url;
-    audio.autoplay = true;
+    this.#table.setClassName(["nonograms_disabled"]);
   }
 }

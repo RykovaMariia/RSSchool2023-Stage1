@@ -33,8 +33,7 @@ export class GameView extends BaseView {
   #audioWin;
 
   appendInnerGame() {
-
-    this.addAudio();
+    this.appendAudio();
     this.appendHeading();
     this.appendTime();
     this.appendField(this.gameIndex);
@@ -46,6 +45,13 @@ export class GameView extends BaseView {
     this.#audioWhileCell = new Audio("assets/music/tap_2.mp3");
     this.#audioCrossCell = new Audio("assets/music/tcs.mp3");
     this.#audioWin = new Audio("assets/music/win.mp3");
+  }
+
+  removeAudio() {
+    this.#audioBlackCell = null;
+    this.#audioWhileCell = null;
+    this.#audioCrossCell = null;
+    this.#audioWin = null;
   }
   /**
    * @param {Audio} audio
@@ -63,7 +69,30 @@ export class GameView extends BaseView {
   }
 
   appendAudio() {
-    
+    const audioDiv = new CreatorElement("div", ["audio"], '', () => this.cbSound(audioDiv.getElement(), icon));
+    this.viewElement.appendElement(audioDiv.getElement());
+
+    const icon = new CreatorElement("span", [
+      "material-symbols-outlined",
+      "icon-sound",
+    ]);
+    audioDiv.appendElement(icon.getElement());
+      icon.setTextContent("brand_awareness");
+      this.addAudio();
+
+      audioDiv.setHandler()
+  }
+
+  cbSound(audioDiv, icon) {
+    if (audioDiv.classList.contains("sound-off")) {
+      this.addAudio();
+      audioDiv.classList.remove('sound-off');
+      icon.setTextContent("brand_awareness");
+    } else {
+      this.removeAudio();
+      audioDiv.classList.add('sound-off');
+      icon.setTextContent("no_sound");
+    }
   }
 
   appendHeading() {
@@ -138,7 +167,7 @@ export class GameView extends BaseView {
       }
     }
     this.createClues(gameIndex);
-    this.clickRightMouse();
+    this.clickRightMouse(this.#table.getElement());
   }
 
   appendButtons() {
@@ -285,17 +314,16 @@ export class GameView extends BaseView {
     }
   }
 
-  clickRightMouse() {
-    const tableElement = this.#table.getElement();
+  clickRightMouse(table) {
 
-    tableElement.addEventListener("contextmenu", (e) => {
+    table.addEventListener("contextmenu", (e) => {
       if (e.target.classList.contains("cell")) {
-        console.log(e.target);
         e.preventDefault();
 
-        if (!tableElement.classList.contains("nonograms_disabled")) {
+        if (!table.classList.contains("nonograms_disabled")) {
           this.startTime();
           this.buttonSave.getElement().disabled = false;
+
           e.target.classList.remove("cell_dark");
           if (e.target.classList.contains("cell_cross")) {
             this.audioPlay(this.#audioWhileCell);

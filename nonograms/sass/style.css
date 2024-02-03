@@ -191,11 +191,11 @@ ol li:before {
   border-top-right-radius: 10px;
 }
 
-.material-symbols-outlined {
+.icon-close {
   display: none;
 }
 
-.score_opened .material-symbols-outlined {
+.score_opened .icon-close {
   display: block;
   position: absolute;
   top: 20px;
@@ -265,6 +265,14 @@ ol li:before {
     flex-wrap: wrap;
     margin: 40px auto 0;
   }
+}
+
+.audio {
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  cursor: pointer;
 }
 
 .nonograms {

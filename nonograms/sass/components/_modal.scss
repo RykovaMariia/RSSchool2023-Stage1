@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
 
   font-size: 3rem;
 
@@ -39,6 +39,8 @@
 }
 
 .result-game {
+  margin-bottom: 15px;
+  display: block;
   text-align: center;
 }
 

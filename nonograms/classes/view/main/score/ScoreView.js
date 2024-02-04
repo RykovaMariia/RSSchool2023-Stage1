@@ -69,7 +69,7 @@ export class ScoreView extends BaseViewWithHandler {
 
   appendTextInList() {
     let dataScore = [];
-    dataScore = JSON.parse(localStorage.getItem("score"));
+    dataScore = JSON.parse(localStorage.getItem("rm-score"));
     if (dataScore && dataScore.length > 0) {
       let sortData = [];
       sortData = dataScore.sort((a, b) => a.time - b.time);

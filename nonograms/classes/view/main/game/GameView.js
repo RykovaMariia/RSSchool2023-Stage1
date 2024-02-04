@@ -288,7 +288,7 @@ export class GameView extends BaseView {
 
     this.saveWinInLocalStorage(time);
     this.score.appendTextInList();
-    const modal = new ModalView(time);
+    const modal = new ModalView(time, this.gameIndex);
     document.body.prepend(modal.getHTMLElement());
     document.body.classList.add("lock");
 
@@ -300,17 +300,17 @@ export class GameView extends BaseView {
     const thisWin = { index: this.gameIndex, time: time };
     let dataScore = [];
 
-    if (!localStorage.getItem("score")) {
+    if (!localStorage.getItem("rm-score")) {
       dataScore.push(thisWin);
-      localStorage.setItem("score", JSON.stringify(dataScore));
+      localStorage.setItem("rm-score", JSON.stringify(dataScore));
     } else {
-      dataScore = JSON.parse(localStorage.getItem("score"));
+      dataScore = JSON.parse(localStorage.getItem("rm-score"));
 
       if (dataScore.length > 4) {
         dataScore.shift();
       }
       dataScore.push(thisWin);
-      localStorage.setItem("score", JSON.stringify(dataScore));
+      localStorage.setItem("rm-score", JSON.stringify(dataScore));
     }
   }
 
@@ -388,7 +388,7 @@ export class GameView extends BaseView {
       time: [this.min, this.sec],
       cell: result,
     };
-    localStorage.setItem("saveGame", JSON.stringify(saveGame));
+    localStorage.setItem("rm-saveGame", JSON.stringify(saveGame));
   }
 
   continueLastGame(saveGame) {

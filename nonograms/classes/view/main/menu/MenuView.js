@@ -65,7 +65,7 @@ export class MenuView extends BaseView {
       "Continue last game",
       () => this.cbContinueLastGame(gameComponent, buttonContinue.getElement())
     );
-    const lastGame = JSON.parse(localStorage.getItem("saveGame"));
+    const lastGame = JSON.parse(localStorage.getItem("rm-saveGame"));
     if (!lastGame) {
       buttonContinue.getElement().disabled = true;
     }
@@ -81,7 +81,7 @@ export class MenuView extends BaseView {
      * time: Array<number>,
      * }} lastGame
      */
-    const lastGame = JSON.parse(localStorage.getItem("saveGame"));
+    const lastGame = JSON.parse(localStorage.getItem("rm-saveGame"));
     if (lastGame) {
       buttonContinue.disabled = false;
       this.levels.selectedLevel(games[lastGame.id].level);

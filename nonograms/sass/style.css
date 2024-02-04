@@ -247,7 +247,7 @@ ol li:before {
   margin: 100px auto 20px;
 }
 .dark .game__time {
-  color: #202E39;
+  color: rgba(32, 46, 57, 0.8745098039);
 }
 
 .game__buttons {
@@ -625,7 +625,7 @@ td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
   font-size: 3rem;
 }
 .dark .modal__window {
@@ -633,6 +633,8 @@ td {
 }
 
 .result-game {
+  margin-bottom: 15px;
+  display: block;
   text-align: center;
 }
 

@@ -247,7 +247,7 @@ ol li:before {
   margin: 100px auto 20px;
 }
 .dark .game__time {
-  color: #202E39;
+  color: rgba(32, 46, 57, 0.8745098039);
 }
 
 .game__buttons {

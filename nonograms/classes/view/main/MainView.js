@@ -94,18 +94,18 @@ export class MainView extends BaseView {
   }
 
   cbToggleSwitchTheme() {
-    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    const theme = JSON.parse(localStorage.getItem("rm-darkTheme"));
     if (theme) {
       document.body.classList.remove("dark");
-      localStorage.removeItem("darkTheme");
+      localStorage.removeItem("rm-darkTheme");
     } else {
-      localStorage.setItem("darkTheme", true);
+      localStorage.setItem("rm-darkTheme", true);
       document.body.classList.add("dark");
     }
   }
 
   theme(input) {
-    const theme = JSON.parse(localStorage.getItem("darkTheme"));
+    const theme = JSON.parse(localStorage.getItem("rm-darkTheme"));
     if (theme) {
       document.body.classList.add("dark");
       input.checked = true;

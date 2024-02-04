@@ -288,7 +288,7 @@ export class GameView extends BaseView {
 
     this.saveWinInLocalStorage(time);
     this.score.appendTextInList();
-    const modal = new ModalView(time);
+    const modal = new ModalView(time, this.gameIndex);
     document.body.prepend(modal.getHTMLElement());
     document.body.classList.add("lock");
 

@@ -2,6 +2,7 @@ export const games = [
   {
     level: 0,
     name: "Hourglass",
+    urlImg: './assets/img-solution/easy_hourglass.jpg',
     game: [
       [1, 1, 1, 1, 1],
       [0, 1, 1, 1, 0],
@@ -13,6 +14,7 @@ export const games = [
   {
     level: 0,
     name: "Smile",
+    urlImg: './assets/img-solution/easy_smile.jpg',
     game: [
       [1, 1, 0, 1, 1],
       [1, 1, 0, 1, 1],
@@ -24,6 +26,7 @@ export const games = [
   {
     level: 0,
     name: "Airplane",
+    urlImg: './assets/img-solution/easy_airplane.jpg',
     game: [
       [0, 0, 1, 0, 0],
       [0, 1, 1, 1, 0],
@@ -35,6 +38,7 @@ export const games = [
   {
     level: 0,
     name: "Window",
+    urlImg: './assets/img-solution/easy_window.jpg',
     game: [
       [1, 1, 1, 1, 1],
       [1, 0, 1, 0, 1],
@@ -46,6 +50,7 @@ export const games = [
   {
     level: 0,
     name: "Dog",
+    urlImg: './assets/img-solution/easy_dog.jpg',
     game: [
       [0, 0, 0, 1, 0],
       [1, 0, 1, 1, 1],
@@ -57,6 +62,7 @@ export const games = [
   {
     level: 1,
     name: "Tree",
+    urlImg: './assets/img-solution/medium_tree.jpg',
     game: [
       [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       [0, 1, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -73,6 +79,7 @@ export const games = [
   {
     level: 1,
     name: "Snail",
+    urlImg: './assets/img-solution/medium_snail.jpg',
     game: [
       [0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
       [0, 1, 1, 0, 1, 1, 1, 0, 0, 0],
@@ -89,6 +96,7 @@ export const games = [
   {
     level: 1,
     name: "Aerostat",
+    urlImg: './assets/img-solution/medium_aerostat.jpg',
     game: [
       [1, 1, 1, 0, 0, 0, 0, 0, 1, 1],
       [1, 1, 0, 0, 0, 0, 0, 1, 0, 1],
@@ -105,6 +113,7 @@ export const games = [
   {
     level: 1,
     name: "Cuppa",
+    urlImg: './assets/img-solution/medium_cuppa.jpg',
     game: [
       [0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
@@ -112,7 +121,7 @@ export const games = [
       [0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
       [0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
       [0, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
       [0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       [0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
       [0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
@@ -121,6 +130,7 @@ export const games = [
   {
     level: 1,
     name: "Leaf",
+    urlImg: './assets/img-solution/medium_leaf.jpg',
     game: [
       [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
       [0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
@@ -137,6 +147,7 @@ export const games = [
   {
     level: 2,
     name: "Deer",
+    urlImg: './assets/img-solution/hard_deer.jpg',
     game: [
       [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
       [1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
@@ -158,6 +169,7 @@ export const games = [
   {
     level: 2,
     name: "Castle",
+    urlImg: './assets/img-solution/hard_castle.jpg',
     game: [
       [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -179,6 +191,7 @@ export const games = [
   {
     level: 2,
     name: "Duck",
+    urlImg: './assets/img-solution/hard_duck.jpg',
     game: [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
@@ -200,6 +213,7 @@ export const games = [
   {
     level: 2,
     name: "Home",
+    urlImg: './assets/img-solution/hard_home.jpg',
     game: [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
@@ -221,6 +235,7 @@ export const games = [
   {
     level: 2,
     name: "Flower",
+    urlImg: './assets/img-solution/hard_flower.jpg',
     game: [
       [0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],

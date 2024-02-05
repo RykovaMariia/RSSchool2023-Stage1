@@ -33,24 +33,23 @@ td {
 
 .nonograms__left,
 .nonograms__top {
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.001rem;
   line-height: 1.6rem;
   text-align: center;
 
   @include mixins.media-mobile {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.1rem;
   }
   @include mixins.media-mobile-mini {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1rem;
   }
 }
 
 .nonograms__left {
   width: calc(1 / 6 * $width);
-
   @include mixins.media-mobile {
     width: calc(1 / 6 * $width-mobile);
     line-height: 1rem;

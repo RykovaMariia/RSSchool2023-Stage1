@@ -307,22 +307,22 @@ td {
 
 .nonograms__left,
 .nonograms__top {
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.001rem;
   line-height: 1.6rem;
   text-align: center;
 }
 @media (max-width: 710px) {
   .nonograms__left,
   .nonograms__top {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.1rem;
   }
 }
 @media (max-width: 499px) {
   .nonograms__left,
   .nonograms__top {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1rem;
   }
 }

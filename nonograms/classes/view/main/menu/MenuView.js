@@ -43,7 +43,7 @@ export class MenuView extends BaseView {
     const buttonRandom = new CreatorElement(
       "button",
       ["button_random-game", "button"],
-      "random",
+      "Random game",
       () => this.cbRandomButton(gameComponent)
     );
     this.viewElement.appendElement(buttonRandom.getElement());

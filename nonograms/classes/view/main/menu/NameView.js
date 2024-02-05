@@ -33,14 +33,14 @@ export class NameView extends BaseView {
       const nameGame = e.target.innerText;
       games.forEach((el, i) => {
         if (el.name === nameGame) {
-          this.indexGame = i;
+          this.selectedName(i);
         }
       });
-      this.selectedName(this.indexGame);
     }
   }
 
   selectedName(index) {
+    this.indexGame = index;
     this.gameComponent.buttonSave.getElement().disabled = true;
     const nameGame = games[index].name;
     this.nameElements.forEach((el) => {

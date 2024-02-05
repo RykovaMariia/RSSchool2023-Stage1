@@ -61,7 +61,7 @@ h2 {
 
 .dark .button {
   border-color: #26333F;
-  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.4), 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.1), 5px 5px 10px 0px rgba(0, 0, 0, 0.2);
   color: #e2dddc;
 }
 
@@ -73,6 +73,7 @@ h2 {
 .dark .button_continue-last-game,
 .dark .button_solution {
   background-color: #202E39;
+  border-color: #202E39;
 }
 
 .button_random-game {

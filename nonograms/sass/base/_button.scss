@@ -26,8 +26,8 @@
 
 .dark .button {
   border-color: constants.$color-background-body-dark;
-  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light,
-    5px 5px 10px 0px constants.$color-shadow-dark;
+  box-shadow: -5px -5px 10px 0px constants.$color-shadow-light2,
+    5px 5px 10px 0px constants.$color-shadow-dark2;
     color: constants.$color-text-light;
 }
 
@@ -39,6 +39,7 @@
 .dark .button_continue-last-game,
 .dark .button_solution {
   background-color: constants.$color-background-body-dark-center;
+  border-color: constants.$color-background-body-dark-center;
 }
 
 .button_random-game {

@@ -6,7 +6,7 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 
 1. **Get started with TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/UF5N2CT3?sharingId=5B0A4BB482CE412D)
 2. **Declare Variable Types in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/UF5YXFR3?sharingId=5B0A4BB482CE412D)
-3. **Implement Interfaces in TypeScript**: [Badge](badge-link)
+3. **Implement Interfaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/BLMHRHHD?sharingId=5B0A4BB482CE412D)
 4. **Develop Typed Functions in TypeScript**: [Badge](badge-link)
 5. **Declare and Instantiate Classes in TypeScript**: [Badge](badge-link)
 6. **Generics in TypeScript**: [Badge](badge-link)
@@ -20,3 +20,6 @@ I acquired the skill of installing typescript, create the config.json file, and 
 
 2.I learned that the static type system in TypeScript enables to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly. 
 I acquired the skill of declare variables using primitive types, using object types, using union and intersection types.
+
+3.I learned that the Interface in TypeScript to describe an object, naming and parameterizing the object's types, and to compose existing named object types into new ones.
+I acquired the skill of declare an interface, implement an interface, extending an interface.

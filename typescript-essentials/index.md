@@ -10,7 +10,7 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 4. **Develop Typed Functions in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/8R6QHBVW?sharingId=5B0A4BB482CE412D)
 5. **Declare and Instantiate Classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/4S2FBT6K?sharingId=5B0A4BB482CE412D)
 6. **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/X235QK4Y?sharingId=5B0A4BB482CE412D)
-7. **Work with External Libraries in TypeScript**: [Badge](badge-link)
+7. **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/X235KZXY?sharingId=5B0A4BB482CE412D)
 8. **Organize Code with Namespaces in TypeScript**: [Badge](badge-link)
 
 ## Reflections
@@ -33,3 +33,6 @@ I also realized that interfaces whenever you need the ability to define a data s
 
 6. I learned that  In TypeScript, generics can: provide more flexibility when working with types, enable code reuse, reduce the need to use the any type.
 I acquired the skill of declare a generic interface, declare a generic class, Implement generic constraints.
+
+7. I learned that  In TypeScript, modules are declarative, the import and export statements at the file level describe the relationships between them.
+I acquired the skill of organize code using modules, import an external type library.

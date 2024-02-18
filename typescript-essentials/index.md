@@ -11,7 +11,7 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 5. **Declare and Instantiate Classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/4S2FBT6K?sharingId=5B0A4BB482CE412D)
 6. **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/X235QK4Y?sharingId=5B0A4BB482CE412D)
 7. **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/X235KZXY?sharingId=5B0A4BB482CE412D)
-8. **Organize Code with Namespaces in TypeScript**: [Badge](badge-link)
+8. **Organize Code with Namespaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/RykovaMariia-1896/4S2FNLQK?sharingId=5B0A4BB482CE412D)
 
 ## Reflections
 
@@ -36,3 +36,6 @@ I acquired the skill of declare a generic interface, declare a generic class, Im
 
 7. I learned that  In TypeScript, modules are declarative, the import and export statements at the file level describe the relationships between them.
 I acquired the skill of organize code using modules, import an external type library.
+
+8. I learned that  In TypeScript, code inside a namespace is pulled from the global scope and into the scope of the namespace. This placement can help you avoid naming conflicts between components in the global namespace and can be beneficial when working with distributed development teams that may use similar component names.
+I acquired the skill of implement single-file namespaces, implement multi-file namespaces.
